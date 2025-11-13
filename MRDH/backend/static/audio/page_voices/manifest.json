@@ -1,0 +1,283 @@
+{
+  "language": "en",
+  "generated_at": "2025-10-02T18:16:06.519942",
+  "version": "1.0.0",
+  "files": {
+    "page_enter_home": {
+      "filename": "page_enter_home_en.wav",
+      "text": "Welcome to Navigation System. Browse maps and start navigation.",
+      "language": "en",
+      "file_size": 267630
+    },
+    "page_enter_map_list": {
+      "filename": "page_enter_map_list_en.wav",
+      "text": "Map List. Select a map to start navigation.",
+      "language": "en",
+      "file_size": 220680
+    },
+    "page_enter_navigation": {
+      "filename": "page_enter_navigation_en.wav",
+      "text": "Navigation page. Follow voice guidance to reach your destination.",
+      "language": "en",
+      "file_size": 270728
+    },
+    "page_enter_settings": {
+      "filename": "page_enter_settings_en.wav",
+      "text": "Settings page. Configure voice and system preferences.",
+      "language": "en",
+      "file_size": 242958
+    },
+    "action_loading": {
+      "filename": "action_loading_en.wav",
+      "text": "Loading, please wait.",
+      "language": "en",
+      "file_size": 113338
+    },
+    "action_loading_complete": {
+      "filename": "action_loading_complete_en.wav",
+      "text": "Loading complete.",
+      "language": "en",
+      "file_size": 83574
+    },
+    "action_success": {
+      "filename": "action_success_en.wav",
+      "text": "Operation successful.",
+      "language": "en",
+      "file_size": 105392
+    },
+    "action_error": {
+      "filename": "action_error_en.wav",
+      "text": "Operation failed.",
+      "language": "en",
+      "file_size": 89306
+    },
+    "action_cancelled": {
+      "filename": "action_cancelled_en.wav",
+      "text": "Operation cancelled.",
+      "language": "en",
+      "file_size": 98562
+    },
+    "button_voice_test": {
+      "filename": "button_voice_test_en.wav",
+      "text": "Voice test button pressed.",
+      "language": "en",
+      "file_size": 115090
+    },
+    "button_settings": {
+      "filename": "button_settings_en.wav",
+      "text": "Settings button pressed.",
+      "language": "en",
+      "file_size": 106058
+    },
+    "button_view_all_maps": {
+      "filename": "button_view_all_maps_en.wav",
+      "text": "View all maps button pressed.",
+      "language": "en",
+      "file_size": 124130
+    },
+    "button_start_navigation": {
+      "filename": "button_start_navigation_en.wav",
+      "text": "Start navigation button pressed.",
+      "language": "en",
+      "file_size": 138674
+    },
+    "button_stop_navigation": {
+      "filename": "button_stop_navigation_en.wav",
+      "text": "Stop navigation button pressed.",
+      "language": "en",
+      "file_size": 134708
+    },
+    "button_replay_instruction": {
+      "filename": "button_replay_instruction_en.wav",
+      "text": "Replay instruction button pressed.",
+      "language": "en",
+      "file_size": 132946
+    },
+    "navigation_started": {
+      "filename": "navigation_started_en.wav",
+      "text": "Navigation started.",
+      "language": "en",
+      "file_size": 97458
+    },
+    "navigation_stopped": {
+      "filename": "navigation_stopped_en.wav",
+      "text": "Navigation stopped.",
+      "language": "en",
+      "file_size": 95030
+    },
+    "navigation_paused": {
+      "filename": "navigation_paused_en.wav",
+      "text": "Navigation paused.",
+      "language": "en",
+      "file_size": 93050
+    },
+    "navigation_resumed": {
+      "filename": "navigation_resumed_en.wav",
+      "text": "Navigation resumed.",
+      "language": "en",
+      "file_size": 98998
+    },
+    "navigation_completed": {
+      "filename": "navigation_completed_en.wav",
+      "text": "Navigation completed. You have reached your destination.",
+      "language": "en",
+      "file_size": 231702
+    },
+    "map_selected": {
+      "filename": "map_selected_en.wav",
+      "text": "Map selected.",
+      "language": "en",
+      "file_size": 83352
+    },
+    "map_loading": {
+      "filename": "map_loading_en.wav",
+      "text": "Loading map data.",
+      "language": "en",
+      "file_size": 88862
+    },
+    "map_loaded": {
+      "filename": "map_loaded_en.wav",
+      "text": "Map loaded successfully.",
+      "language": "en",
+      "file_size": 107600
+    },
+    "room_selection_mode": {
+      "filename": "room_selection_mode_en.wav",
+      "text": "Room selection mode. Choose your destination.",
+      "language": "en",
+      "file_size": 206576
+    },
+    "error_network": {
+      "filename": "error_network_en.wav",
+      "text": "Network connection error. Please check your connection.",
+      "language": "en",
+      "file_size": 225306
+    },
+    "error_map_not_found": {
+      "filename": "error_map_not_found_en.wav",
+      "text": "Map not found.",
+      "language": "en",
+      "file_size": 85556
+    },
+    "error_room_not_found": {
+      "filename": "error_room_not_found_en.wav",
+      "text": "Room not found.",
+      "language": "en",
+      "file_size": 87540
+    },
+    "error_path_calculation": {
+      "filename": "error_path_calculation_en.wav",
+      "text": "Path calculation failed.",
+      "language": "en",
+      "file_size": 116856
+    },
+    "error_voice_generation": {
+      "filename": "error_voice_generation_en.wav",
+      "text": "Voice generation failed.",
+      "language": "en",
+      "file_size": 108698
+    },
+    "success_map_loaded": {
+      "filename": "success_map_loaded_en.wav",
+      "text": "Map loaded successfully.",
+      "language": "en",
+      "file_size": 107600
+    },
+    "success_navigation_started": {
+      "filename": "success_navigation_started_en.wav",
+      "text": "Navigation started successfully.",
+      "language": "en",
+      "file_size": 135362
+    },
+    "success_settings_saved": {
+      "filename": "success_settings_saved_en.wav",
+      "text": "Settings saved successfully.",
+      "language": "en",
+      "file_size": 119940
+    },
+    "ui_menu_opened": {
+      "filename": "ui_menu_opened_en.wav",
+      "text": "Menu opened.",
+      "language": "en",
+      "file_size": 80046
+    },
+    "ui_menu_closed": {
+      "filename": "ui_menu_closed_en.wav",
+      "text": "Menu closed.",
+      "language": "en",
+      "file_size": 81368
+    },
+    "ui_search_activated": {
+      "filename": "ui_search_activated_en.wav",
+      "text": "Search activated.",
+      "language": "en",
+      "file_size": 95040
+    },
+    "ui_filter_applied": {
+      "filename": "ui_filter_applied_en.wav",
+      "text": "Filter applied.",
+      "language": "en",
+      "file_size": 81152
+    },
+    "ui_list_item_focused": {
+      "filename": "ui_list_item_focused_en.wav",
+      "text": "List item focused.",
+      "language": "en",
+      "file_size": 97904
+    },
+    "help_gesture_hint": {
+      "filename": "help_gesture_hint_en.wav",
+      "text": "Swipe to navigate between pages. Tap to select items.",
+      "language": "en",
+      "file_size": 252208
+    },
+    "help_voice_control": {
+      "filename": "help_voice_control_en.wav",
+      "text": "Voice control is enabled. Speak commands to navigate.",
+      "language": "en",
+      "file_size": 235458
+    },
+    "help_navigation_tips": {
+      "filename": "help_navigation_tips_en.wav",
+      "text": "Follow voice instructions. Use headphones for better experience.",
+      "language": "en",
+      "file_size": 273378
+    },
+    "confirm_start_navigation": {
+      "filename": "confirm_start_navigation_en.wav",
+      "text": "Confirm to start navigation?",
+      "language": "en",
+      "file_size": 132944
+    },
+    "confirm_stop_navigation": {
+      "filename": "confirm_stop_navigation_en.wav",
+      "text": "Confirm to stop navigation?",
+      "language": "en",
+      "file_size": 128974
+    },
+    "confirm_clear_cache": {
+      "filename": "confirm_clear_cache_en.wav",
+      "text": "Confirm to clear cache?",
+      "language": "en",
+      "file_size": 110246
+    },
+    "page_map_details": {
+      "filename": "page_map_details_en.wav",
+      "text": "Map details.",
+      "language": "en",
+      "file_size": 80718
+    },
+    "action_room_selected": {
+      "filename": "action_room_selected_en.wav",
+      "text": "Room selected.",
+      "language": "en",
+      "file_size": 76086
+    },
+    "action_quick_nav": {
+      "filename": "action_quick_nav_en.wav",
+      "text": "Quick navigation.",
+      "language": "en",
+      "file_size": 84904
+    }
+  }
+}

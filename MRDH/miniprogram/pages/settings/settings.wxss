@@ -1,0 +1,343 @@
+/* Settings page styles - design specification optimization */
+
+/* Settings area - card grouping */
+.settings-section {
+  margin-bottom: 40rpx;
+}
+
+.section-title {
+  font-size: 48rpx;
+  font-weight: 500;
+  color: #1F2937;
+  padding: 0 30rpx 20rpx;
+}
+
+.settings-group {
+  background-color: #FFFFFF;
+  border-radius: 12rpx;
+  overflow: hidden;
+  padding: 40rpx;
+}
+
+/* Setting items */
+.setting-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx 0;
+  border-bottom: 2rpx solid #E5E7EB;
+  transition: background-color 0.2s ease;
+}
+
+.setting-item:last-child {
+  border-bottom: none;
+}
+
+.setting-item:active {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.setting-label {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  margin-right: 20rpx;
+}
+
+.setting-icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+  opacity: 0.7;
+}
+
+.label-content {
+  flex: 1;
+}
+
+.label-title {
+  font-size: 32rpx;
+  color: #1F2937;
+  font-weight: 500;
+  margin-bottom: 8rpx;
+}
+
+.label-subtitle {
+  font-size: 28rpx;
+  color: #6B7280;
+  font-weight: 400;
+}
+
+/* Control styles - custom branding */
+.setting-switch {
+  transform: scale(1);
+}
+
+/* Custom switch styles */
+switch {
+  background-color: #E5E7EB !important;
+}
+
+switch[checked] {
+  background-color: #E5E7EB !important;
+}
+
+switch::before {
+  background-color: #FFFFFF !important;
+  border: 1rpx solid #D1D5DB !important;
+  box-shadow: none !important;
+}
+
+switch[checked]::before {
+  background-color: #36D399 !important;
+  border: 1rpx solid #36D399 !important;
+  box-shadow: none !important;
+}
+
+/* Custom slider styles */
+.setting-slider {
+  width: 200rpx;
+  margin: 0;
+}
+
+slider {
+  accent-color: #6B7280;
+}
+
+.setting-arrow {
+  width: 30rpx;
+  height: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow-text {
+  font-size: 24rpx;
+  color: #6B7280;
+  font-weight: 500;
+}
+
+/* Info card */
+.info-card {
+  background-color: #f8f9fa;
+  padding: 25rpx;
+  margin: 20rpx 30rpx 0;
+  border-radius: 8rpx;
+  border: 1rpx solid #e9ecef;
+}
+
+.info-title {
+  font-size: 26rpx;
+  font-weight: 500;
+  color: #333333;
+  margin-bottom: 15rpx;
+}
+
+.info-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info-label {
+  font-size: 24rpx;
+  color: #666666;
+}
+
+.info-value {
+  font-size: 24rpx;
+  color: #333333;
+}
+
+/* Server configuration modal */
+.server-config-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  width: 90%;
+  max-width: 600rpx;
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  overflow: hidden;
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #e9ecef;
+  background-color: #f8f9fa;
+}
+
+.modal-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333333;
+}
+
+.modal-close {
+  font-size: 40rpx;
+  color: #666666;
+  width: 40rpx;
+  height: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-body {
+  padding: 30rpx;
+  max-height: 400rpx;
+  overflow-y: auto;
+}
+
+.modal-footer {
+  display: flex;
+  gap: 20rpx;
+  padding: 30rpx;
+  border-top: 1rpx solid #e9ecef;
+  background-color: #f8f9fa;
+}
+
+.modal-footer .btn {
+  flex: 1;
+}
+
+/* Configuration group */
+.config-group {
+  margin-bottom: 30rpx;
+}
+
+.config-label {
+  font-size: 28rpx;
+  color: #333333;
+  margin-bottom: 15rpx;
+}
+
+.config-value {
+  font-size: 24rpx;
+  color: #666666;
+  background-color: #f8f9fa;
+  padding: 20rpx;
+  border-radius: 8rpx;
+  word-break: break-all;
+}
+
+.config-switch {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+}
+
+.switch-label {
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.config-input {
+  width: 100%;
+  padding: 20rpx;
+  border: 2rpx solid #e9ecef;
+  border-radius: 8rpx;
+  font-size: 26rpx;
+  background-color: #ffffff;
+  box-sizing: border-box;
+}
+
+.config-input:focus {
+  border-color: #6B7280;
+}
+
+.config-hint {
+  font-size: 22rpx;
+  color: #6c757d;
+  margin-top: 10rpx;
+  line-height: 1.4;
+}
+
+/* Custom slider styles */
+.setting-slider {
+  margin: 10rpx 0;
+}
+
+/* Button styles in setting items */
+.setting-item .btn {
+  min-width: 140rpx;
+  padding: 20rpx 32rpx;
+  font-size: 28rpx;
+  border-radius: 12rpx;
+  font-weight: 400;
+}
+
+/* Disabled state styles */
+.setting-item .btn[disabled] {
+  opacity: 0.5;
+}
+
+.setting-switch[disabled] {
+  opacity: 0.5;
+}
+
+.setting-slider[disabled] {
+  opacity: 0.5;
+}
+
+/* Responsive design */
+@media (max-width: 750rpx) {
+  .setting-item {
+    padding: 25rpx 20rpx;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .setting-label {
+    margin-right: 0;
+    margin-bottom: 20rpx;
+  }
+  
+  .setting-slider {
+    width: 100%;
+  }
+  
+  .modal-content {
+    width: 95%;
+  }
+  
+  .modal-footer {
+    flex-direction: column;
+  }
+  
+  .config-switch {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15rpx;
+  }
+}

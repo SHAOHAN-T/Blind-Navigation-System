@@ -1,0 +1,664 @@
+{% extends "base.html" %}
+
+{% block title %}Voice Management - Navigation System Admin{% endblock %}
+
+{% block extra_css %}
+<style>
+.audio-item {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.audio-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.waveform {
+    height: 40px;
+    background: linear-gradient(90deg, 
+        rgba(46, 139, 255, 0.3) 0%, 
+        rgba(46, 139, 255, 0.6) 50%, 
+        rgba(46, 139, 255, 0.3) 100%);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 500;
+    margin: 10px 0;
+}
+
+.voice-settings {
+    background: rgba(46, 139, 255, 0.05);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.cache-usage {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.progress-ring {
+    width: 80px;
+    height: 80px;
+    position: relative;
+}
+
+.progress-ring svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.progress-ring circle {
+    fill: none;
+    stroke-width: 8;
+}
+
+.progress-ring .background {
+    stroke: #e5e7eb;
+}
+
+.progress-ring .progress {
+    stroke: var(--primary-color);
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.5s ease;
+}
+
+.voice-test-area {
+    background: rgba(54, 211, 153, 0.05);
+    border-radius: 12px;
+    padding: 20px;
+    border: 2px dashed rgba(54, 211, 153, 0.3);
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>
+                <i class="fas fa-volume-up me-2"></i>
+                    Voice Management
+            </h1>
+            <div>
+                <button class="btn btn-warning" onclick="clearCache()">
+                    <i class="fas fa-trash me-2"></i>
+                    Clear Cache
+                </button>
+                <button class="btn btn-primary" onclick="refreshStatus()">
+                    <i class="fas fa-sync me-2"></i>
+                    Refresh Status
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Voice system status -->
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card card-stat h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-file-audio fa-2x text-primary mb-3"></i>
+                <div class="stat-number">{{ cache_info.get('total_files', 0) }}</div>
+                <h6 class="text-muted">Cached Files</h6>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="card card-stat h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-hdd fa-2x text-info mb-3"></i>
+                <div class="stat-number">{{ "%.1f"|format(cache_info.get('total_size', 0) / 1024 / 1024) }}</div>
+                <h6 class="text-muted">Cache Size (MB)</h6>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="card card-stat h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-microphone fa-2x text-success mb-3"></i>
+                <div class="stat-number">{{ available_voices|length if available_voices else 0 }}</div>
+                <h6 class="text-muted">Available Voices</h6>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="card card-stat h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-clock fa-2x text-warning mb-3"></i>
+                <div class="stat-number">{{ cache_info.get('avg_generation_time', 0) }}</div>
+                <h6 class="text-muted">Avg Generation Time(s)</h6>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <!-- Voice Settings -->
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-cog me-2"></i>
+                    Voice Engine Settings
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="voice-settings">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="form-label">Voice Engine</label>
+                            <select class="form-select" id="voiceEngine">
+                                <option value="pyttsx3">pyttsx3 (Local)</option>
+                                <option value="azure" disabled>Azure Speech Service (Not Configured)</option>
+                                <option value="google" disabled>Google Speech Service (Not Configured)</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Voice</label>
+                            <select class="form-select" id="voiceSelect">
+                                {% for voice in available_voices %}
+                                <option value="{{ voice.id }}">{{ voice.name }} ({{ voice.language }})</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-3">
+                        <div class="col-md-4">
+                            <label class="form-label">Speech Rate</label>
+                            <input type="range" class="form-range" id="speechRate" min="50" max="300" value="150">
+                            <div class="text-center">
+                                <small class="text-muted">Current: <span id="rateValue">150</span>%</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Volume</label>
+                            <input type="range" class="form-range" id="speechVolume" min="0" max="100" value="80">
+                            <div class="text-center">
+                                <small class="text-muted">Current: <span id="volumeValue">80</span>%</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Pitch</label>
+                            <input type="range" class="form-range" id="speechPitch" min="-50" max="50" value="0">
+                            <div class="text-center">
+                                <small class="text-muted">Current: <span id="pitchValue">0</span></small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-3">
+                        <button class="btn btn-primary" onclick="saveVoiceSettings()">
+                            <i class="fas fa-save me-2"></i>
+                            Save Settings
+                        </button>
+                        <button class="btn btn-outline-secondary" onclick="resetVoiceSettings()">
+                            <i class="fas fa-undo me-2"></i>
+                            Reset Default
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Voice test area -->
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-vial me-2"></i>
+                    Voice Test Tool
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="voice-test-area">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <label class="form-label">Test Text</label>
+                            <textarea class="form-control" id="testText" rows="3" placeholder="输入要测试的文本...">Turn right and go straight for 5 steps. You have reached your destination.</textarea>
+                        </div>
+                        <div class="col-md-4 d-flex align-items-end">
+                            <div class="d-grid w-100">
+                                <button class="btn btn-success mb-3" onclick="generateTestAudio()">
+                                    <i class="fas fa-play me-2"></i>
+                                    Generate and Play
+                                </button>
+                                <button class="btn btn-outline-primary" onclick="downloadTestAudio()">
+                                    <i class="fas fa-download me-2"></i>
+                                    Download Audio
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="testResult" class="mt-3" style="display: none;">
+                        <div class="alert alert-success">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <strong>Generation Success!</strong>
+                                    <br>
+                                    <small>File Size: <span id="fileSize">-</span> KB | Generation Time: <span id="generationTime">-</span>ms</small>
+                                </div>
+                                <audio controls id="testAudio" class="ms-3">
+                                    Your browser does not support audio playback.
+                                </audio>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Cache status and management -->
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-database me-2"></i>
+                    Cache Management
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="cache-usage text-center mb-4">
+                    <div class="progress-ring mx-auto mb-3">
+                        <svg>
+                            <circle class="background" cx="40" cy="40" r="32"></circle>
+                            <circle class="progress" cx="40" cy="40" r="32" 
+                                    stroke-dasharray="201" 
+                                    stroke-dashoffset="{{ 201 - (cache_info.get('cache_usage_percent', 0) / 100 * 201) }}"></circle>
+                        </svg>
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                            <strong>{{ "%.0f"|format(cache_info.get('cache_usage_percent', 0)) }}%</strong>
+                        </div>
+                    </div>
+                    <h6>Cache Usage</h6>
+                    <small class="text-muted">
+                        {{ "%.1f"|format(cache_info.get('used_space', 0) / 1024 / 1024) }} MB / 
+                        {{ "%.1f"|format(cache_info.get('max_cache_size', 100) / 1024 / 1024) }} MB
+                    </small>
+                </div>
+                
+                <div class="d-grid gap-2">
+                    <button class="btn btn-outline-info" onclick="refreshCache()">
+                        <i class="fas fa-sync me-2"></i>
+                        Refresh Cache
+                    </button>
+                    <button class="btn btn-outline-warning" onclick="optimizeCache()">
+                        <i class="fas fa-compress me-2"></i>
+                        Optimize Cache
+                    </button>
+                    <button class="btn btn-outline-danger" onclick="clearOldCache()">
+                        <i class="fas fa-clock me-2"></i>
+                        Clean up old files
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-chart-pie me-2"></i>
+                    Cache Statistics
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                        <span>Today Generated</span>
+                        <span class="fw-bold">{{ cache_info.get('today_generated', 0) }} 个</span>
+                    </div>
+                    <div class="progress mt-1" style="height: 4px;">
+                        <div class="progress-bar" style="width: 75%; background: var(--success-color);"></div>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                        <span>Cache Hit Rate</span>
+                        <span class="fw-bold text-success">{{ "%.1f"|format(cache_info.get('hit_rate', 0)) }}%</span>
+                    </div>
+                    <div class="progress mt-1" style="height: 4px;">
+                        <div class="progress-bar" style="width: {{ cache_info.get('hit_rate', 0) }}%; background: var(--primary-color);"></div>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                        <span>Average File Size</span>
+                        <span class="fw-bold">{{ "%.1f"|format(cache_info.get('avg_file_size', 0) / 1024) }} KB</span>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="d-flex justify-content-between">
+                        <span>Oldest File</span>
+                        <span class="fw-bold text-muted">{{ cache_info.get('oldest_file_age', '未知') }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Cache file list -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-list me-2"></i>
+                    Cache File List
+                </h5>
+                <div>
+                    <button class="btn btn-sm btn-outline-primary" onclick="selectAll()">Select All</button>
+                    <button class="btn btn-sm btn-outline-danger" onclick="deleteSelected()">Delete the selected</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div style="max-height: 400px; overflow-y: auto;">
+                    <div id="audioFilesList">
+                        <!-- Audio file list will be loaded via JavaScript -->
+                        <div class="text-center py-4">
+                            <div class="loading-spinner mx-auto mb-3"></div>
+                            <p class="text-muted">Loading cache files...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Initialize slider events
+document.getElementById('speechRate').addEventListener('input', function() {
+    document.getElementById('rateValue').textContent = this.value;
+});
+
+document.getElementById('speechVolume').addEventListener('input', function() {
+    document.getElementById('volumeValue').textContent = this.value;
+});
+
+document.getElementById('speechPitch').addEventListener('input', function() {
+    document.getElementById('pitchValue').textContent = this.value;
+});
+
+// Generate test audio
+function generateTestAudio() {
+    const testText = document.getElementById('testText').value;
+    if (!testText.trim()) {
+        alert('Please enter test text');
+        return;
+    }
+
+    const resultDiv = document.getElementById('testResult');
+    resultDiv.style.display = 'none';
+
+    // Call voice generation API
+    fetch('/api/voice/test', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            text: testText,
+            voice_settings: {
+                rate: document.getElementById('speechRate').value,
+                volume: document.getElementById('speechVolume').value,
+                pitch: document.getElementById('speechPitch').value
+            }
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.code === 200) {
+            const audioUrl = data.data.download_url;
+            document.getElementById('testAudio').src = audioUrl;
+            document.getElementById('fileSize').textContent = (data.data.file_size / 1024).toFixed(1);
+            document.getElementById('generationTime').textContent = data.data.generation_time || '-';
+            
+            resultDiv.style.display = 'block';
+            
+            // Auto play
+            document.getElementById('testAudio').play();
+        } else {
+            alert(`Generation failed: ${data.message}`);
+        }
+    })
+    .catch(error => {
+        alert(`Generation failed: ${error.message}`);
+    });
+}
+
+function downloadTestAudio() {
+    const audio = document.getElementById('testAudio');
+    if (audio.src) {
+        const a = document.createElement('a');
+        a.href = audio.src;
+        a.download = 'test_voice.wav';
+        a.click();
+    } else {
+        alert('Please generate audio file first');
+    }
+}
+
+function saveVoiceSettings() {
+    const settings = {
+        engine: document.getElementById('voiceEngine').value,
+        voice: document.getElementById('voiceSelect').value,
+        rate: document.getElementById('speechRate').value,
+        volume: document.getElementById('speechVolume').value,
+        pitch: document.getElementById('speechPitch').value
+    };
+
+    // Here you can call the API to save the settings
+    alert('Settings saved!');
+}
+
+function resetVoiceSettings() {
+    document.getElementById('speechRate').value = 150;
+    document.getElementById('speechVolume').value = 80;
+    document.getElementById('speechPitch').value = 0;
+    document.getElementById('rateValue').textContent = '150';
+    document.getElementById('volumeValue').textContent = '80';
+    document.getElementById('pitchValue').textContent = '0';
+}
+
+function refreshStatus() {
+    location.reload();
+}
+
+function clearCache() {
+    if (confirm('Are you sure you want to clear all cache files? This action cannot be undone.')) {
+        fetch('/api/voice/cache/clear', {
+            method: 'POST'
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.code === 200) {
+                alert('Cache cleared successfully');
+                location.reload();
+            } else {
+                alert(`Clear failed: ${data.message}`);
+            }
+        })
+        .catch(error => {
+            alert(`Clear failed: ${error.message}`);
+        });
+    }
+}
+
+function refreshCache() {
+    alert('Cache refresh functionality is under development...');
+}
+
+function optimizeCache() {
+    alert('Cache optimization functionality is under development...');
+}
+
+function clearOldCache() {
+    alert('Clear old files functionality is under development...');
+}
+
+function selectAll() {
+    const checkboxes = document.querySelectorAll('.file-checkbox');
+    checkboxes.forEach(cb => cb.checked = true);
+}
+
+function deleteSelected() {
+    const checkboxes = document.querySelectorAll('.file-checkbox:checked');
+    if (checkboxes.length === 0) {
+        alert('Please select the files to delete');
+        return;
+    }
+    
+    if (confirm(`Are you sure you want to delete the selected ${checkboxes.length} files? This action cannot be undone.`)) {
+        const filenames = Array.from(checkboxes).map(cb => cb.value);
+        
+        fetch('/api/voice/cache/delete/batch', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                filenames: filenames
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.code === 200) {
+                alert(data.message);
+                loadAudioFiles(); // Reload file list
+                location.reload(); // Refresh statistics data
+            } else {
+                alert(`Batch delete failed: ${data.message}`);
+            }
+        })
+        .catch(error => {
+            alert(`Batch delete failed: ${error.message}`);
+        });
+    }
+}
+
+// Load audio file list after page loading
+document.addEventListener('DOMContentLoaded', function() {
+    loadAudioFiles();
+});
+
+function loadAudioFiles() {
+    fetch('/api/voice/cache/files')
+    .then(response => response.json())
+    .then(data => {
+        if (data.code === 200) {
+            displayAudioFiles(data.data.files);
+        } else {
+            document.getElementById('audioFilesList').innerHTML = `
+                <div class="text-center py-4">
+                    <i class="fas fa-exclamation-triangle fa-2x text-warning mb-3"></i>
+                    <p class="text-muted">Load cache file failed: ${data.message}</p>
+                </div>
+            `;
+        }
+    })
+    .catch(error => {
+        document.getElementById('audioFilesList').innerHTML = `
+            <div class="text-center py-4">
+                <i class="fas fa-exclamation-triangle fa-2x text-danger mb-3"></i>
+                <p class="text-muted">Load cache file failed: ${error.message}</p>
+            </div>
+        `;
+    });
+}
+
+function displayAudioFiles(files) {
+    const container = document.getElementById('audioFilesList');
+    
+    if (files.length === 0) {
+        container.innerHTML = `
+            <div class="text-center py-4">
+                <i class="fas fa-inbox fa-2x text-muted mb-3"></i>
+                <p class="text-muted">No cache files</p>
+            </div>
+        `;
+        return;
+    }
+
+    container.innerHTML = files.map(file => `
+        <div class="audio-item">
+            <div class="d-flex align-items-center">
+                <input type="checkbox" class="form-check-input file-checkbox me-3" value="${file.filename}">
+                <div class="flex-grow-1">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h6 class="mb-1">${file.filename}</h6>
+                            <small class="text-muted">
+                                <i class="fas fa-clock me-1"></i>${file.created_at}
+                                <i class="fas fa-hdd ms-3 me-1"></i>${(file.size / 1024).toFixed(1)} KB
+                            </small>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-sm btn-outline-primary" onclick="playAudio('${file.url}')">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger" onclick="deleteAudioFile('${file.filename}')">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="waveform mt-2">
+                        <small>Click the play button to listen</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+function playAudio(url) {
+    const audio = new Audio(url);
+    audio.play().catch(error => {
+        alert('Play failed: ' + error.message);
+    });
+}
+
+function deleteAudioFile(filename) {
+    if (confirm('Are you sure you want to delete this audio file? This action cannot be undone.')) {
+        fetch(`/api/voice/cache/delete/${filename}`, {
+            method: 'DELETE'
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.code === 200) {
+                alert('File deleted successfully');
+                loadAudioFiles(); // Reload file list
+                location.reload(); // Refresh statistics data
+            } else {
+                alert(`Delete failed: ${data.message}`);
+            }
+        })
+        .catch(error => {
+            alert(`Delete failed: ${error.message}`);
+        });
+    }
+}
+</script>
+{% endblock %}

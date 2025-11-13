@@ -1,0 +1,280 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Navigation System Admin{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="mb-4">
+            <i class="fas fa-tachometer-alt me-2"></i>
+            System Dashboard
+        </h1>
+    </div>
+</div>
+
+<!-- Statistics Cards -->
+<div class="row mb-4">
+    <div class="col-md-3 mb-3">
+        <div class="card card-stat h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h6 class="card-title text-muted">Total Maps</h6>
+                        <h2 class="text-primary">{{ stats.get('maps_count', 0) }}</h2>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-map fa-2x text-primary"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3 mb-3">
+        <div class="card card-stat h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h6 class="card-title text-muted">Today's Navigation</h6>
+                        <h2 class="text-success">{{ stats.get('navigation_count', 0) }}</h2>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-directions fa-2x text-success"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3 mb-3">
+        <div class="card card-stat h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h6 class="card-title text-muted">Voice Cache</h6>
+                        <h2 class="text-info">{{ stats.get('cached_files', 0) }}</h2>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-volume-up fa-2x text-info"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3 mb-3">
+        <div class="card card-stat h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h6 class="card-title text-muted">Running time</h6>
+                        <h6 class="text-warning">{{ stats.get('uptime', '0 hours 0 minutes') }}</h6>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-clock fa-2x text-warning"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-rocket me-2"></i>
+                    Quick Actions
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <a href="{{ url_for('main.map_editor') }}" class="btn btn-primary btn-lg w-100">
+                            <i class="fas fa-plus me-2"></i>
+                            Create 2D Map
+                        </a>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <a href="{{ url_for('main.map_editor_3d') }}" class="btn btn-info btn-lg w-100">
+                            <i class="fas fa-cube me-2"></i>
+                            Create 3D Map
+                        </a>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <a href="{{ url_for('main.map_list') }}" class="btn btn-success btn-lg w-100">
+                            <i class="fas fa-list me-2"></i>
+                            Manage Maps
+                        </a>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <button class="btn btn-warning btn-lg w-100" onclick="testVoice()">
+                            <i class="fas fa-play me-2"></i>
+                            Test Voice
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- System Information -->
+<div class="row">
+    <div class="col-12 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-info-circle me-2"></i>
+                    System Information
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="info-item mb-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="fw-semibold">System Version</span>
+                                <span class="badge bg-primary">v1.0.0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="info-item mb-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="fw-semibold">Backend Framework</span>
+                                <span class="text-muted">Flask + Python</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="info-item mb-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="fw-semibold">Data Storage</span>
+                                <span class="text-muted">JSON文件</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="info-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="fw-semibold">Voice Synthesis</span>
+                                <span class="text-muted">pyttsx3 (英语)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<!-- API Test Modal -->
+<div class="modal fade" id="voiceTestModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Voice Test</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label">Test Text:</label>
+                    <textarea class="form-control" id="testText" rows="3">Hello, this is a test of the navigation voice system. Turn right and go straight for 5 steps.</textarea>
+                </div>
+                <div id="testResult" class="alert" style="display: none;"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="performVoiceTest()">
+                    <i class="fas fa-play me-2"></i>
+                    Start Test
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function testVoice() {
+    const modal = new bootstrap.Modal(document.getElementById('voiceTestModal'));
+    modal.show();
+}
+
+function performVoiceTest() {
+    const testText = document.getElementById('testText').value;
+    const resultDiv = document.getElementById('testResult');
+    
+    if (!testText.trim()) {
+        showResult('Please enter test text', 'danger');
+        return;
+    }
+    
+    // Show loading status
+    showResult('Generating voice file...', 'info');
+    
+    // Call voice test API
+    fetch('/api/voice/test', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            text: testText
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.code === 200) {
+            const audioUrl = data.data.download_url;
+            showResult(`
+                <strong>Voice generated successfully!</strong><br>
+                文件大小: ${(data.data.file_size / 1024).toFixed(1)} KB<br>
+                <audio controls class="mt-2 w-100">
+                    <source src="${audioUrl}" type="audio/mpeg">
+                    Your browser does not support audio playback.
+                </audio>
+            `, 'success');
+        } else {
+            showResult(`Test failed: ${data.message}`, 'danger');
+        }
+    })
+    .catch(error => {
+        showResult(`Test failed: ${error.message}`, 'danger');
+    });
+}
+
+function showResult(message, type) {
+    const resultDiv = document.getElementById('testResult');
+    resultDiv.className = `alert alert-${type}`;
+    resultDiv.innerHTML = message;
+    resultDiv.style.display = 'block';
+}
+
+// After page loading, get real-time status
+document.addEventListener('DOMContentLoaded', function() {
+    // Here you can add real-time status update functionality
+    updateSystemStatus();
+});
+
+function updateSystemStatus() {
+    fetch('/api/system/status')
+    .then(response => response.json())
+    .then(data => {
+        if (data.code === 200) {
+            // Update status display
+            console.log('System status:', data.data);
+        }
+    })
+    .catch(error => {
+        console.error('Failed to get system status:', error);
+    });
+}
+</script>
+{% endblock %}
+

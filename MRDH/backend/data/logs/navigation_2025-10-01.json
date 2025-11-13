@@ -1,0 +1,419 @@
+{
+  "date": "2025-10-01",
+  "logs": [
+    {
+      "id": "c7b88412-3af8-42ce-b50f-d5ad5ada7a5f",
+      "timestamp": "2025-10-01T14:27:45.036567",
+      "map_id": 16,
+      "start": {
+        "x": 7,
+        "y": 13
+      },
+      "end": {
+        "x": 31,
+        "y": 23
+      },
+      "target_room": "101",
+      "path_data": [
+        {
+          "x": 7,
+          "y": 13
+        },
+        {
+          "x": 8,
+          "y": 13
+        },
+        {
+          "x": 9,
+          "y": 13
+        },
+        {
+          "x": 10,
+          "y": 13
+        },
+        {
+          "x": 11,
+          "y": 13
+        },
+        {
+          "x": 12,
+          "y": 13
+        },
+        {
+          "x": 13,
+          "y": 13
+        },
+        {
+          "x": 14,
+          "y": 13
+        },
+        {
+          "x": 15,
+          "y": 13
+        },
+        {
+          "x": 16,
+          "y": 13
+        },
+        {
+          "x": 17,
+          "y": 13
+        },
+        {
+          "x": 18,
+          "y": 13
+        },
+        {
+          "x": 19,
+          "y": 13
+        },
+        {
+          "x": 20,
+          "y": 13
+        },
+        {
+          "x": 21,
+          "y": 13
+        },
+        {
+          "x": 22,
+          "y": 13
+        },
+        {
+          "x": 23,
+          "y": 13
+        },
+        {
+          "x": 24,
+          "y": 13
+        },
+        {
+          "x": 25,
+          "y": 13
+        },
+        {
+          "x": 26,
+          "y": 13
+        },
+        {
+          "x": 27,
+          "y": 13
+        },
+        {
+          "x": 28,
+          "y": 13
+        },
+        {
+          "x": 29,
+          "y": 13
+        },
+        {
+          "x": 29,
+          "y": 14
+        },
+        {
+          "x": 30,
+          "y": 14
+        },
+        {
+          "x": 30,
+          "y": 15
+        },
+        {
+          "x": 30,
+          "y": 16
+        },
+        {
+          "x": 31,
+          "y": 16
+        },
+        {
+          "x": 31,
+          "y": 17
+        },
+        {
+          "x": 31,
+          "y": 18
+        },
+        {
+          "x": 31,
+          "y": 19
+        },
+        {
+          "x": 31,
+          "y": 20
+        },
+        {
+          "x": 31,
+          "y": 21
+        },
+        {
+          "x": 31,
+          "y": 22
+        },
+        {
+          "x": 31,
+          "y": 23
+        }
+      ],
+      "instructions": [
+        "Go straight for 22 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "Turn left",
+        "Go straight for 1 step",
+        "Turn right",
+        "Go straight for 2 steps",
+        "Turn left",
+        "Go straight for 1 step",
+        "Turn right",
+        "Go straight for 7 steps",
+        "You have arrived at 101"
+      ],
+      "total_steps": 35,
+      "estimated_time": 40.0
+    },
+    {
+      "id": "eadab34d-8ec8-48a8-b68e-dfae0fdc0762",
+      "timestamp": "2025-10-01T14:28:59.730347",
+      "map_id": 20,
+      "start": {
+        "x": 10,
+        "y": 40,
+        "floor": 1
+      },
+      "end": {
+        "x": 15,
+        "y": 28,
+        "floor": 1
+      },
+      "target_room": "373",
+      "path_data": [
+        {
+          "x": 10,
+          "y": 40,
+          "floor": 1,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 10,
+          "y": 39,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 10,
+          "y": 38,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 10,
+          "y": 37,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 10,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 12,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 13,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 14,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 15,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 16,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 17,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 18,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 19,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 20,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 21,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 21,
+          "y": 35,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 21,
+          "y": 34,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 21,
+          "y": 33,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 21,
+          "y": 32,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 21,
+          "y": 31,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 21,
+          "y": 30,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 20,
+          "y": 30,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 19,
+          "y": 30,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 18,
+          "y": 30,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 17,
+          "y": 30,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 16,
+          "y": 30,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 16,
+          "y": 29,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 16,
+          "y": 28,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 15,
+          "y": 28,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        }
+      ],
+      "instructions": [
+        "开始导航",
+        "向上直行4步",
+        "向右直行11步",
+        "向上直行6步",
+        "向左直行5步",
+        "向上直行2步",
+        "向左走1步",
+        "到达目的地：373"
+      ],
+      "total_steps": 30,
+      "total_cost": 435.0,
+      "estimated_time": 87,
+      "is_3d": true
+    }
+  ]
+}

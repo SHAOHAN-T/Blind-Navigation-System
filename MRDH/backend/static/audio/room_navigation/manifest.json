@@ -1,0 +1,154 @@
+{
+  "version": "1.0",
+  "description": "Complete navigation voice files for each room",
+  "base_path": "/static/audio/room_navigation/",
+  "rooms": {
+    "375": {
+      "filename": "nav_room_375.wav",
+      "text": "Start navigation. Please follow the guidance. Walk forward 8 steps. Turn right. Walk forward 6 steps. Turn left. Walk forward 11 steps. You have reached your destination: Room 375",
+      "steps": 25,
+      "description": "From entrance to Room 375",
+      "map_id": 18
+    },
+    "376": {
+      "filename": "nav_room_376.wav",
+      "text": "Start navigation. Please follow the guidance. Walk forward 10 steps. Turn left. Walk forward 5 steps. Turn right. Walk forward 15 steps. Turn right. Walk forward 2 steps. You have reached your destination: Room 376",
+      "steps": 32,
+      "description": "From entrance to Room 376",
+      "map_id": 18
+    },
+    "370": {
+      "filename": "nav_room_370.wav",
+      "text": "Start navigation. Please follow the guidance. Walk forward 9 steps. Turn left. Walk forward 10 steps. Turn left. Walk forward 5 steps. You have reached your destination: Room 370",
+      "steps": 24,
+      "description": "From entrance to Room 370",
+      "map_id": 18
+    },
+    "371": {
+      "filename": "nav_room_371.wav",
+      "text": "Start navigation. Please follow the guidance. Walk forward 9 steps. Turn left. Walk forward 5 steps. Turn left. Walk forward 7 steps. You have reached your destination: Room 371",
+      "steps": 21,
+      "description": "From entrance to Room 371",
+      "map_id": 18
+    },
+    "372": {
+      "filename": "nav_room_372.wav",
+      "text": "Start navigation. Please follow the guidance. Walk forward 9 steps. Turn right. Walk forward 1 step. Turn left. Walk forward 3 steps. You have reached your destination: Room 372",
+      "steps": 13,
+      "description": "From entrance to Room 372",
+      "map_id": 18
+    },
+    "373": {
+      "filename": "nav_room_373.wav",
+      "text": "Start navigation. Please follow the guidance. Walk forward 10 steps. Turn left. Walk forward 5 steps. You have reached your destination: Room 373",
+      "steps": 15,
+      "description": "From entrance to Room 373",
+      "map_id": 18
+    },
+    "374": {
+      "filename": "nav_room_374.wav",
+      "text": "Start navigation. Please follow the guidance. Walk forward 6 steps. Turn left. Walk forward 5 steps. You have reached your destination: Room 374",
+      "steps": 11,
+      "description": "From entrance to Room 374",
+      "map_id": 18
+    },
+    "368": {
+      "filename": "nav_room_368.wav",
+      "text": "Start navigation. Please follow the guidance. Walk forward 18 steps. Turn left. Walk forward 10 steps. Turn left. Walk forward 3 steps. You have reached your destination: Room 368",
+      "steps": 31,
+      "description": "From entrance to Room 368",
+      "map_id": 18
+    },
+    "367": {
+      "filename": "nav_room_367.wav",
+      "text": "Start navigation. Please follow the guidance. Walk forward 18 steps. Turn left. Walk forward 5 steps. Turn left. Walk forward 5 steps. You have reached your destination: Room 367",
+      "steps": 28,
+      "description": "From entrance to Room 367",
+      "map_id": 18
+    },
+    "367A": {
+      "filename": "nav_room_367A.wav",
+      "text": "Start navigation. Please follow the guidance. Walk forward 18 steps. Turn left. Walk forward 4 steps. Turn left. Walk forward 6 steps. You have reached your destination: Room 367A",
+      "steps": 28,
+      "description": "From entrance to Room 367A",
+      "map_id": 18
+    },
+    "365": {
+      "filename": "nav_room_365.wav",
+      "text": "Start navigation. Please follow the guidance. Walk forward 20 steps. You have reached your destination: Room 365",
+      "steps": 20,
+      "description": "From entrance to Room 365",
+      "map_id": 18
+    },
+    "364": {
+      "filename": "nav_room_364.wav",
+      "text": "Start navigation. Please follow the guidance. Walk forward 24 steps. You have reached your destination: Room 364",
+      "steps": 24,
+      "description": "From entrance to Room 364",
+      "map_id": 18
+    },
+    "363": {
+      "filename": "nav_room_363.wav",
+      "text": "Start navigation. Please follow the guidance. Walk forward 18 steps. Turn right. Walk forward 8 steps. Turn left. Walk forward 5 steps. You have reached your destination: Room 363",
+      "steps": 31,
+      "description": "From entrance to Room 363",
+      "map_id": 18
+    },
+    "362": {
+      "filename": "nav_room_362.wav",
+      "text": "Start navigation. Please follow the guidance. Walk forward 18 steps. Turn right. Walk forward 8 steps. Turn right. Walk forward 2 steps. Turn left. Walk forward 2 steps. You have reached your destination: Room 362",
+      "steps": 30,
+      "description": "From entrance to Room 362",
+      "map_id": 18
+    },
+    "361": {
+      "filename": "nav_room_361.wav",
+      "text": "Start navigation. Please follow the guidance. Walk forward 18 steps. Turn right. Walk forward 12 steps. Turn left. Walk forward 4 steps. You have reached your destination: Room 361",
+      "steps": 32,
+      "description": "From entrance to Room 361",
+      "map_id": 18
+    },
+    "360": {
+      "filename": "nav_room_360.wav",
+      "text": "Start navigation. Please follow the guidance. Walk forward 18 steps. Turn right. Walk forward 22 steps. Turn left. Walk forward 5 steps. You have reached your destination: Room 360",
+      "steps": 40,
+      "description": "From entrance to Room 360",
+      "map_id": 18
+    },
+    "357": {
+      "filename": "nav_room_357.wav",
+      "text": "Start navigation. Please follow the guidance. Walk forward 18 steps. Turn right. Walk forward 28 steps. Turn left. Walk forward 5 steps. You have reached your destination: Room 357",
+      "steps": 45,
+      "description": "From entrance to Room 357",
+      "map_id": 18
+    },
+    "356": {
+      "filename": "nav_room_356.wav",
+      "text": "Start navigation. Please follow the guidance. Walk forward 18 steps. Turn right. Walk forward 28 steps. Turn right. Walk forward 2 steps. Turn left. Walk forward 2 steps. You have reached your destination: Room 356",
+      "steps": 42,
+      "description": "From entrance to Room 356",
+      "map_id": 18
+    },
+    "355": {
+      "filename": "nav_room_355.wav",
+      "text": "Start navigation. Please follow the guidance. Walk forward 11 steps. Turn right. Walk forward 27 steps. Turn left. Walk forward 2 steps. You have reached your destination: Room 355",
+      "steps": 38,
+      "description": "From entrance to Room 355",
+      "map_id": 18
+    },
+    "354": {
+      "filename": "nav_room_354.wav",
+      "text": "Start navigation. Please follow the guidance. Walk forward 2 steps. Turn right. Walk forward 28 steps. Turn left. Walk forward 3 steps. You have reached your destination: Room 354",
+      "steps": 33,
+      "description": "From entrance to Room 354",
+      "map_id": 18
+    },
+    "377": {
+      "filename": "nav_room_377.wav",
+      "text": "Start navigation. Please follow the guidance. Walk forward 10 steps. Turn left. Walk forward 9 steps. Turn right. Walk forward 16 steps. Turn right. Walk forward 3 steps. You have reached your destination: Room 377",
+      "steps": 38,
+      "description": "From entrance to Room 377",
+      "map_id": 18
+    }
+  }
+}

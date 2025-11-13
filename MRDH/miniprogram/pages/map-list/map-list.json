@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "Map list",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "onReachBottomDistance": 50
+}

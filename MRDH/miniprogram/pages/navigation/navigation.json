@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "Navigation",
+  "enablePullDownRefresh": false,
+  "disableScroll": true,
+  "usingComponents": {
+    "map-3d": "../../components/map-3d/map-3d"
+  }
+}

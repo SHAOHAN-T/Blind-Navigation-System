@@ -1,0 +1,6912 @@
+{
+  "date": "2025-09-15",
+  "logs": [
+    {
+      "id": "0f30a8e7-9d50-41e3-bd9f-337cb4f95c64",
+      "timestamp": "2025-09-15T10:08:05.540772",
+      "map_id": 10,
+      "start": {
+        "x": 1,
+        "y": 6,
+        "floor": 1
+      },
+      "end": {
+        "x": 11,
+        "y": 7,
+        "floor": 2
+      },
+      "target_room": "room_2_11_7",
+      "path_data": [
+        {
+          "x": 1,
+          "y": 6,
+          "floor": 1,
+          "action": "start",
+          "connection_info": null
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 6,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "floor": 1,
+          "action": "stair_prepare",
+          "connection_info": {
+            "connection_id": "stair_1_2_0",
+            "connection_type": "stair",
+            "steps": 15,
+            "duration": 18.0
+          }
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "floor": 2,
+          "action": "stair_progress",
+          "connection_info": null
+        },
+        {
+          "x": 8,
+          "y": 6,
+          "floor": 2,
+          "action": "stair_complete",
+          "connection_info": null
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 9,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 10,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 11,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": null
+        }
+      ],
+      "instructions": [
+        "开始导航",
+        "向右直行5步到楼梯",
+        "下楼梯到1楼",
+        "下楼梯到2楼",
+        "下楼梯到2楼",
+        "向下走1步",
+        "向右直行3步到目的地",
+        "到达目的地：房间1"
+      ],
+      "total_steps": 13,
+      "total_cost": 54.0,
+      "estimated_time": 117,
+      "is_3d": true
+    },
+    {
+      "id": "5fd5a4e8-ab48-4a40-99e8-d7a64f11583b",
+      "timestamp": "2025-09-15T10:29:38.356810",
+      "map_id": 10,
+      "start": {
+        "x": 1,
+        "y": 6,
+        "floor": 1
+      },
+      "end": {
+        "x": 11,
+        "y": 7,
+        "floor": 2
+      },
+      "target_room": "room_2_11_7",
+      "path_data": [
+        {
+          "x": 1,
+          "y": 6,
+          "floor": 1,
+          "action": "start",
+          "connection_info": null
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 6,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "floor": 1,
+          "action": "stair_prepare",
+          "connection_info": {
+            "connection_id": "stair_1_2_0",
+            "connection_type": "stair",
+            "steps": 15,
+            "duration": 18.0
+          }
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "floor": 2,
+          "action": "stair_progress",
+          "connection_info": null
+        },
+        {
+          "x": 8,
+          "y": 6,
+          "floor": 2,
+          "action": "stair_complete",
+          "connection_info": null
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 9,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 10,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 11,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": null
+        }
+      ],
+      "instructions": [
+        "开始导航",
+        "向右直行5步到楼梯",
+        "下楼梯到1楼",
+        "下楼梯到2楼",
+        "下楼梯到2楼",
+        "向下走1步",
+        "向右直行3步到目的地",
+        "到达目的地：房间1"
+      ],
+      "total_steps": 13,
+      "total_cost": 54.0,
+      "estimated_time": 117,
+      "is_3d": true
+    },
+    {
+      "id": "1d56ff07-89d9-46cc-a967-789cb2281c35",
+      "timestamp": "2025-09-15T11:20:57.552658",
+      "map_id": 10,
+      "start": {
+        "x": 1,
+        "y": 6
+      },
+      "end": {
+        "x": 11,
+        "y": 7
+      },
+      "target_room": "room_2_11_7",
+      "path_data": [
+        {
+          "x": 1,
+          "y": 6
+        },
+        {
+          "x": 2,
+          "y": 6
+        },
+        {
+          "x": 3,
+          "y": 6
+        },
+        {
+          "x": 4,
+          "y": 6
+        },
+        {
+          "x": 5,
+          "y": 6
+        },
+        {
+          "x": 6,
+          "y": 6
+        },
+        {
+          "x": 7,
+          "y": 6
+        },
+        {
+          "x": 8,
+          "y": 6
+        },
+        {
+          "x": 9,
+          "y": 6
+        },
+        {
+          "x": 10,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 7
+        }
+      ],
+      "instructions": [
+        "Go straight for 10 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "You have arrived at 房间1"
+      ],
+      "total_steps": 12,
+      "estimated_time": 13.0
+    },
+    {
+      "id": "998a3b76-eeff-4abf-8d72-7e3ff16e9d04",
+      "timestamp": "2025-09-15T11:38:29.293119",
+      "map_id": 10,
+      "start": {
+        "x": 1,
+        "y": 6,
+        "floor": 1
+      },
+      "end": {
+        "x": 11,
+        "y": 7,
+        "floor": 2
+      },
+      "target_room": "room_2_11_7",
+      "path_data": [
+        {
+          "x": 1,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 6,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "floor": 2,
+          "action": "stair_up",
+          "connection_info": {
+            "connection_id": "stair_1_2_0",
+            "connection_type": "stair",
+            "steps": 15,
+            "duration": 18.0
+          }
+        },
+        {
+          "x": 8,
+          "y": 6,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 9,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 10,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        }
+      ],
+      "instructions": [
+        "开始导航",
+        "向右直行6步到楼梯",
+        "上楼梯到2楼",
+        "向右走1步",
+        "向下走1步",
+        "向右直行3步到目的地",
+        "到达目的地：房间1"
+      ],
+      "total_steps": 13,
+      "total_cost": 327.0,
+      "estimated_time": 63,
+      "is_3d": true
+    },
+    {
+      "id": "7976a4f7-0c55-4201-9dcf-c91cae127894",
+      "timestamp": "2025-09-15T18:14:25.524484",
+      "map_id": 10,
+      "start": {
+        "x": 1,
+        "y": 6,
+        "floor": 1
+      },
+      "end": {
+        "x": 11,
+        "y": 7,
+        "floor": 2
+      },
+      "target_room": "room_2_11_7",
+      "path_data": [
+        {
+          "x": 1,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 6,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "floor": 2,
+          "action": "stair_up",
+          "connection_info": {
+            "connection_id": "stair_1_2_0",
+            "connection_type": "stair",
+            "steps": 15,
+            "duration": 18.0
+          }
+        },
+        {
+          "x": 8,
+          "y": 6,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 9,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 10,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        }
+      ],
+      "instructions": [
+        "开始导航",
+        "向右直行6步到楼梯",
+        "上楼梯到2楼",
+        "向右走1步",
+        "向下走1步",
+        "向右直行3步到目的地",
+        "到达目的地：房间1"
+      ],
+      "total_steps": 13,
+      "total_cost": 327.0,
+      "estimated_time": 63,
+      "is_3d": true
+    },
+    {
+      "id": "ed3a1e38-5196-4044-87b4-f5444b0e2bc0",
+      "timestamp": "2025-09-15T18:25:37.518812",
+      "map_id": 2,
+      "start": {
+        "x": 10,
+        "y": 5
+      },
+      "end": {
+        "x": 10,
+        "y": 11
+      },
+      "target_room": "1",
+      "path_data": [
+        {
+          "x": 10,
+          "y": 5
+        },
+        {
+          "x": 10,
+          "y": 6
+        },
+        {
+          "x": 10,
+          "y": 7
+        },
+        {
+          "x": 10,
+          "y": 8
+        },
+        {
+          "x": 10,
+          "y": 9
+        },
+        {
+          "x": 10,
+          "y": 10
+        },
+        {
+          "x": 10,
+          "y": 11
+        }
+      ],
+      "instructions": [
+        "Go straight for 6 steps",
+        "You have arrived at 图书馆"
+      ],
+      "total_steps": 7,
+      "estimated_time": 7.0
+    },
+    {
+      "id": "e086a6a6-6d7b-4601-b17f-c23a83a02737",
+      "timestamp": "2025-09-15T18:26:05.147880",
+      "map_id": 10,
+      "start": {
+        "x": 1,
+        "y": 6
+      },
+      "end": {
+        "x": 11,
+        "y": 7
+      },
+      "target_room": "room_2_11_7",
+      "path_data": [
+        {
+          "x": 1,
+          "y": 6
+        },
+        {
+          "x": 2,
+          "y": 6
+        },
+        {
+          "x": 3,
+          "y": 6
+        },
+        {
+          "x": 4,
+          "y": 6
+        },
+        {
+          "x": 5,
+          "y": 6
+        },
+        {
+          "x": 6,
+          "y": 6
+        },
+        {
+          "x": 7,
+          "y": 6
+        },
+        {
+          "x": 8,
+          "y": 6
+        },
+        {
+          "x": 9,
+          "y": 6
+        },
+        {
+          "x": 10,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 7
+        }
+      ],
+      "instructions": [
+        "Go straight for 10 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "You have arrived at 房间1"
+      ],
+      "total_steps": 12,
+      "estimated_time": 13.0
+    },
+    {
+      "id": "9887bf6c-f0d7-4a7f-8351-f0202098a672",
+      "timestamp": "2025-09-15T18:31:22.086317",
+      "map_id": 10,
+      "start": {
+        "x": 1,
+        "y": 6,
+        "floor": 1
+      },
+      "end": {
+        "x": 11,
+        "y": 7,
+        "floor": 2
+      },
+      "target_room": "room_2_11_7",
+      "path_data": [
+        {
+          "x": 1,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 6,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "floor": 2,
+          "action": "stair_up",
+          "connection_info": {
+            "connection_id": "stair_1_2_0",
+            "connection_type": "stair",
+            "steps": 15,
+            "duration": 18.0
+          }
+        },
+        {
+          "x": 8,
+          "y": 6,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 9,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 10,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        }
+      ],
+      "instructions": [
+        "开始导航",
+        "向右直行6步到楼梯",
+        "上楼梯到2楼",
+        "向右走1步",
+        "向下走1步",
+        "向右直行3步到目的地",
+        "到达目的地：房间1"
+      ],
+      "total_steps": 13,
+      "total_cost": 327.0,
+      "estimated_time": 63,
+      "is_3d": true
+    },
+    {
+      "id": "62f0bb79-3e54-4723-975d-170dcbcac2cc",
+      "timestamp": "2025-09-15T18:31:53.025232",
+      "map_id": 4,
+      "start": {
+        "x": 14,
+        "y": 22
+      },
+      "end": {
+        "x": 18,
+        "y": 14
+      },
+      "target_room": "3",
+      "path_data": [
+        {
+          "x": 14,
+          "y": 22
+        },
+        {
+          "x": 14,
+          "y": 21
+        },
+        {
+          "x": 14,
+          "y": 20
+        },
+        {
+          "x": 14,
+          "y": 19
+        },
+        {
+          "x": 14,
+          "y": 18
+        },
+        {
+          "x": 14,
+          "y": 17
+        },
+        {
+          "x": 14,
+          "y": 16
+        },
+        {
+          "x": 15,
+          "y": 16
+        },
+        {
+          "x": 15,
+          "y": 15
+        },
+        {
+          "x": 16,
+          "y": 15
+        },
+        {
+          "x": 16,
+          "y": 14
+        },
+        {
+          "x": 16,
+          "y": 13
+        },
+        {
+          "x": 17,
+          "y": 13
+        },
+        {
+          "x": 18,
+          "y": 13
+        },
+        {
+          "x": 18,
+          "y": 14
+        }
+      ],
+      "instructions": [
+        "Go straight for 6 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "Turn left",
+        "Go straight for 1 step",
+        "Turn right",
+        "Go straight for 1 step",
+        "Turn left",
+        "Go straight for 2 steps",
+        "Turn right",
+        "Go straight for 2 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "You have arrived at room"
+      ],
+      "total_steps": 15,
+      "estimated_time": 21.0
+    },
+    {
+      "id": "68ee8337-fa58-47c9-b5ed-75ce9995a9e9",
+      "timestamp": "2025-09-15T18:32:32.985762",
+      "map_id": 4,
+      "start": {
+        "x": 14,
+        "y": 22
+      },
+      "end": {
+        "x": 18,
+        "y": 14
+      },
+      "target_room": "3",
+      "path_data": [
+        {
+          "x": 14,
+          "y": 22
+        },
+        {
+          "x": 14,
+          "y": 21
+        },
+        {
+          "x": 14,
+          "y": 20
+        },
+        {
+          "x": 14,
+          "y": 19
+        },
+        {
+          "x": 14,
+          "y": 18
+        },
+        {
+          "x": 14,
+          "y": 17
+        },
+        {
+          "x": 14,
+          "y": 16
+        },
+        {
+          "x": 15,
+          "y": 16
+        },
+        {
+          "x": 15,
+          "y": 15
+        },
+        {
+          "x": 16,
+          "y": 15
+        },
+        {
+          "x": 16,
+          "y": 14
+        },
+        {
+          "x": 16,
+          "y": 13
+        },
+        {
+          "x": 17,
+          "y": 13
+        },
+        {
+          "x": 18,
+          "y": 13
+        },
+        {
+          "x": 18,
+          "y": 14
+        }
+      ],
+      "instructions": [
+        "Go straight for 6 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "Turn left",
+        "Go straight for 1 step",
+        "Turn right",
+        "Go straight for 1 step",
+        "Turn left",
+        "Go straight for 2 steps",
+        "Turn right",
+        "Go straight for 2 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "You have arrived at room"
+      ],
+      "total_steps": 15,
+      "estimated_time": 21.0
+    },
+    {
+      "id": "b67c9d66-960f-4253-ac82-3e503e57c360",
+      "timestamp": "2025-09-15T18:33:57.378474",
+      "map_id": 3,
+      "start": {
+        "x": 15,
+        "y": 9
+      },
+      "end": {
+        "x": 4,
+        "y": 7
+      },
+      "target_room": "2",
+      "path_data": [
+        {
+          "x": 15,
+          "y": 9
+        },
+        {
+          "x": 14,
+          "y": 9
+        },
+        {
+          "x": 13,
+          "y": 9
+        },
+        {
+          "x": 12,
+          "y": 9
+        },
+        {
+          "x": 11,
+          "y": 9
+        },
+        {
+          "x": 10,
+          "y": 9
+        },
+        {
+          "x": 9,
+          "y": 9
+        },
+        {
+          "x": 8,
+          "y": 9
+        },
+        {
+          "x": 7,
+          "y": 9
+        },
+        {
+          "x": 6,
+          "y": 9
+        },
+        {
+          "x": 5,
+          "y": 9
+        },
+        {
+          "x": 4,
+          "y": 9
+        },
+        {
+          "x": 4,
+          "y": 8
+        },
+        {
+          "x": 4,
+          "y": 7
+        }
+      ],
+      "instructions": [
+        "Go straight for 11 steps",
+        "Turn right",
+        "Go straight for 2 steps",
+        "You have arrived at 厕所"
+      ],
+      "total_steps": 14,
+      "estimated_time": 15.0
+    },
+    {
+      "id": "d524e34c-6756-42d8-8336-12719c5b150e",
+      "timestamp": "2025-09-15T18:34:26.691769",
+      "map_id": 4,
+      "start": {
+        "x": 14,
+        "y": 22
+      },
+      "end": {
+        "x": 18,
+        "y": 14
+      },
+      "target_room": "3",
+      "path_data": [
+        {
+          "x": 14,
+          "y": 22
+        },
+        {
+          "x": 14,
+          "y": 21
+        },
+        {
+          "x": 14,
+          "y": 20
+        },
+        {
+          "x": 14,
+          "y": 19
+        },
+        {
+          "x": 14,
+          "y": 18
+        },
+        {
+          "x": 14,
+          "y": 17
+        },
+        {
+          "x": 14,
+          "y": 16
+        },
+        {
+          "x": 15,
+          "y": 16
+        },
+        {
+          "x": 15,
+          "y": 15
+        },
+        {
+          "x": 16,
+          "y": 15
+        },
+        {
+          "x": 16,
+          "y": 14
+        },
+        {
+          "x": 16,
+          "y": 13
+        },
+        {
+          "x": 17,
+          "y": 13
+        },
+        {
+          "x": 18,
+          "y": 13
+        },
+        {
+          "x": 18,
+          "y": 14
+        }
+      ],
+      "instructions": [
+        "Go straight for 6 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "Turn left",
+        "Go straight for 1 step",
+        "Turn right",
+        "Go straight for 1 step",
+        "Turn left",
+        "Go straight for 2 steps",
+        "Turn right",
+        "Go straight for 2 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "You have arrived at room"
+      ],
+      "total_steps": 15,
+      "estimated_time": 21.0
+    },
+    {
+      "id": "52d6c649-441a-4bb4-94b1-e993edb94992",
+      "timestamp": "2025-09-15T18:38:01.041095",
+      "map_id": 3,
+      "start": {
+        "x": 15,
+        "y": 9
+      },
+      "end": {
+        "x": 4,
+        "y": 7
+      },
+      "target_room": "2",
+      "path_data": [
+        {
+          "x": 15,
+          "y": 9
+        },
+        {
+          "x": 14,
+          "y": 9
+        },
+        {
+          "x": 13,
+          "y": 9
+        },
+        {
+          "x": 12,
+          "y": 9
+        },
+        {
+          "x": 11,
+          "y": 9
+        },
+        {
+          "x": 10,
+          "y": 9
+        },
+        {
+          "x": 9,
+          "y": 9
+        },
+        {
+          "x": 8,
+          "y": 9
+        },
+        {
+          "x": 7,
+          "y": 9
+        },
+        {
+          "x": 6,
+          "y": 9
+        },
+        {
+          "x": 5,
+          "y": 9
+        },
+        {
+          "x": 4,
+          "y": 9
+        },
+        {
+          "x": 4,
+          "y": 8
+        },
+        {
+          "x": 4,
+          "y": 7
+        }
+      ],
+      "instructions": [
+        "Go straight for 11 steps",
+        "Turn right",
+        "Go straight for 2 steps",
+        "You have arrived at 厕所"
+      ],
+      "total_steps": 14,
+      "estimated_time": 15.0
+    },
+    {
+      "id": "e44114f1-2217-41b5-ad25-ccc535e510d9",
+      "timestamp": "2025-09-15T18:47:04.621382",
+      "map_id": 4,
+      "start": {
+        "x": 14,
+        "y": 22
+      },
+      "end": {
+        "x": 18,
+        "y": 14
+      },
+      "target_room": "3",
+      "path_data": [
+        {
+          "x": 14,
+          "y": 22
+        },
+        {
+          "x": 14,
+          "y": 21
+        },
+        {
+          "x": 14,
+          "y": 20
+        },
+        {
+          "x": 14,
+          "y": 19
+        },
+        {
+          "x": 14,
+          "y": 18
+        },
+        {
+          "x": 14,
+          "y": 17
+        },
+        {
+          "x": 14,
+          "y": 16
+        },
+        {
+          "x": 15,
+          "y": 16
+        },
+        {
+          "x": 15,
+          "y": 15
+        },
+        {
+          "x": 16,
+          "y": 15
+        },
+        {
+          "x": 16,
+          "y": 14
+        },
+        {
+          "x": 16,
+          "y": 13
+        },
+        {
+          "x": 17,
+          "y": 13
+        },
+        {
+          "x": 18,
+          "y": 13
+        },
+        {
+          "x": 18,
+          "y": 14
+        }
+      ],
+      "instructions": [
+        "Go straight for 6 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "Turn left",
+        "Go straight for 1 step",
+        "Turn right",
+        "Go straight for 1 step",
+        "Turn left",
+        "Go straight for 2 steps",
+        "Turn right",
+        "Go straight for 2 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "You have arrived at room"
+      ],
+      "total_steps": 15,
+      "estimated_time": 21.0
+    },
+    {
+      "id": "adf44f47-5353-4f4f-a294-1639cb0a0b00",
+      "timestamp": "2025-09-15T18:54:09.781319",
+      "map_id": 2,
+      "start": {
+        "x": 10,
+        "y": 5
+      },
+      "end": {
+        "x": 10,
+        "y": 11
+      },
+      "target_room": "1",
+      "path_data": [
+        {
+          "x": 10,
+          "y": 5
+        },
+        {
+          "x": 10,
+          "y": 6
+        },
+        {
+          "x": 10,
+          "y": 7
+        },
+        {
+          "x": 10,
+          "y": 8
+        },
+        {
+          "x": 10,
+          "y": 9
+        },
+        {
+          "x": 10,
+          "y": 10
+        },
+        {
+          "x": 10,
+          "y": 11
+        }
+      ],
+      "instructions": [
+        "Go straight for 6 steps",
+        "You have arrived at 图书馆"
+      ],
+      "total_steps": 7,
+      "estimated_time": 7.0
+    },
+    {
+      "id": "ff16c426-93f9-4d43-9139-06f3d0648698",
+      "timestamp": "2025-09-15T18:54:38.711413",
+      "map_id": 10,
+      "start": {
+        "x": 1,
+        "y": 6
+      },
+      "end": {
+        "x": 11,
+        "y": 7
+      },
+      "target_room": "room_2_11_7",
+      "path_data": [
+        {
+          "x": 1,
+          "y": 6
+        },
+        {
+          "x": 2,
+          "y": 6
+        },
+        {
+          "x": 3,
+          "y": 6
+        },
+        {
+          "x": 4,
+          "y": 6
+        },
+        {
+          "x": 5,
+          "y": 6
+        },
+        {
+          "x": 6,
+          "y": 6
+        },
+        {
+          "x": 7,
+          "y": 6
+        },
+        {
+          "x": 8,
+          "y": 6
+        },
+        {
+          "x": 9,
+          "y": 6
+        },
+        {
+          "x": 10,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 7
+        }
+      ],
+      "instructions": [
+        "Go straight for 10 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "You have arrived at 房间1"
+      ],
+      "total_steps": 12,
+      "estimated_time": 13.0
+    },
+    {
+      "id": "a73c261c-e503-4d4e-93e9-364db401e711",
+      "timestamp": "2025-09-15T19:05:20.014132",
+      "map_id": 10,
+      "start": {
+        "x": 1,
+        "y": 6
+      },
+      "end": {
+        "x": 11,
+        "y": 7
+      },
+      "target_room": "room_2_11_7",
+      "path_data": [
+        {
+          "x": 1,
+          "y": 6
+        },
+        {
+          "x": 2,
+          "y": 6
+        },
+        {
+          "x": 3,
+          "y": 6
+        },
+        {
+          "x": 4,
+          "y": 6
+        },
+        {
+          "x": 5,
+          "y": 6
+        },
+        {
+          "x": 6,
+          "y": 6
+        },
+        {
+          "x": 7,
+          "y": 6
+        },
+        {
+          "x": 8,
+          "y": 6
+        },
+        {
+          "x": 9,
+          "y": 6
+        },
+        {
+          "x": 10,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 7
+        }
+      ],
+      "instructions": [
+        "Go straight for 10 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "You have arrived at 房间1"
+      ],
+      "total_steps": 12,
+      "estimated_time": 13.0
+    },
+    {
+      "id": "922d3316-1cf5-4430-a50b-97350a3ecfa0",
+      "timestamp": "2025-09-15T19:06:24.176499",
+      "map_id": 4,
+      "start": {
+        "x": 14,
+        "y": 22
+      },
+      "end": {
+        "x": 18,
+        "y": 14
+      },
+      "target_room": "3",
+      "path_data": [
+        {
+          "x": 14,
+          "y": 22
+        },
+        {
+          "x": 14,
+          "y": 21
+        },
+        {
+          "x": 14,
+          "y": 20
+        },
+        {
+          "x": 14,
+          "y": 19
+        },
+        {
+          "x": 14,
+          "y": 18
+        },
+        {
+          "x": 14,
+          "y": 17
+        },
+        {
+          "x": 14,
+          "y": 16
+        },
+        {
+          "x": 15,
+          "y": 16
+        },
+        {
+          "x": 15,
+          "y": 15
+        },
+        {
+          "x": 16,
+          "y": 15
+        },
+        {
+          "x": 16,
+          "y": 14
+        },
+        {
+          "x": 16,
+          "y": 13
+        },
+        {
+          "x": 17,
+          "y": 13
+        },
+        {
+          "x": 18,
+          "y": 13
+        },
+        {
+          "x": 18,
+          "y": 14
+        }
+      ],
+      "instructions": [
+        "Go straight for 6 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "Turn left",
+        "Go straight for 1 step",
+        "Turn right",
+        "Go straight for 1 step",
+        "Turn left",
+        "Go straight for 2 steps",
+        "Turn right",
+        "Go straight for 2 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "You have arrived at room"
+      ],
+      "total_steps": 15,
+      "estimated_time": 21.0
+    },
+    {
+      "id": "9fde7df2-0cff-4103-8359-b6706f62f96a",
+      "timestamp": "2025-09-15T19:18:27.456798",
+      "map_id": 10,
+      "start": {
+        "x": 1,
+        "y": 6,
+        "floor": 1
+      },
+      "end": {
+        "x": 11,
+        "y": 7,
+        "floor": 2
+      },
+      "target_room": "room_2_11_7",
+      "path_data": [
+        {
+          "x": 1,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 6,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "floor": 2,
+          "action": "stair_up",
+          "connection_info": {
+            "connection_id": "stair_1_2_0",
+            "connection_type": "stair",
+            "steps": 15,
+            "duration": 18.0
+          }
+        },
+        {
+          "x": 8,
+          "y": 6,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 9,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 10,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        }
+      ],
+      "instructions": [
+        "开始导航",
+        "向右直行6步到楼梯",
+        "上楼梯到2楼",
+        "向右走1步",
+        "向下走1步",
+        "向右直行3步到目的地",
+        "到达目的地：房间1"
+      ],
+      "total_steps": 13,
+      "total_cost": 327.0,
+      "estimated_time": 63,
+      "is_3d": true
+    },
+    {
+      "id": "829cf7b3-ac80-40f3-8cf1-c3284e556ba8",
+      "timestamp": "2025-09-15T19:19:08.088207",
+      "map_id": 4,
+      "start": {
+        "x": 14,
+        "y": 22
+      },
+      "end": {
+        "x": 18,
+        "y": 14
+      },
+      "target_room": "3",
+      "path_data": [
+        {
+          "x": 14,
+          "y": 22
+        },
+        {
+          "x": 14,
+          "y": 21
+        },
+        {
+          "x": 14,
+          "y": 20
+        },
+        {
+          "x": 14,
+          "y": 19
+        },
+        {
+          "x": 14,
+          "y": 18
+        },
+        {
+          "x": 14,
+          "y": 17
+        },
+        {
+          "x": 14,
+          "y": 16
+        },
+        {
+          "x": 15,
+          "y": 16
+        },
+        {
+          "x": 15,
+          "y": 15
+        },
+        {
+          "x": 16,
+          "y": 15
+        },
+        {
+          "x": 16,
+          "y": 14
+        },
+        {
+          "x": 16,
+          "y": 13
+        },
+        {
+          "x": 17,
+          "y": 13
+        },
+        {
+          "x": 18,
+          "y": 13
+        },
+        {
+          "x": 18,
+          "y": 14
+        }
+      ],
+      "instructions": [
+        "Go straight for 6 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "Turn left",
+        "Go straight for 1 step",
+        "Turn right",
+        "Go straight for 1 step",
+        "Turn left",
+        "Go straight for 2 steps",
+        "Turn right",
+        "Go straight for 2 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "You have arrived at room"
+      ],
+      "total_steps": 15,
+      "estimated_time": 21.0
+    },
+    {
+      "id": "da850f54-0e40-4ca4-9bf4-9f3ad1733116",
+      "timestamp": "2025-09-15T19:19:25.242821",
+      "map_id": 3,
+      "start": {
+        "x": 15,
+        "y": 9
+      },
+      "end": {
+        "x": 4,
+        "y": 7
+      },
+      "target_room": "2",
+      "path_data": [
+        {
+          "x": 15,
+          "y": 9
+        },
+        {
+          "x": 14,
+          "y": 9
+        },
+        {
+          "x": 13,
+          "y": 9
+        },
+        {
+          "x": 12,
+          "y": 9
+        },
+        {
+          "x": 11,
+          "y": 9
+        },
+        {
+          "x": 10,
+          "y": 9
+        },
+        {
+          "x": 9,
+          "y": 9
+        },
+        {
+          "x": 8,
+          "y": 9
+        },
+        {
+          "x": 7,
+          "y": 9
+        },
+        {
+          "x": 6,
+          "y": 9
+        },
+        {
+          "x": 5,
+          "y": 9
+        },
+        {
+          "x": 4,
+          "y": 9
+        },
+        {
+          "x": 4,
+          "y": 8
+        },
+        {
+          "x": 4,
+          "y": 7
+        }
+      ],
+      "instructions": [
+        "Go straight for 11 steps",
+        "Turn right",
+        "Go straight for 2 steps",
+        "You have arrived at 厕所"
+      ],
+      "total_steps": 14,
+      "estimated_time": 15.0
+    },
+    {
+      "id": "f3806ce6-78e1-4442-9b27-c3e84b1e74ca",
+      "timestamp": "2025-09-15T19:20:25.795097",
+      "map_id": 4,
+      "start": {
+        "x": 14,
+        "y": 22
+      },
+      "end": {
+        "x": 18,
+        "y": 14
+      },
+      "target_room": "3",
+      "path_data": [
+        {
+          "x": 14,
+          "y": 22
+        },
+        {
+          "x": 14,
+          "y": 21
+        },
+        {
+          "x": 14,
+          "y": 20
+        },
+        {
+          "x": 14,
+          "y": 19
+        },
+        {
+          "x": 14,
+          "y": 18
+        },
+        {
+          "x": 14,
+          "y": 17
+        },
+        {
+          "x": 14,
+          "y": 16
+        },
+        {
+          "x": 15,
+          "y": 16
+        },
+        {
+          "x": 15,
+          "y": 15
+        },
+        {
+          "x": 16,
+          "y": 15
+        },
+        {
+          "x": 16,
+          "y": 14
+        },
+        {
+          "x": 16,
+          "y": 13
+        },
+        {
+          "x": 17,
+          "y": 13
+        },
+        {
+          "x": 18,
+          "y": 13
+        },
+        {
+          "x": 18,
+          "y": 14
+        }
+      ],
+      "instructions": [
+        "Go straight for 6 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "Turn left",
+        "Go straight for 1 step",
+        "Turn right",
+        "Go straight for 1 step",
+        "Turn left",
+        "Go straight for 2 steps",
+        "Turn right",
+        "Go straight for 2 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "You have arrived at room"
+      ],
+      "total_steps": 15,
+      "estimated_time": 21.0
+    },
+    {
+      "id": "2fc77ada-eed2-4e9a-9f33-103bb0756b7b",
+      "timestamp": "2025-09-15T19:27:58.828779",
+      "map_id": 4,
+      "start": {
+        "x": 14,
+        "y": 22
+      },
+      "end": {
+        "x": 18,
+        "y": 14
+      },
+      "target_room": "3",
+      "path_data": [
+        {
+          "x": 14,
+          "y": 22
+        },
+        {
+          "x": 14,
+          "y": 21
+        },
+        {
+          "x": 14,
+          "y": 20
+        },
+        {
+          "x": 14,
+          "y": 19
+        },
+        {
+          "x": 14,
+          "y": 18
+        },
+        {
+          "x": 14,
+          "y": 17
+        },
+        {
+          "x": 14,
+          "y": 16
+        },
+        {
+          "x": 15,
+          "y": 16
+        },
+        {
+          "x": 15,
+          "y": 15
+        },
+        {
+          "x": 16,
+          "y": 15
+        },
+        {
+          "x": 16,
+          "y": 14
+        },
+        {
+          "x": 16,
+          "y": 13
+        },
+        {
+          "x": 17,
+          "y": 13
+        },
+        {
+          "x": 18,
+          "y": 13
+        },
+        {
+          "x": 18,
+          "y": 14
+        }
+      ],
+      "instructions": [
+        "Go straight for 6 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "Turn left",
+        "Go straight for 1 step",
+        "Turn right",
+        "Go straight for 1 step",
+        "Turn left",
+        "Go straight for 2 steps",
+        "Turn right",
+        "Go straight for 2 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "You have arrived at room"
+      ],
+      "total_steps": 15,
+      "estimated_time": 21.0
+    },
+    {
+      "id": "2c921bbc-4db5-455b-bd8a-7173d4d3237d",
+      "timestamp": "2025-09-15T19:29:23.250640",
+      "map_id": 4,
+      "start": {
+        "x": 14,
+        "y": 22
+      },
+      "end": {
+        "x": 18,
+        "y": 14
+      },
+      "target_room": "3",
+      "path_data": [
+        {
+          "x": 14,
+          "y": 22
+        },
+        {
+          "x": 14,
+          "y": 21
+        },
+        {
+          "x": 14,
+          "y": 20
+        },
+        {
+          "x": 14,
+          "y": 19
+        },
+        {
+          "x": 14,
+          "y": 18
+        },
+        {
+          "x": 14,
+          "y": 17
+        },
+        {
+          "x": 14,
+          "y": 16
+        },
+        {
+          "x": 15,
+          "y": 16
+        },
+        {
+          "x": 15,
+          "y": 15
+        },
+        {
+          "x": 16,
+          "y": 15
+        },
+        {
+          "x": 16,
+          "y": 14
+        },
+        {
+          "x": 16,
+          "y": 13
+        },
+        {
+          "x": 17,
+          "y": 13
+        },
+        {
+          "x": 18,
+          "y": 13
+        },
+        {
+          "x": 18,
+          "y": 14
+        }
+      ],
+      "instructions": [
+        "Go straight for 6 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "Turn left",
+        "Go straight for 1 step",
+        "Turn right",
+        "Go straight for 1 step",
+        "Turn left",
+        "Go straight for 2 steps",
+        "Turn right",
+        "Go straight for 2 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "You have arrived at room"
+      ],
+      "total_steps": 15,
+      "estimated_time": 21.0
+    },
+    {
+      "id": "cb3ca474-967a-40da-b426-7c944c061344",
+      "timestamp": "2025-09-15T19:29:44.317452",
+      "map_id": 10,
+      "start": {
+        "x": 1,
+        "y": 6
+      },
+      "end": {
+        "x": 11,
+        "y": 7
+      },
+      "target_room": "room_2_11_7",
+      "path_data": [
+        {
+          "x": 1,
+          "y": 6
+        },
+        {
+          "x": 2,
+          "y": 6
+        },
+        {
+          "x": 3,
+          "y": 6
+        },
+        {
+          "x": 4,
+          "y": 6
+        },
+        {
+          "x": 5,
+          "y": 6
+        },
+        {
+          "x": 6,
+          "y": 6
+        },
+        {
+          "x": 7,
+          "y": 6
+        },
+        {
+          "x": 8,
+          "y": 6
+        },
+        {
+          "x": 9,
+          "y": 6
+        },
+        {
+          "x": 10,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 7
+        }
+      ],
+      "instructions": [
+        "Go straight for 10 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "You have arrived at 房间1"
+      ],
+      "total_steps": 12,
+      "estimated_time": 13.0
+    },
+    {
+      "id": "334c0235-908d-4b9e-8c0f-568b94352798",
+      "timestamp": "2025-09-15T19:31:13.563709",
+      "map_id": 10,
+      "start": {
+        "x": 1,
+        "y": 6
+      },
+      "end": {
+        "x": 11,
+        "y": 7
+      },
+      "target_room": "room_2_11_7",
+      "path_data": [
+        {
+          "x": 1,
+          "y": 6
+        },
+        {
+          "x": 2,
+          "y": 6
+        },
+        {
+          "x": 3,
+          "y": 6
+        },
+        {
+          "x": 4,
+          "y": 6
+        },
+        {
+          "x": 5,
+          "y": 6
+        },
+        {
+          "x": 6,
+          "y": 6
+        },
+        {
+          "x": 7,
+          "y": 6
+        },
+        {
+          "x": 8,
+          "y": 6
+        },
+        {
+          "x": 9,
+          "y": 6
+        },
+        {
+          "x": 10,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 7
+        }
+      ],
+      "instructions": [
+        "Go straight for 10 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "You have arrived at 房间1"
+      ],
+      "total_steps": 12,
+      "estimated_time": 13.0
+    },
+    {
+      "id": "f23818af-ba32-4c76-a85a-ef645abf6e45",
+      "timestamp": "2025-09-15T19:59:52.936307",
+      "map_id": 4,
+      "start": {
+        "x": 14,
+        "y": 22
+      },
+      "end": {
+        "x": 18,
+        "y": 14
+      },
+      "target_room": "3",
+      "path_data": [
+        {
+          "x": 14,
+          "y": 22
+        },
+        {
+          "x": 14,
+          "y": 21
+        },
+        {
+          "x": 14,
+          "y": 20
+        },
+        {
+          "x": 14,
+          "y": 19
+        },
+        {
+          "x": 14,
+          "y": 18
+        },
+        {
+          "x": 14,
+          "y": 17
+        },
+        {
+          "x": 14,
+          "y": 16
+        },
+        {
+          "x": 15,
+          "y": 16
+        },
+        {
+          "x": 15,
+          "y": 15
+        },
+        {
+          "x": 16,
+          "y": 15
+        },
+        {
+          "x": 16,
+          "y": 14
+        },
+        {
+          "x": 16,
+          "y": 13
+        },
+        {
+          "x": 17,
+          "y": 13
+        },
+        {
+          "x": 18,
+          "y": 13
+        },
+        {
+          "x": 18,
+          "y": 14
+        }
+      ],
+      "instructions": [
+        "Go straight for 6 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "Turn left",
+        "Go straight for 1 step",
+        "Turn right",
+        "Go straight for 1 step",
+        "Turn left",
+        "Go straight for 2 steps",
+        "Turn right",
+        "Go straight for 2 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "You have arrived at room"
+      ],
+      "total_steps": 15,
+      "estimated_time": 21.0
+    },
+    {
+      "id": "4cc4d609-0c35-4aa2-8721-3e3c4da4a6a8",
+      "timestamp": "2025-09-15T20:00:27.288942",
+      "map_id": 10,
+      "start": {
+        "x": 1,
+        "y": 6
+      },
+      "end": {
+        "x": 11,
+        "y": 7
+      },
+      "target_room": "room_2_11_7",
+      "path_data": [
+        {
+          "x": 1,
+          "y": 6
+        },
+        {
+          "x": 2,
+          "y": 6
+        },
+        {
+          "x": 3,
+          "y": 6
+        },
+        {
+          "x": 4,
+          "y": 6
+        },
+        {
+          "x": 5,
+          "y": 6
+        },
+        {
+          "x": 6,
+          "y": 6
+        },
+        {
+          "x": 7,
+          "y": 6
+        },
+        {
+          "x": 8,
+          "y": 6
+        },
+        {
+          "x": 9,
+          "y": 6
+        },
+        {
+          "x": 10,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 7
+        }
+      ],
+      "instructions": [
+        "Go straight for 10 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "You have arrived at 房间1"
+      ],
+      "total_steps": 12,
+      "estimated_time": 13.0
+    },
+    {
+      "id": "6b6a249f-1cac-467d-9ebc-941f56439f20",
+      "timestamp": "2025-09-15T20:00:43.588808",
+      "map_id": 4,
+      "start": {
+        "x": 14,
+        "y": 22
+      },
+      "end": {
+        "x": 18,
+        "y": 14
+      },
+      "target_room": "3",
+      "path_data": [
+        {
+          "x": 14,
+          "y": 22
+        },
+        {
+          "x": 14,
+          "y": 21
+        },
+        {
+          "x": 14,
+          "y": 20
+        },
+        {
+          "x": 14,
+          "y": 19
+        },
+        {
+          "x": 14,
+          "y": 18
+        },
+        {
+          "x": 14,
+          "y": 17
+        },
+        {
+          "x": 14,
+          "y": 16
+        },
+        {
+          "x": 15,
+          "y": 16
+        },
+        {
+          "x": 15,
+          "y": 15
+        },
+        {
+          "x": 16,
+          "y": 15
+        },
+        {
+          "x": 16,
+          "y": 14
+        },
+        {
+          "x": 16,
+          "y": 13
+        },
+        {
+          "x": 17,
+          "y": 13
+        },
+        {
+          "x": 18,
+          "y": 13
+        },
+        {
+          "x": 18,
+          "y": 14
+        }
+      ],
+      "instructions": [
+        "Go straight for 6 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "Turn left",
+        "Go straight for 1 step",
+        "Turn right",
+        "Go straight for 1 step",
+        "Turn left",
+        "Go straight for 2 steps",
+        "Turn right",
+        "Go straight for 2 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "You have arrived at room"
+      ],
+      "total_steps": 15,
+      "estimated_time": 21.0
+    },
+    {
+      "id": "9a017cde-6ea8-4a35-babe-02c97ec29ae5",
+      "timestamp": "2025-09-15T20:13:14.022362",
+      "map_id": 3,
+      "start": {
+        "x": 15,
+        "y": 9
+      },
+      "end": {
+        "x": 4,
+        "y": 7
+      },
+      "target_room": "2",
+      "path_data": [
+        {
+          "x": 15,
+          "y": 9
+        },
+        {
+          "x": 14,
+          "y": 9
+        },
+        {
+          "x": 13,
+          "y": 9
+        },
+        {
+          "x": 12,
+          "y": 9
+        },
+        {
+          "x": 11,
+          "y": 9
+        },
+        {
+          "x": 10,
+          "y": 9
+        },
+        {
+          "x": 9,
+          "y": 9
+        },
+        {
+          "x": 8,
+          "y": 9
+        },
+        {
+          "x": 7,
+          "y": 9
+        },
+        {
+          "x": 6,
+          "y": 9
+        },
+        {
+          "x": 5,
+          "y": 9
+        },
+        {
+          "x": 4,
+          "y": 9
+        },
+        {
+          "x": 4,
+          "y": 8
+        },
+        {
+          "x": 4,
+          "y": 7
+        }
+      ],
+      "instructions": [
+        "Go straight for 11 steps",
+        "Turn right",
+        "Go straight for 2 steps",
+        "You have arrived at 厕所"
+      ],
+      "total_steps": 14,
+      "estimated_time": 15.0
+    },
+    {
+      "id": "04a33b2f-4c28-44b8-93e2-72f9688ba0c1",
+      "timestamp": "2025-09-15T20:13:33.481408",
+      "map_id": 10,
+      "start": {
+        "x": 1,
+        "y": 6
+      },
+      "end": {
+        "x": 11,
+        "y": 7
+      },
+      "target_room": "room_2_11_7",
+      "path_data": [
+        {
+          "x": 1,
+          "y": 6
+        },
+        {
+          "x": 2,
+          "y": 6
+        },
+        {
+          "x": 3,
+          "y": 6
+        },
+        {
+          "x": 4,
+          "y": 6
+        },
+        {
+          "x": 5,
+          "y": 6
+        },
+        {
+          "x": 6,
+          "y": 6
+        },
+        {
+          "x": 7,
+          "y": 6
+        },
+        {
+          "x": 8,
+          "y": 6
+        },
+        {
+          "x": 9,
+          "y": 6
+        },
+        {
+          "x": 10,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 7
+        }
+      ],
+      "instructions": [
+        "Go straight for 10 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "You have arrived at 房间1"
+      ],
+      "total_steps": 12,
+      "estimated_time": 13.0
+    },
+    {
+      "id": "6a33365c-7832-4be5-be9d-ee34957b31b1",
+      "timestamp": "2025-09-15T20:15:00.492936",
+      "map_id": 10,
+      "start": {
+        "x": 1,
+        "y": 6
+      },
+      "end": {
+        "x": 11,
+        "y": 7
+      },
+      "target_room": "room_2_11_7",
+      "path_data": [
+        {
+          "x": 1,
+          "y": 6
+        },
+        {
+          "x": 2,
+          "y": 6
+        },
+        {
+          "x": 3,
+          "y": 6
+        },
+        {
+          "x": 4,
+          "y": 6
+        },
+        {
+          "x": 5,
+          "y": 6
+        },
+        {
+          "x": 6,
+          "y": 6
+        },
+        {
+          "x": 7,
+          "y": 6
+        },
+        {
+          "x": 8,
+          "y": 6
+        },
+        {
+          "x": 9,
+          "y": 6
+        },
+        {
+          "x": 10,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 7
+        }
+      ],
+      "instructions": [
+        "Go straight for 10 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "You have arrived at 房间1"
+      ],
+      "total_steps": 12,
+      "estimated_time": 13.0
+    },
+    {
+      "id": "9e137967-805c-44fd-bcdc-7e2f642ef718",
+      "timestamp": "2025-09-15T20:16:15.094168",
+      "map_id": 10,
+      "start": {
+        "x": 1,
+        "y": 6
+      },
+      "end": {
+        "x": 11,
+        "y": 7
+      },
+      "target_room": "room_2_11_7",
+      "path_data": [
+        {
+          "x": 1,
+          "y": 6
+        },
+        {
+          "x": 2,
+          "y": 6
+        },
+        {
+          "x": 3,
+          "y": 6
+        },
+        {
+          "x": 4,
+          "y": 6
+        },
+        {
+          "x": 5,
+          "y": 6
+        },
+        {
+          "x": 6,
+          "y": 6
+        },
+        {
+          "x": 7,
+          "y": 6
+        },
+        {
+          "x": 8,
+          "y": 6
+        },
+        {
+          "x": 9,
+          "y": 6
+        },
+        {
+          "x": 10,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 7
+        }
+      ],
+      "instructions": [
+        "Go straight for 10 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "You have arrived at 房间1"
+      ],
+      "total_steps": 12,
+      "estimated_time": 13.0
+    },
+    {
+      "id": "8b8344f4-8539-434f-84fe-9f6e1d951f55",
+      "timestamp": "2025-09-15T20:23:17.479454",
+      "map_id": 10,
+      "start": {
+        "x": 1,
+        "y": 6
+      },
+      "end": {
+        "x": 11,
+        "y": 7
+      },
+      "target_room": "room_2_11_7",
+      "path_data": [
+        {
+          "x": 1,
+          "y": 6
+        },
+        {
+          "x": 2,
+          "y": 6
+        },
+        {
+          "x": 3,
+          "y": 6
+        },
+        {
+          "x": 4,
+          "y": 6
+        },
+        {
+          "x": 5,
+          "y": 6
+        },
+        {
+          "x": 6,
+          "y": 6
+        },
+        {
+          "x": 7,
+          "y": 6
+        },
+        {
+          "x": 8,
+          "y": 6
+        },
+        {
+          "x": 9,
+          "y": 6
+        },
+        {
+          "x": 10,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 7
+        }
+      ],
+      "instructions": [
+        "Go straight for 10 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "You have arrived at 房间1"
+      ],
+      "total_steps": 12,
+      "estimated_time": 13.0
+    },
+    {
+      "id": "72b8a7a1-5c2a-4e99-821d-fc8521befa68",
+      "timestamp": "2025-09-15T20:26:35.752819",
+      "map_id": 10,
+      "start": {
+        "x": 1,
+        "y": 6
+      },
+      "end": {
+        "x": 11,
+        "y": 7
+      },
+      "target_room": "room_2_11_7",
+      "path_data": [
+        {
+          "x": 1,
+          "y": 6
+        },
+        {
+          "x": 2,
+          "y": 6
+        },
+        {
+          "x": 3,
+          "y": 6
+        },
+        {
+          "x": 4,
+          "y": 6
+        },
+        {
+          "x": 5,
+          "y": 6
+        },
+        {
+          "x": 6,
+          "y": 6
+        },
+        {
+          "x": 7,
+          "y": 6
+        },
+        {
+          "x": 8,
+          "y": 6
+        },
+        {
+          "x": 9,
+          "y": 6
+        },
+        {
+          "x": 10,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 7
+        }
+      ],
+      "instructions": [
+        "Go straight for 10 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "You have arrived at 房间1"
+      ],
+      "total_steps": 12,
+      "estimated_time": 13.0
+    },
+    {
+      "id": "486f4b28-98f3-4363-a036-5619d00b9026",
+      "timestamp": "2025-09-15T20:31:55.563896",
+      "map_id": 10,
+      "start": {
+        "x": 1,
+        "y": 6
+      },
+      "end": {
+        "x": 11,
+        "y": 7
+      },
+      "target_room": "room_2_11_7",
+      "path_data": [
+        {
+          "x": 1,
+          "y": 6
+        },
+        {
+          "x": 2,
+          "y": 6
+        },
+        {
+          "x": 3,
+          "y": 6
+        },
+        {
+          "x": 4,
+          "y": 6
+        },
+        {
+          "x": 5,
+          "y": 6
+        },
+        {
+          "x": 6,
+          "y": 6
+        },
+        {
+          "x": 7,
+          "y": 6
+        },
+        {
+          "x": 8,
+          "y": 6
+        },
+        {
+          "x": 9,
+          "y": 6
+        },
+        {
+          "x": 10,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 7
+        }
+      ],
+      "instructions": [
+        "Go straight for 10 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "You have arrived at 房间1"
+      ],
+      "total_steps": 12,
+      "estimated_time": 13.0
+    },
+    {
+      "id": "1504da40-3e2a-4715-861e-8db39133b4e7",
+      "timestamp": "2025-09-15T20:52:06.001408",
+      "map_id": 10,
+      "start": {
+        "x": 1,
+        "y": 6
+      },
+      "end": {
+        "x": 11,
+        "y": 7
+      },
+      "target_room": "room_2_11_7",
+      "path_data": [
+        {
+          "x": 1,
+          "y": 6
+        },
+        {
+          "x": 2,
+          "y": 6
+        },
+        {
+          "x": 3,
+          "y": 6
+        },
+        {
+          "x": 4,
+          "y": 6
+        },
+        {
+          "x": 5,
+          "y": 6
+        },
+        {
+          "x": 6,
+          "y": 6
+        },
+        {
+          "x": 7,
+          "y": 6
+        },
+        {
+          "x": 8,
+          "y": 6
+        },
+        {
+          "x": 9,
+          "y": 6
+        },
+        {
+          "x": 10,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 7
+        }
+      ],
+      "instructions": [
+        "Go straight for 10 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "You have arrived at 房间1"
+      ],
+      "total_steps": 12,
+      "estimated_time": 13.0
+    },
+    {
+      "id": "b2a7d5f0-c733-4708-b614-5bf497dd82ff",
+      "timestamp": "2025-09-15T20:59:42.335951",
+      "map_id": 10,
+      "start": {
+        "x": 1,
+        "y": 6
+      },
+      "end": {
+        "x": 11,
+        "y": 7
+      },
+      "target_room": "room_2_11_7",
+      "path_data": [
+        {
+          "x": 1,
+          "y": 6
+        },
+        {
+          "x": 2,
+          "y": 6
+        },
+        {
+          "x": 3,
+          "y": 6
+        },
+        {
+          "x": 4,
+          "y": 6
+        },
+        {
+          "x": 5,
+          "y": 6
+        },
+        {
+          "x": 6,
+          "y": 6
+        },
+        {
+          "x": 7,
+          "y": 6
+        },
+        {
+          "x": 8,
+          "y": 6
+        },
+        {
+          "x": 9,
+          "y": 6
+        },
+        {
+          "x": 10,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 7
+        }
+      ],
+      "instructions": [
+        "Go straight for 10 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "You have arrived at 房间1"
+      ],
+      "total_steps": 12,
+      "estimated_time": 13.0
+    },
+    {
+      "id": "23eb3e49-4a0f-4039-b12f-f96862a9cdb2",
+      "timestamp": "2025-09-15T21:05:41.272996",
+      "map_id": 10,
+      "start": {
+        "x": 1,
+        "y": 6
+      },
+      "end": {
+        "x": 11,
+        "y": 7
+      },
+      "target_room": "room_2_11_7",
+      "path_data": [
+        {
+          "x": 1,
+          "y": 6
+        },
+        {
+          "x": 2,
+          "y": 6
+        },
+        {
+          "x": 3,
+          "y": 6
+        },
+        {
+          "x": 4,
+          "y": 6
+        },
+        {
+          "x": 5,
+          "y": 6
+        },
+        {
+          "x": 6,
+          "y": 6
+        },
+        {
+          "x": 7,
+          "y": 6
+        },
+        {
+          "x": 8,
+          "y": 6
+        },
+        {
+          "x": 9,
+          "y": 6
+        },
+        {
+          "x": 10,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 7
+        }
+      ],
+      "instructions": [
+        "Go straight for 10 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "You have arrived at 房间1"
+      ],
+      "total_steps": 12,
+      "estimated_time": 13.0
+    },
+    {
+      "id": "c7118fde-5b3d-4589-b42a-0983f6e6e9b3",
+      "timestamp": "2025-09-15T21:09:30.427981",
+      "map_id": 10,
+      "start": {
+        "x": 1,
+        "y": 6
+      },
+      "end": {
+        "x": 11,
+        "y": 7
+      },
+      "target_room": "room_2_11_7",
+      "path_data": [
+        {
+          "x": 1,
+          "y": 6
+        },
+        {
+          "x": 2,
+          "y": 6
+        },
+        {
+          "x": 3,
+          "y": 6
+        },
+        {
+          "x": 4,
+          "y": 6
+        },
+        {
+          "x": 5,
+          "y": 6
+        },
+        {
+          "x": 6,
+          "y": 6
+        },
+        {
+          "x": 7,
+          "y": 6
+        },
+        {
+          "x": 8,
+          "y": 6
+        },
+        {
+          "x": 9,
+          "y": 6
+        },
+        {
+          "x": 10,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 7
+        }
+      ],
+      "instructions": [
+        "Go straight for 10 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "You have arrived at 房间1"
+      ],
+      "total_steps": 12,
+      "estimated_time": 13.0
+    },
+    {
+      "id": "a4eeeecd-aa77-4f1e-8b33-e22462fc5cf0",
+      "timestamp": "2025-09-15T21:13:08.642756",
+      "map_id": 10,
+      "start": {
+        "x": 1,
+        "y": 6,
+        "floor": 1
+      },
+      "end": {
+        "x": 11,
+        "y": 7,
+        "floor": 2
+      },
+      "target_room": "room_2_11_7",
+      "path_data": [
+        {
+          "x": 1,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 6,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "floor": 2,
+          "action": "stair_up",
+          "connection_info": {
+            "connection_id": "stair_1_2_0",
+            "connection_type": "stair",
+            "steps": 15,
+            "duration": 18.0
+          }
+        },
+        {
+          "x": 8,
+          "y": 6,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 9,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 10,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        }
+      ],
+      "instructions": [
+        "开始导航",
+        "向右直行6步到楼梯",
+        "上楼梯到2楼",
+        "向右走1步",
+        "向下走1步",
+        "向右直行3步到目的地",
+        "到达目的地：房间1"
+      ],
+      "total_steps": 13,
+      "total_cost": 327.0,
+      "estimated_time": 63,
+      "is_3d": true
+    },
+    {
+      "id": "03205a2d-d196-44e2-84f4-79b0dfe1f91f",
+      "timestamp": "2025-09-15T21:23:25.116226",
+      "map_id": 10,
+      "start": {
+        "x": 1,
+        "y": 6,
+        "floor": 1
+      },
+      "end": {
+        "x": 11,
+        "y": 7,
+        "floor": 2
+      },
+      "target_room": "room_2_11_7",
+      "path_data": [
+        {
+          "x": 1,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 6,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "floor": 2,
+          "action": "stair_up",
+          "connection_info": {
+            "connection_id": "stair_1_2_0",
+            "connection_type": "stair",
+            "steps": 15,
+            "duration": 18.0
+          }
+        },
+        {
+          "x": 8,
+          "y": 6,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 9,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 10,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        }
+      ],
+      "instructions": [
+        "开始导航",
+        "向右直行6步到楼梯",
+        "上楼梯到2楼",
+        "向右走1步",
+        "向下走1步",
+        "向右直行3步到目的地",
+        "到达目的地：房间1"
+      ],
+      "total_steps": 13,
+      "total_cost": 327.0,
+      "estimated_time": 63,
+      "is_3d": true
+    },
+    {
+      "id": "3f1c4503-95cb-4d46-b985-c1942dfa081f",
+      "timestamp": "2025-09-15T21:23:59.159541",
+      "map_id": 3,
+      "start": {
+        "x": 15,
+        "y": 9
+      },
+      "end": {
+        "x": 4,
+        "y": 7
+      },
+      "target_room": "2",
+      "path_data": [
+        {
+          "x": 15,
+          "y": 9
+        },
+        {
+          "x": 14,
+          "y": 9
+        },
+        {
+          "x": 13,
+          "y": 9
+        },
+        {
+          "x": 12,
+          "y": 9
+        },
+        {
+          "x": 11,
+          "y": 9
+        },
+        {
+          "x": 10,
+          "y": 9
+        },
+        {
+          "x": 9,
+          "y": 9
+        },
+        {
+          "x": 8,
+          "y": 9
+        },
+        {
+          "x": 7,
+          "y": 9
+        },
+        {
+          "x": 6,
+          "y": 9
+        },
+        {
+          "x": 5,
+          "y": 9
+        },
+        {
+          "x": 4,
+          "y": 9
+        },
+        {
+          "x": 4,
+          "y": 8
+        },
+        {
+          "x": 4,
+          "y": 7
+        }
+      ],
+      "instructions": [
+        "Go straight for 11 steps",
+        "Turn right",
+        "Go straight for 2 steps",
+        "You have arrived at 厕所"
+      ],
+      "total_steps": 14,
+      "estimated_time": 15.0
+    },
+    {
+      "id": "0f69bdcb-e40a-410a-a92d-bcebbd4534ab",
+      "timestamp": "2025-09-15T21:26:35.778460",
+      "map_id": 11,
+      "start": {
+        "x": 3,
+        "y": 11
+      },
+      "end": {
+        "x": 13,
+        "y": 14
+      },
+      "target_room": "1",
+      "path_data": [
+        {
+          "x": 3,
+          "y": 11
+        },
+        {
+          "x": 3,
+          "y": 12
+        },
+        {
+          "x": 4,
+          "y": 12
+        },
+        {
+          "x": 5,
+          "y": 12
+        },
+        {
+          "x": 6,
+          "y": 12
+        },
+        {
+          "x": 7,
+          "y": 12
+        },
+        {
+          "x": 7,
+          "y": 13
+        },
+        {
+          "x": 7,
+          "y": 14
+        },
+        {
+          "x": 7,
+          "y": 15
+        },
+        {
+          "x": 8,
+          "y": 15
+        },
+        {
+          "x": 9,
+          "y": 15
+        },
+        {
+          "x": 9,
+          "y": 14
+        },
+        {
+          "x": 10,
+          "y": 14
+        },
+        {
+          "x": 11,
+          "y": 14
+        },
+        {
+          "x": 12,
+          "y": 14
+        },
+        {
+          "x": 13,
+          "y": 14
+        }
+      ],
+      "instructions": [
+        "Go straight for 1 step",
+        "Turn left",
+        "Go straight for 4 steps",
+        "Turn right",
+        "Go straight for 3 steps",
+        "Turn left",
+        "Go straight for 2 steps",
+        "Turn left",
+        "Go straight for 1 step",
+        "Turn right",
+        "Go straight for 4 steps",
+        "You have arrived at room"
+      ],
+      "total_steps": 16,
+      "estimated_time": 21.0
+    },
+    {
+      "id": "4d0f047f-c5db-4ff4-a59f-3a244faa3f5d",
+      "timestamp": "2025-09-15T21:27:23.208634",
+      "map_id": 10,
+      "start": {
+        "x": 1,
+        "y": 6,
+        "floor": 1
+      },
+      "end": {
+        "x": 11,
+        "y": 7,
+        "floor": 2
+      },
+      "target_room": "room_2_11_7",
+      "path_data": [
+        {
+          "x": 1,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 6,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "floor": 2,
+          "action": "stair_up",
+          "connection_info": {
+            "connection_id": "stair_1_2_0",
+            "connection_type": "stair",
+            "steps": 15,
+            "duration": 18.0
+          }
+        },
+        {
+          "x": 8,
+          "y": 6,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 9,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 10,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        }
+      ],
+      "instructions": [
+        "开始导航",
+        "向右直行6步到楼梯",
+        "上楼梯到2楼",
+        "向右走1步",
+        "向下走1步",
+        "向右直行3步到目的地",
+        "到达目的地：房间1"
+      ],
+      "total_steps": 13,
+      "total_cost": 327.0,
+      "estimated_time": 63,
+      "is_3d": true
+    },
+    {
+      "id": "e3226a23-f1cb-48dd-b114-83ef58631b12",
+      "timestamp": "2025-09-15T21:40:00.219667",
+      "map_id": 11,
+      "start": {
+        "x": 3,
+        "y": 11
+      },
+      "end": {
+        "x": 13,
+        "y": 14
+      },
+      "target_room": "1",
+      "path_data": [
+        {
+          "x": 3,
+          "y": 11
+        },
+        {
+          "x": 3,
+          "y": 12
+        },
+        {
+          "x": 4,
+          "y": 12
+        },
+        {
+          "x": 5,
+          "y": 12
+        },
+        {
+          "x": 6,
+          "y": 12
+        },
+        {
+          "x": 7,
+          "y": 12
+        },
+        {
+          "x": 7,
+          "y": 13
+        },
+        {
+          "x": 7,
+          "y": 14
+        },
+        {
+          "x": 7,
+          "y": 15
+        },
+        {
+          "x": 8,
+          "y": 15
+        },
+        {
+          "x": 9,
+          "y": 15
+        },
+        {
+          "x": 9,
+          "y": 14
+        },
+        {
+          "x": 10,
+          "y": 14
+        },
+        {
+          "x": 11,
+          "y": 14
+        },
+        {
+          "x": 12,
+          "y": 14
+        },
+        {
+          "x": 13,
+          "y": 14
+        }
+      ],
+      "instructions": [
+        "Go straight for 1 step",
+        "Turn left",
+        "Go straight for 4 steps",
+        "Turn right",
+        "Go straight for 3 steps",
+        "Turn left",
+        "Go straight for 2 steps",
+        "Turn left",
+        "Go straight for 1 step",
+        "Turn right",
+        "Go straight for 4 steps",
+        "You have arrived at room"
+      ],
+      "total_steps": 16,
+      "estimated_time": 21.0
+    },
+    {
+      "id": "67a02fea-217b-4188-afeb-ad2389e6bfcf",
+      "timestamp": "2025-09-15T21:40:35.154786",
+      "map_id": 10,
+      "start": {
+        "x": 1,
+        "y": 6,
+        "floor": 1
+      },
+      "end": {
+        "x": 11,
+        "y": 7,
+        "floor": 2
+      },
+      "target_room": "room_2_11_7",
+      "path_data": [
+        {
+          "x": 1,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 6,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "floor": 2,
+          "action": "stair_up",
+          "connection_info": {
+            "connection_id": "stair_1_2_0",
+            "connection_type": "stair",
+            "steps": 15,
+            "duration": 18.0
+          }
+        },
+        {
+          "x": 8,
+          "y": 6,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 9,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 10,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        }
+      ],
+      "instructions": [
+        "开始导航",
+        "向右直行6步到楼梯",
+        "上楼梯到2楼",
+        "向右走1步",
+        "向下走1步",
+        "向右直行3步到目的地",
+        "到达目的地：房间1"
+      ],
+      "total_steps": 13,
+      "total_cost": 327.0,
+      "estimated_time": 63,
+      "is_3d": true
+    },
+    {
+      "id": "55a762f5-94bf-4a04-93bb-e8a192068eab",
+      "timestamp": "2025-09-15T21:43:25.627674",
+      "map_id": 12,
+      "start": {
+        "x": 3,
+        "y": 7,
+        "floor": 1
+      },
+      "end": {
+        "x": 14,
+        "y": 11,
+        "floor": 2
+      },
+      "target_room": "room_2_14_11",
+      "path_data": [
+        {
+          "x": 3,
+          "y": 7,
+          "floor": 1,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 5,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 6,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 7,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "floor": 2,
+          "action": "stair_up",
+          "connection_info": {
+            "connection_id": "stair_1_2_0",
+            "connection_type": "stair",
+            "steps": 15,
+            "duration": 18.0
+          }
+        },
+        {
+          "x": 9,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 10,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 8,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 9,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 12,
+          "y": 9,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 13,
+          "y": 9,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 14,
+          "y": 9,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 14,
+          "y": 10,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 14,
+          "y": 11,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        }
+      ],
+      "instructions": [
+        "开始导航",
+        "向右走1步",
+        "向上直行2步",
+        "向右直行4步",
+        "向下直行2步到楼梯",
+        "上楼梯到2楼",
+        "向右直行3步",
+        "向下直行2步",
+        "向右直行3步",
+        "向下直行2步到目的地",
+        "到达目的地：房间1"
+      ],
+      "total_steps": 21,
+      "total_cost": 666.5,
+      "estimated_time": 87,
+      "is_3d": true
+    },
+    {
+      "id": "49066c8a-f534-494d-99dd-deab350baa75",
+      "timestamp": "2025-09-15T21:58:32.032008",
+      "map_id": 12,
+      "start": {
+        "x": 3,
+        "y": 7,
+        "floor": 1
+      },
+      "end": {
+        "x": 14,
+        "y": 11,
+        "floor": 2
+      },
+      "target_room": "room_2_14_11",
+      "path_data": [
+        {
+          "x": 3,
+          "y": 7,
+          "floor": 1,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 5,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 6,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 7,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "floor": 2,
+          "action": "stair_up",
+          "connection_info": {
+            "connection_id": "stair_1_2_0",
+            "connection_type": "stair",
+            "steps": 15,
+            "duration": 18.0
+          }
+        },
+        {
+          "x": 9,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 10,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 8,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 9,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 12,
+          "y": 9,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 13,
+          "y": 9,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 14,
+          "y": 9,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 14,
+          "y": 10,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 14,
+          "y": 11,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        }
+      ],
+      "instructions": [
+        "开始导航",
+        "向右走1步",
+        "向上直行2步",
+        "向右直行4步",
+        "向下直行2步到楼梯",
+        "上楼梯到2楼",
+        "向右直行3步",
+        "向下直行2步",
+        "向右直行3步",
+        "向下直行2步到目的地",
+        "到达目的地：房间1"
+      ],
+      "total_steps": 21,
+      "total_cost": 666.5,
+      "estimated_time": 87,
+      "is_3d": true
+    },
+    {
+      "id": "45309a68-3459-432f-ab6e-ea83c5363aae",
+      "timestamp": "2025-09-15T22:03:34.658792",
+      "map_id": 11,
+      "start": {
+        "x": 3,
+        "y": 11
+      },
+      "end": {
+        "x": 13,
+        "y": 14
+      },
+      "target_room": "1",
+      "path_data": [
+        {
+          "x": 3,
+          "y": 11
+        },
+        {
+          "x": 3,
+          "y": 12
+        },
+        {
+          "x": 4,
+          "y": 12
+        },
+        {
+          "x": 5,
+          "y": 12
+        },
+        {
+          "x": 6,
+          "y": 12
+        },
+        {
+          "x": 7,
+          "y": 12
+        },
+        {
+          "x": 7,
+          "y": 13
+        },
+        {
+          "x": 7,
+          "y": 14
+        },
+        {
+          "x": 7,
+          "y": 15
+        },
+        {
+          "x": 8,
+          "y": 15
+        },
+        {
+          "x": 9,
+          "y": 15
+        },
+        {
+          "x": 9,
+          "y": 14
+        },
+        {
+          "x": 10,
+          "y": 14
+        },
+        {
+          "x": 11,
+          "y": 14
+        },
+        {
+          "x": 12,
+          "y": 14
+        },
+        {
+          "x": 13,
+          "y": 14
+        }
+      ],
+      "instructions": [
+        "Go straight for 1 step",
+        "Turn left",
+        "Go straight for 4 steps",
+        "Turn right",
+        "Go straight for 3 steps",
+        "Turn left",
+        "Go straight for 2 steps",
+        "Turn left",
+        "Go straight for 1 step",
+        "Turn right",
+        "Go straight for 4 steps",
+        "You have arrived at room"
+      ],
+      "total_steps": 16,
+      "estimated_time": 21.0
+    },
+    {
+      "id": "c09b2637-d734-4c32-a186-4c881b59c278",
+      "timestamp": "2025-09-15T22:19:44.803147",
+      "map_id": 12,
+      "start": {
+        "x": 3,
+        "y": 7,
+        "floor": 1
+      },
+      "end": {
+        "x": 14,
+        "y": 11,
+        "floor": 2
+      },
+      "target_room": "room_2_14_11",
+      "path_data": [
+        {
+          "x": 3,
+          "y": 7,
+          "floor": 1,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 5,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 6,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 7,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "floor": 2,
+          "action": "stair_up",
+          "connection_info": {
+            "connection_id": "stair_1_2_0",
+            "connection_type": "stair",
+            "steps": 15,
+            "duration": 18.0
+          }
+        },
+        {
+          "x": 9,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 10,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 8,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 9,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 12,
+          "y": 9,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 13,
+          "y": 9,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 14,
+          "y": 9,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 14,
+          "y": 10,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 14,
+          "y": 11,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        }
+      ],
+      "instructions": [
+        "开始导航",
+        "向右走1步",
+        "向上直行2步",
+        "向右直行4步",
+        "向下直行2步到楼梯",
+        "上楼梯到2楼",
+        "向右直行3步",
+        "向下直行2步",
+        "向右直行3步",
+        "向下直行2步到目的地",
+        "到达目的地：房间1"
+      ],
+      "total_steps": 21,
+      "total_cost": 666.5,
+      "estimated_time": 87,
+      "is_3d": true
+    },
+    {
+      "id": "046f926b-4604-4fd9-84a0-614986b113e8",
+      "timestamp": "2025-09-15T22:23:42.352770",
+      "map_id": 11,
+      "start": {
+        "x": 3,
+        "y": 11
+      },
+      "end": {
+        "x": 13,
+        "y": 14
+      },
+      "target_room": "1",
+      "path_data": [
+        {
+          "x": 3,
+          "y": 11
+        },
+        {
+          "x": 3,
+          "y": 12
+        },
+        {
+          "x": 4,
+          "y": 12
+        },
+        {
+          "x": 5,
+          "y": 12
+        },
+        {
+          "x": 6,
+          "y": 12
+        },
+        {
+          "x": 7,
+          "y": 12
+        },
+        {
+          "x": 7,
+          "y": 13
+        },
+        {
+          "x": 7,
+          "y": 14
+        },
+        {
+          "x": 7,
+          "y": 15
+        },
+        {
+          "x": 8,
+          "y": 15
+        },
+        {
+          "x": 9,
+          "y": 15
+        },
+        {
+          "x": 9,
+          "y": 14
+        },
+        {
+          "x": 10,
+          "y": 14
+        },
+        {
+          "x": 11,
+          "y": 14
+        },
+        {
+          "x": 12,
+          "y": 14
+        },
+        {
+          "x": 13,
+          "y": 14
+        }
+      ],
+      "instructions": [
+        "Go straight for 1 step",
+        "Turn left",
+        "Go straight for 4 steps",
+        "Turn right",
+        "Go straight for 3 steps",
+        "Turn left",
+        "Go straight for 2 steps",
+        "Turn left",
+        "Go straight for 1 step",
+        "Turn right",
+        "Go straight for 4 steps",
+        "You have arrived at room"
+      ],
+      "total_steps": 16,
+      "estimated_time": 21.0
+    },
+    {
+      "id": "4a39e18f-e6bb-448f-a5e8-f4e6f07f05b7",
+      "timestamp": "2025-09-15T22:24:13.962699",
+      "map_id": 11,
+      "start": {
+        "x": 3,
+        "y": 11
+      },
+      "end": {
+        "x": 13,
+        "y": 14
+      },
+      "target_room": "1",
+      "path_data": [
+        {
+          "x": 3,
+          "y": 11
+        },
+        {
+          "x": 3,
+          "y": 12
+        },
+        {
+          "x": 4,
+          "y": 12
+        },
+        {
+          "x": 5,
+          "y": 12
+        },
+        {
+          "x": 6,
+          "y": 12
+        },
+        {
+          "x": 7,
+          "y": 12
+        },
+        {
+          "x": 7,
+          "y": 13
+        },
+        {
+          "x": 7,
+          "y": 14
+        },
+        {
+          "x": 7,
+          "y": 15
+        },
+        {
+          "x": 8,
+          "y": 15
+        },
+        {
+          "x": 9,
+          "y": 15
+        },
+        {
+          "x": 9,
+          "y": 14
+        },
+        {
+          "x": 10,
+          "y": 14
+        },
+        {
+          "x": 11,
+          "y": 14
+        },
+        {
+          "x": 12,
+          "y": 14
+        },
+        {
+          "x": 13,
+          "y": 14
+        }
+      ],
+      "instructions": [
+        "Go straight for 1 step",
+        "Turn left",
+        "Go straight for 4 steps",
+        "Turn right",
+        "Go straight for 3 steps",
+        "Turn left",
+        "Go straight for 2 steps",
+        "Turn left",
+        "Go straight for 1 step",
+        "Turn right",
+        "Go straight for 4 steps",
+        "You have arrived at room"
+      ],
+      "total_steps": 16,
+      "estimated_time": 21.0
+    },
+    {
+      "id": "120360e6-dc0f-4d63-8177-4234435604d4",
+      "timestamp": "2025-09-15T22:28:40.456801",
+      "map_id": 12,
+      "start": {
+        "x": 3,
+        "y": 7,
+        "floor": 1
+      },
+      "end": {
+        "x": 14,
+        "y": 11,
+        "floor": 2
+      },
+      "target_room": "room_2_14_11",
+      "path_data": [
+        {
+          "x": 3,
+          "y": 7,
+          "floor": 1,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 5,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 6,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 7,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "floor": 2,
+          "action": "stair_up",
+          "connection_info": {
+            "connection_id": "stair_1_2_0",
+            "connection_type": "stair",
+            "steps": 15,
+            "duration": 18.0
+          }
+        },
+        {
+          "x": 9,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 10,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 8,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 9,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 12,
+          "y": 9,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 13,
+          "y": 9,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 14,
+          "y": 9,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 14,
+          "y": 10,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 14,
+          "y": 11,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        }
+      ],
+      "instructions": [
+        "开始导航",
+        "向右走1步",
+        "向上直行2步",
+        "向右直行4步",
+        "向下直行2步到楼梯",
+        "上楼梯到2楼",
+        "向右直行3步",
+        "向下直行2步",
+        "向右直行3步",
+        "向下直行2步到目的地",
+        "到达目的地：房间1"
+      ],
+      "total_steps": 21,
+      "total_cost": 666.5,
+      "estimated_time": 87,
+      "is_3d": true
+    },
+    {
+      "id": "e3a196d9-f963-4bdc-846c-b8a98625848f",
+      "timestamp": "2025-09-15T22:30:08.259329",
+      "map_id": 11,
+      "start": {
+        "x": 3,
+        "y": 11
+      },
+      "end": {
+        "x": 13,
+        "y": 14
+      },
+      "target_room": "1",
+      "path_data": [
+        {
+          "x": 3,
+          "y": 11
+        },
+        {
+          "x": 3,
+          "y": 12
+        },
+        {
+          "x": 4,
+          "y": 12
+        },
+        {
+          "x": 5,
+          "y": 12
+        },
+        {
+          "x": 6,
+          "y": 12
+        },
+        {
+          "x": 7,
+          "y": 12
+        },
+        {
+          "x": 7,
+          "y": 13
+        },
+        {
+          "x": 7,
+          "y": 14
+        },
+        {
+          "x": 7,
+          "y": 15
+        },
+        {
+          "x": 8,
+          "y": 15
+        },
+        {
+          "x": 9,
+          "y": 15
+        },
+        {
+          "x": 9,
+          "y": 14
+        },
+        {
+          "x": 10,
+          "y": 14
+        },
+        {
+          "x": 11,
+          "y": 14
+        },
+        {
+          "x": 12,
+          "y": 14
+        },
+        {
+          "x": 13,
+          "y": 14
+        }
+      ],
+      "instructions": [
+        "Go straight for 1 step",
+        "Turn left",
+        "Go straight for 4 steps",
+        "Turn right",
+        "Go straight for 3 steps",
+        "Turn left",
+        "Go straight for 2 steps",
+        "Turn left",
+        "Go straight for 1 step",
+        "Turn right",
+        "Go straight for 4 steps",
+        "You have arrived at room"
+      ],
+      "total_steps": 16,
+      "estimated_time": 21.0
+    },
+    {
+      "id": "c923f61f-9ad5-457d-8a38-6bd598e1a463",
+      "timestamp": "2025-09-15T22:37:08.166608",
+      "map_id": 11,
+      "start": {
+        "x": 3,
+        "y": 11
+      },
+      "end": {
+        "x": 13,
+        "y": 14
+      },
+      "target_room": "1",
+      "path_data": [
+        {
+          "x": 3,
+          "y": 11
+        },
+        {
+          "x": 3,
+          "y": 12
+        },
+        {
+          "x": 4,
+          "y": 12
+        },
+        {
+          "x": 5,
+          "y": 12
+        },
+        {
+          "x": 6,
+          "y": 12
+        },
+        {
+          "x": 7,
+          "y": 12
+        },
+        {
+          "x": 7,
+          "y": 13
+        },
+        {
+          "x": 7,
+          "y": 14
+        },
+        {
+          "x": 7,
+          "y": 15
+        },
+        {
+          "x": 8,
+          "y": 15
+        },
+        {
+          "x": 9,
+          "y": 15
+        },
+        {
+          "x": 9,
+          "y": 14
+        },
+        {
+          "x": 10,
+          "y": 14
+        },
+        {
+          "x": 11,
+          "y": 14
+        },
+        {
+          "x": 12,
+          "y": 14
+        },
+        {
+          "x": 13,
+          "y": 14
+        }
+      ],
+      "instructions": [
+        "Go straight for 1 step",
+        "Turn left",
+        "Go straight for 4 steps",
+        "Turn right",
+        "Go straight for 3 steps",
+        "Turn left",
+        "Go straight for 2 steps",
+        "Turn left",
+        "Go straight for 1 step",
+        "Turn right",
+        "Go straight for 4 steps",
+        "You have arrived at room"
+      ],
+      "total_steps": 16,
+      "estimated_time": 21.0
+    },
+    {
+      "id": "8af47eb2-b169-43e8-bcd9-33fc4f12f1ff",
+      "timestamp": "2025-09-15T22:50:19.000661",
+      "map_id": 12,
+      "start": {
+        "x": 3,
+        "y": 7,
+        "floor": 1
+      },
+      "end": {
+        "x": 14,
+        "y": 11,
+        "floor": 2
+      },
+      "target_room": "room_2_14_11",
+      "path_data": [
+        {
+          "x": 3,
+          "y": 7,
+          "floor": 1,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 5,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 6,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 7,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "floor": 2,
+          "action": "stair_up",
+          "connection_info": {
+            "connection_id": "stair_1_2_0",
+            "connection_type": "stair",
+            "steps": 15,
+            "duration": 18.0
+          }
+        },
+        {
+          "x": 9,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 10,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 8,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 9,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 12,
+          "y": 9,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 13,
+          "y": 9,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 14,
+          "y": 9,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 14,
+          "y": 10,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 14,
+          "y": 11,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        }
+      ],
+      "instructions": [
+        "开始导航",
+        "向右走1步",
+        "向上直行2步",
+        "向右直行4步",
+        "向下直行2步到楼梯",
+        "上楼梯到2楼",
+        "向右直行3步",
+        "向下直行2步",
+        "向右直行3步",
+        "向下直行2步到目的地",
+        "到达目的地：房间1"
+      ],
+      "total_steps": 21,
+      "total_cost": 666.5,
+      "estimated_time": 87,
+      "is_3d": true
+    },
+    {
+      "id": "641a4463-1296-4857-ad29-e10a298c876b",
+      "timestamp": "2025-09-15T22:51:33.699311",
+      "map_id": 11,
+      "start": {
+        "x": 3,
+        "y": 11
+      },
+      "end": {
+        "x": 13,
+        "y": 14
+      },
+      "target_room": "1",
+      "path_data": [
+        {
+          "x": 3,
+          "y": 11
+        },
+        {
+          "x": 3,
+          "y": 12
+        },
+        {
+          "x": 4,
+          "y": 12
+        },
+        {
+          "x": 5,
+          "y": 12
+        },
+        {
+          "x": 6,
+          "y": 12
+        },
+        {
+          "x": 7,
+          "y": 12
+        },
+        {
+          "x": 7,
+          "y": 13
+        },
+        {
+          "x": 7,
+          "y": 14
+        },
+        {
+          "x": 7,
+          "y": 15
+        },
+        {
+          "x": 8,
+          "y": 15
+        },
+        {
+          "x": 9,
+          "y": 15
+        },
+        {
+          "x": 9,
+          "y": 14
+        },
+        {
+          "x": 10,
+          "y": 14
+        },
+        {
+          "x": 11,
+          "y": 14
+        },
+        {
+          "x": 12,
+          "y": 14
+        },
+        {
+          "x": 13,
+          "y": 14
+        }
+      ],
+      "instructions": [
+        "Go straight for 1 step",
+        "Turn left",
+        "Go straight for 4 steps",
+        "Turn right",
+        "Go straight for 3 steps",
+        "Turn left",
+        "Go straight for 2 steps",
+        "Turn left",
+        "Go straight for 1 step",
+        "Turn right",
+        "Go straight for 4 steps",
+        "You have arrived at room"
+      ],
+      "total_steps": 16,
+      "estimated_time": 21.0
+    },
+    {
+      "id": "59ae470c-a248-4cc0-8d8c-b3403f198158",
+      "timestamp": "2025-09-15T22:52:05.285067",
+      "map_id": 12,
+      "start": {
+        "x": 3,
+        "y": 7,
+        "floor": 1
+      },
+      "end": {
+        "x": 14,
+        "y": 11,
+        "floor": 2
+      },
+      "target_room": "room_2_14_11",
+      "path_data": [
+        {
+          "x": 3,
+          "y": 7,
+          "floor": 1,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 5,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 6,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 7,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "floor": 2,
+          "action": "stair_up",
+          "connection_info": {
+            "connection_id": "stair_1_2_0",
+            "connection_type": "stair",
+            "steps": 15,
+            "duration": 18.0
+          }
+        },
+        {
+          "x": 9,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 10,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 8,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 9,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 12,
+          "y": 9,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 13,
+          "y": 9,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 14,
+          "y": 9,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 14,
+          "y": 10,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 14,
+          "y": 11,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        }
+      ],
+      "instructions": [
+        "开始导航",
+        "向右走1步",
+        "向上直行2步",
+        "向右直行4步",
+        "向下直行2步到楼梯",
+        "上楼梯到2楼",
+        "向右直行3步",
+        "向下直行2步",
+        "向右直行3步",
+        "向下直行2步到目的地",
+        "到达目的地：房间1"
+      ],
+      "total_steps": 21,
+      "total_cost": 666.5,
+      "estimated_time": 87,
+      "is_3d": true
+    },
+    {
+      "id": "f08b4cfa-6ab0-4d03-ae94-e0dcbff04f8c",
+      "timestamp": "2025-09-15T22:52:51.060386",
+      "map_id": 10,
+      "start": {
+        "x": 1,
+        "y": 6,
+        "floor": 1
+      },
+      "end": {
+        "x": 11,
+        "y": 7,
+        "floor": 2
+      },
+      "target_room": "room_2_11_7",
+      "path_data": [
+        {
+          "x": 1,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 6,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "floor": 2,
+          "action": "stair_up",
+          "connection_info": {
+            "connection_id": "stair_1_2_0",
+            "connection_type": "stair",
+            "steps": 15,
+            "duration": 18.0
+          }
+        },
+        {
+          "x": 8,
+          "y": 6,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 9,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 10,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        }
+      ],
+      "instructions": [
+        "开始导航",
+        "向右直行6步到楼梯",
+        "上楼梯到2楼",
+        "向右走1步",
+        "向下走1步",
+        "向右直行3步到目的地",
+        "到达目的地：房间1"
+      ],
+      "total_steps": 13,
+      "total_cost": 327.0,
+      "estimated_time": 63,
+      "is_3d": true
+    },
+    {
+      "id": "1fa0f58a-f134-48a0-ad1d-fd816189cbcd",
+      "timestamp": "2025-09-15T22:53:32.488956",
+      "map_id": 12,
+      "start": {
+        "x": 3,
+        "y": 7,
+        "floor": 1
+      },
+      "end": {
+        "x": 14,
+        "y": 11,
+        "floor": 2
+      },
+      "target_room": "room_2_14_11",
+      "path_data": [
+        {
+          "x": 3,
+          "y": 7,
+          "floor": 1,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 5,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 6,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 7,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 5,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "floor": 2,
+          "action": "stair_up",
+          "connection_info": {
+            "connection_id": "stair_1_2_0",
+            "connection_type": "stair",
+            "steps": 15,
+            "duration": 18.0
+          }
+        },
+        {
+          "x": 9,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 10,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 8,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 9,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 12,
+          "y": 9,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 13,
+          "y": 9,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 14,
+          "y": 9,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 14,
+          "y": 10,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 14,
+          "y": 11,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        }
+      ],
+      "instructions": [
+        "开始导航",
+        "向右走1步",
+        "向上直行2步",
+        "向右直行4步",
+        "向下直行2步到楼梯",
+        "上楼梯到2楼",
+        "向右直行3步",
+        "向下直行2步",
+        "向右直行3步",
+        "向下直行2步到目的地",
+        "到达目的地：房间1"
+      ],
+      "total_steps": 21,
+      "total_cost": 666.5,
+      "estimated_time": 87,
+      "is_3d": true
+    },
+    {
+      "id": "0f45e4e2-8df3-4820-934a-133401bbbf38",
+      "timestamp": "2025-09-15T22:55:11.765652",
+      "map_id": 11,
+      "start": {
+        "x": 3,
+        "y": 11
+      },
+      "end": {
+        "x": 13,
+        "y": 14
+      },
+      "target_room": "1",
+      "path_data": [
+        {
+          "x": 3,
+          "y": 11
+        },
+        {
+          "x": 3,
+          "y": 12
+        },
+        {
+          "x": 4,
+          "y": 12
+        },
+        {
+          "x": 5,
+          "y": 12
+        },
+        {
+          "x": 6,
+          "y": 12
+        },
+        {
+          "x": 7,
+          "y": 12
+        },
+        {
+          "x": 7,
+          "y": 13
+        },
+        {
+          "x": 7,
+          "y": 14
+        },
+        {
+          "x": 7,
+          "y": 15
+        },
+        {
+          "x": 8,
+          "y": 15
+        },
+        {
+          "x": 9,
+          "y": 15
+        },
+        {
+          "x": 9,
+          "y": 14
+        },
+        {
+          "x": 10,
+          "y": 14
+        },
+        {
+          "x": 11,
+          "y": 14
+        },
+        {
+          "x": 12,
+          "y": 14
+        },
+        {
+          "x": 13,
+          "y": 14
+        }
+      ],
+      "instructions": [
+        "Go straight for 1 step",
+        "Turn left",
+        "Go straight for 4 steps",
+        "Turn right",
+        "Go straight for 3 steps",
+        "Turn left",
+        "Go straight for 2 steps",
+        "Turn left",
+        "Go straight for 1 step",
+        "Turn right",
+        "Go straight for 4 steps",
+        "You have arrived at room"
+      ],
+      "total_steps": 16,
+      "estimated_time": 21.0
+    },
+    {
+      "id": "329e2b8d-a01a-483c-ba4e-ba92ed21f732",
+      "timestamp": "2025-09-15T22:59:53.285106",
+      "map_id": 13,
+      "start": {
+        "x": 2,
+        "y": 6
+      },
+      "end": {
+        "x": 10,
+        "y": 6
+      },
+      "target_room": "202",
+      "path_data": [
+        {
+          "x": 2,
+          "y": 6
+        },
+        {
+          "x": 3,
+          "y": 6
+        },
+        {
+          "x": 4,
+          "y": 6
+        },
+        {
+          "x": 5,
+          "y": 6
+        },
+        {
+          "x": 6,
+          "y": 6
+        },
+        {
+          "x": 7,
+          "y": 6
+        },
+        {
+          "x": 8,
+          "y": 6
+        },
+        {
+          "x": 9,
+          "y": 6
+        },
+        {
+          "x": 10,
+          "y": 6
+        }
+      ],
+      "instructions": [
+        "Go straight for 8 steps",
+        "You have arrived at 202"
+      ],
+      "total_steps": 9,
+      "estimated_time": 9.0
+    },
+    {
+      "id": "0854b956-6cdc-40a2-97d2-8630b85beb6e",
+      "timestamp": "2025-09-15T23:00:05.469049",
+      "map_id": 14,
+      "start": {
+        "x": 1,
+        "y": 7,
+        "floor": 1
+      },
+      "end": {
+        "x": 14,
+        "y": 4,
+        "floor": 2
+      },
+      "target_room": "room_2_14_4",
+      "path_data": [
+        {
+          "x": 1,
+          "y": 7,
+          "floor": 1,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 2,
+          "y": 7,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 5,
+          "y": 7,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 6,
+          "y": 7,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 7,
+          "y": 7,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 9,
+          "y": 7,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 10,
+          "y": 7,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 10,
+          "y": 7,
+          "floor": 2,
+          "action": "stair_up",
+          "connection_info": {
+            "connection_id": "stair_1_2_0",
+            "connection_type": "stair",
+            "steps": 15,
+            "duration": 18.0
+          }
+        },
+        {
+          "x": 11,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 12,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 12,
+          "y": 6,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 13,
+          "y": 6,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 14,
+          "y": 6,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 14,
+          "y": 5,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 14,
+          "y": 4,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        }
+      ],
+      "instructions": [
+        "开始导航",
+        "向右直行9步到楼梯",
+        "上楼梯到2楼",
+        "向右直行2步",
+        "向上走1步",
+        "向右直行2步",
+        "向上直行2步到目的地",
+        "到达目的地：208"
+      ],
+      "total_steps": 18,
+      "total_cost": 485.0,
+      "estimated_time": 78,
+      "is_3d": true
+    },
+    {
+      "id": "7ebfb550-4634-4864-8772-d29c33cfc359",
+      "timestamp": "2025-09-15T23:06:42.689451",
+      "map_id": 10,
+      "start": {
+        "x": 1,
+        "y": 6,
+        "floor": 1
+      },
+      "end": {
+        "x": 11,
+        "y": 7,
+        "floor": 2
+      },
+      "target_room": "room_2_11_7",
+      "path_data": [
+        {
+          "x": 1,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 6,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "floor": 2,
+          "action": "stair_up",
+          "connection_info": {
+            "connection_id": "stair_1_2_0",
+            "connection_type": "stair",
+            "steps": 15,
+            "duration": 18.0
+          }
+        },
+        {
+          "x": 8,
+          "y": 6,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 9,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 10,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        }
+      ],
+      "instructions": [
+        "开始导航",
+        "向右直行6步到楼梯",
+        "上楼梯到2楼",
+        "向右走1步",
+        "向下走1步",
+        "向右直行3步到目的地",
+        "到达目的地：房间1"
+      ],
+      "total_steps": 13,
+      "total_cost": 327.0,
+      "estimated_time": 63,
+      "is_3d": true
+    },
+    {
+      "id": "a02f22e7-29e0-4b6a-afad-2006c2ac41fb",
+      "timestamp": "2025-09-15T23:07:26.547916",
+      "map_id": 15,
+      "start": {
+        "x": 4,
+        "y": 11
+      },
+      "end": {
+        "x": 15,
+        "y": 12
+      },
+      "target_room": "202",
+      "path_data": [
+        {
+          "x": 4,
+          "y": 11
+        },
+        {
+          "x": 4,
+          "y": 10
+        },
+        {
+          "x": 5,
+          "y": 10
+        },
+        {
+          "x": 6,
+          "y": 10
+        },
+        {
+          "x": 7,
+          "y": 10
+        },
+        {
+          "x": 8,
+          "y": 10
+        },
+        {
+          "x": 9,
+          "y": 10
+        },
+        {
+          "x": 10,
+          "y": 10
+        },
+        {
+          "x": 11,
+          "y": 10
+        },
+        {
+          "x": 11,
+          "y": 9
+        },
+        {
+          "x": 12,
+          "y": 9
+        },
+        {
+          "x": 13,
+          "y": 9
+        },
+        {
+          "x": 13,
+          "y": 10
+        },
+        {
+          "x": 13,
+          "y": 11
+        },
+        {
+          "x": 14,
+          "y": 11
+        },
+        {
+          "x": 15,
+          "y": 11
+        },
+        {
+          "x": 15,
+          "y": 12
+        }
+      ],
+      "instructions": [
+        "Go straight for 1 step",
+        "Turn right",
+        "Go straight for 7 steps",
+        "Turn left",
+        "Go straight for 1 step",
+        "Turn right",
+        "Go straight for 2 steps",
+        "Turn right",
+        "Go straight for 2 steps",
+        "Turn left",
+        "Go straight for 2 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "You have arrived at 202"
+      ],
+      "total_steps": 17,
+      "estimated_time": 23.0
+    },
+    {
+      "id": "1060ba62-57cb-4191-8462-5ddae467668c",
+      "timestamp": "2025-09-15T23:08:05.059241",
+      "map_id": 10,
+      "start": {
+        "x": 1,
+        "y": 6,
+        "floor": 1
+      },
+      "end": {
+        "x": 11,
+        "y": 7,
+        "floor": 2
+      },
+      "target_room": "room_2_11_7",
+      "path_data": [
+        {
+          "x": 1,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 6,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "floor": 2,
+          "action": "stair_up",
+          "connection_info": {
+            "connection_id": "stair_1_2_0",
+            "connection_type": "stair",
+            "steps": 15,
+            "duration": 18.0
+          }
+        },
+        {
+          "x": 8,
+          "y": 6,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 9,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 10,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 7,
+          "floor": 2,
+          "action": "move",
+          "connection_info": {}
+        }
+      ],
+      "instructions": [
+        "开始导航",
+        "向右直行6步到楼梯",
+        "上楼梯到2楼",
+        "向右走1步",
+        "向下走1步",
+        "向右直行3步到目的地",
+        "到达目的地：房间1"
+      ],
+      "total_steps": 13,
+      "total_cost": 327.0,
+      "estimated_time": 63,
+      "is_3d": true
+    }
+  ]
+}

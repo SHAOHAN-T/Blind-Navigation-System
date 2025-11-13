@@ -1,0 +1,163 @@
+<!--Map List Page Template-->
+<view class="container">
+
+  <!-- Page Header -->
+  <view class="header-section">
+    <view class="header-content">
+      <view class="page-title">Map List</view>
+      <view class="header-actions">
+        <button class="action-btn search-btn" bindtap="onToggleSearch" aria-label="Search Maps">
+          <text class="action-text">Search</text>
+        </button>
+        <button class="action-btn sort-btn" bindtap="onSortMaps" aria-label="Sort Maps">
+          <text class="action-text">Sort</text>
+        </button>
+      </view>
+    </view>
+
+    <!-- Search Box -->
+    <view wx:if="{{showSearch}}" class="search-section">
+      <view class="search-box">
+        <input 
+          class="search-input" 
+          placeholder="Search map name or ID"
+          value="{{searchKeyword}}"
+          bindinput="onSearchInput"
+          confirm-type="search"
+        />
+        <view wx:if="{{searchKeyword}}" class="clear-btn" bindtap="onClearSearch">
+          <text class="clear-text">Clear</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- Loading State -->
+  <view wx:if="{{loading}}" class="loading">
+    <view class="loading-spinner"></view>
+    <view class="loading-text">Loading map list...</view>
+  </view>
+
+  <!-- Map List -->
+  <view wx:else class="maps-section">
+    
+    <!-- Statistics -->
+    <view class="stats-bar">
+      <view class="stats-item">
+        <text class="stats-number">{{filteredMaps.length}}</text>
+        <text class="stats-label">maps</text>
+      </view>
+      <view wx:if="{{searchKeyword}}" class="search-result">
+        Search results for "{{searchKeyword}}"
+      </view>
+    </view>
+
+    <!-- Map List Items -->
+    <view wx:if="{{filteredMaps.length > 0}}" class="maps-list">
+      <view 
+        wx:for="{{filteredMaps}}" 
+        wx:key="id"
+        class="map-item card"
+        data-map-id="{{item.id}}"
+        data-map-name="{{item.name}}"
+        bindtap="onMapTap"
+      >
+        <view class="map-item-content">
+          <!-- Map Basic Info -->
+          <view class="map-info">
+            <view class="map-header">
+              <view class="map-name">{{item.name}}</view>
+              <view class="map-id">ID: {{item.id}}</view>
+            </view>
+            
+            <view class="map-details">
+              <view class="map-detail-item">
+                <text class="detail-text">{{item.width}} × {{item.height}}</text>
+              </view>
+              <view class="map-detail-item">
+                <text class="detail-text">{{item.room_count || 0}} rooms</text>
+              </view>
+              <view class="map-detail-item">
+                <text class="detail-text">{{item.created_time}}</text>
+              </view>
+            </view>
+            
+            <!-- Map status and type -->
+            <view class="map-status">
+              <view class="map-type-badge {{item.map_type === '3D' ? 'type-3d' : 'type-2d'}}">
+                {{item.map_type || '2D'}} Map
+              </view>
+              <view class="status-badge {{item.room_count > 0 ? 'status-active' : 'status-inactive'}}">
+                {{item.room_count > 0 ? 'Available' : 'No Rooms'}}
+              </view>
+            </view>
+          </view>
+
+          <!-- Map legend -->
+          <view class="map-legend">
+            <view class="legend-title">Legend</view>
+            <view class="legend-items">
+              <view class="legend-item">
+                <view class="legend-dot entrance-dot"></view>
+                <text class="legend-text">Entrance</text>
+              </view>
+              <view class="legend-item">
+                <view class="legend-dot room-dot"></view>
+                <text class="legend-text">Room</text>
+              </view>
+              <view class="legend-item">
+                <view class="legend-dot obstacle-dot"></view>
+                <text class="legend-text">Obstacle</text>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <!-- Action buttons -->
+        <view class="map-actions">
+          <button 
+            class="btn btn-small btn-outline-primary detail-btn"
+            data-map-id="{{item.id}}"
+            data-map-name="{{item.name}}"
+            bindtap="onMapDetail"
+            aria-label="View {{item.name}} map details"
+          >
+            Details
+          </button>
+          <button 
+            class="btn btn-small {{item.room_count > 0 ? 'btn-primary' : 'btn-disabled'}} nav-btn"
+            data-map-id="{{item.id}}"
+            data-map-name="{{item.name}}"
+            bindtap="onQuickNavigation"
+            disabled="{{item.room_count === 0}}"
+            aria-label="{{item.room_count > 0 ? 'Start navigation to ' + item.name : 'This map has no rooms, cannot navigate'}}"
+          >
+            {{item.room_count > 0 ? 'Quick Navigation' : 'No Rooms'}}
+          </button>
+        </view>
+      </view>
+    </view>
+
+    <!-- Empty state -->
+    <view wx:else class="empty-state">
+      <view class="empty-state-title">
+        {{searchKeyword ? 'No matching maps found' : 'No available maps'}}
+      </view>
+      <view class="empty-state-subtitle">
+        {{searchKeyword ? 'Try searching with other keywords' : 'Please contact administrator to add map data'}}
+      </view>
+      <button wx:if="{{searchKeyword}}" class="btn btn-primary" bindtap="onClearSearch">
+        Clear Search
+      </button>
+    </view>
+
+  </view>
+
+  <!-- Refresh tip -->
+  <view wx:if="{{refreshing}}" class="refresh-tip">
+    <view class="refresh-content">
+      <view class="refresh-text">Refreshing data...</view>
+    </view>
+  </view>
+
+</view>

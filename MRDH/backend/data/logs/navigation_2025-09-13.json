@@ -1,0 +1,2481 @@
+{
+  "date": "2025-09-13",
+  "logs": [
+    {
+      "id": "e7c132dc-a9f2-4086-b7eb-ecbe084f7a43",
+      "timestamp": "2025-09-13T18:59:05.433672",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 9,
+        "y": 5
+      },
+      "target_room": "101",
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 5
+        },
+        {
+          "x": 7,
+          "y": 5
+        },
+        {
+          "x": 8,
+          "y": 5
+        },
+        {
+          "x": 9,
+          "y": 5
+        }
+      ],
+      "instructions": [
+        "Go straight for 9 steps",
+        "You have arrived at 测试房间"
+      ],
+      "total_steps": 10,
+      "estimated_time": 10.0
+    },
+    {
+      "id": "cc82e6da-daa6-4eed-9280-f7e136721150",
+      "timestamp": "2025-09-13T18:59:09.864436",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 9,
+        "y": 5
+      },
+      "target_room": "101",
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 5
+        },
+        {
+          "x": 7,
+          "y": 5
+        },
+        {
+          "x": 8,
+          "y": 5
+        },
+        {
+          "x": 9,
+          "y": 5
+        }
+      ],
+      "instructions": [
+        "Go straight for 9 steps",
+        "You have arrived at 测试房间"
+      ],
+      "total_steps": 10,
+      "estimated_time": 10.0
+    },
+    {
+      "id": "bdb31068-200b-4fa9-9d42-8e862c6950cd",
+      "timestamp": "2025-09-13T18:59:14.063188",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 9,
+        "y": 5
+      },
+      "target_room": "101",
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 5
+        },
+        {
+          "x": 7,
+          "y": 5
+        },
+        {
+          "x": 8,
+          "y": 5
+        },
+        {
+          "x": 9,
+          "y": 5
+        }
+      ],
+      "instructions": [
+        "Go straight for 9 steps",
+        "You have arrived at 测试房间"
+      ],
+      "total_steps": 10,
+      "estimated_time": 10.0
+    },
+    {
+      "id": "8adc56ea-6609-4117-a571-c40f7273fac3",
+      "timestamp": "2025-09-13T18:59:40.228158",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 9,
+        "y": 5
+      },
+      "target_room": "101",
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 5
+        },
+        {
+          "x": 7,
+          "y": 5
+        },
+        {
+          "x": 8,
+          "y": 5
+        },
+        {
+          "x": 9,
+          "y": 5
+        }
+      ],
+      "instructions": [
+        "Go straight for 9 steps",
+        "You have arrived at 测试房间"
+      ],
+      "total_steps": 10,
+      "estimated_time": 10.0
+    },
+    {
+      "id": "978c572d-f5ff-45c7-8292-a6e68903ee67",
+      "timestamp": "2025-09-13T19:00:05.742189",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 9,
+        "y": 5
+      },
+      "target_room": "101",
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 5
+        },
+        {
+          "x": 7,
+          "y": 5
+        },
+        {
+          "x": 8,
+          "y": 5
+        },
+        {
+          "x": 9,
+          "y": 5
+        }
+      ],
+      "instructions": [
+        "Go straight for 9 steps",
+        "You have arrived at 测试房间"
+      ],
+      "total_steps": 10,
+      "estimated_time": 10.0
+    },
+    {
+      "id": "e55ac60e-4370-4e2f-9226-c8877eb4cf1e",
+      "timestamp": "2025-09-13T19:01:01.515167",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 9,
+        "y": 5
+      },
+      "target_room": "101",
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 5
+        },
+        {
+          "x": 7,
+          "y": 5
+        },
+        {
+          "x": 8,
+          "y": 5
+        },
+        {
+          "x": 9,
+          "y": 5
+        }
+      ],
+      "instructions": [
+        "Go straight for 9 steps",
+        "You have arrived at 测试房间"
+      ],
+      "total_steps": 10,
+      "estimated_time": 10.0
+    },
+    {
+      "id": "da0d3348-9607-4a38-85e2-9c166f1fd575",
+      "timestamp": "2025-09-13T19:07:20.966608",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 9,
+        "y": 5
+      },
+      "target_room": "101",
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 5
+        },
+        {
+          "x": 7,
+          "y": 5
+        },
+        {
+          "x": 8,
+          "y": 5
+        },
+        {
+          "x": 9,
+          "y": 5
+        }
+      ],
+      "instructions": [
+        "Go straight for 9 steps",
+        "You have arrived at 测试房间"
+      ],
+      "total_steps": 10,
+      "estimated_time": 10.0
+    },
+    {
+      "id": "c4486642-6418-4d06-af05-b92cece50eab",
+      "timestamp": "2025-09-13T19:07:28.620476",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 9,
+        "y": 5
+      },
+      "target_room": "101",
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 5
+        },
+        {
+          "x": 7,
+          "y": 5
+        },
+        {
+          "x": 8,
+          "y": 5
+        },
+        {
+          "x": 9,
+          "y": 5
+        }
+      ],
+      "instructions": [
+        "Go straight for 9 steps",
+        "You have arrived at 测试房间"
+      ],
+      "total_steps": 10,
+      "estimated_time": 10.0
+    },
+    {
+      "id": "0bf9114a-81c9-40db-8914-c3978c24aa9e",
+      "timestamp": "2025-09-13T19:08:32.474888",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 9,
+        "y": 5
+      },
+      "target_room": "101",
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 5
+        },
+        {
+          "x": 7,
+          "y": 5
+        },
+        {
+          "x": 8,
+          "y": 5
+        },
+        {
+          "x": 9,
+          "y": 5
+        }
+      ],
+      "instructions": [
+        "Go straight for 9 steps",
+        "You have arrived at 测试房间"
+      ],
+      "total_steps": 10,
+      "estimated_time": 10.0
+    },
+    {
+      "id": "34da81ed-25a2-4ba6-9a93-fd0fec1b8062",
+      "timestamp": "2025-09-13T19:08:41.450192",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 9,
+        "y": 5
+      },
+      "target_room": "101",
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 5
+        },
+        {
+          "x": 7,
+          "y": 5
+        },
+        {
+          "x": 8,
+          "y": 5
+        },
+        {
+          "x": 9,
+          "y": 5
+        }
+      ],
+      "instructions": [
+        "Go straight for 9 steps",
+        "You have arrived at 测试房间"
+      ],
+      "total_steps": 10,
+      "estimated_time": 10.0
+    },
+    {
+      "id": "443c05b8-142a-43e2-b13e-f42f504b0199",
+      "timestamp": "2025-09-13T19:12:08.849745",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 9,
+        "y": 5
+      },
+      "target_room": "101",
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 5
+        },
+        {
+          "x": 7,
+          "y": 5
+        },
+        {
+          "x": 8,
+          "y": 5
+        },
+        {
+          "x": 9,
+          "y": 5
+        }
+      ],
+      "instructions": [
+        "Go straight for 9 steps",
+        "You have arrived at 测试房间"
+      ],
+      "total_steps": 10,
+      "estimated_time": 10.0
+    },
+    {
+      "id": "fb008769-fda0-4b3f-84ac-5aa86a25c362",
+      "timestamp": "2025-09-13T19:14:53.128971",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 9,
+        "y": 5
+      },
+      "target_room": "101",
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 5
+        },
+        {
+          "x": 7,
+          "y": 5
+        },
+        {
+          "x": 8,
+          "y": 5
+        },
+        {
+          "x": 9,
+          "y": 5
+        }
+      ],
+      "instructions": [
+        "Go straight for 9 steps",
+        "You have arrived at 测试房间"
+      ],
+      "total_steps": 10,
+      "estimated_time": 10.0
+    },
+    {
+      "id": "c4978cdf-1b3d-49e6-9a92-c20071256953",
+      "timestamp": "2025-09-13T19:15:23.876055",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 9,
+        "y": 5
+      },
+      "target_room": "101",
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 5
+        },
+        {
+          "x": 7,
+          "y": 5
+        },
+        {
+          "x": 8,
+          "y": 5
+        },
+        {
+          "x": 9,
+          "y": 5
+        }
+      ],
+      "instructions": [
+        "Go straight for 9 steps",
+        "You have arrived at 测试房间"
+      ],
+      "total_steps": 10,
+      "estimated_time": 10.0
+    },
+    {
+      "id": "db55e448-0ae1-4a50-be20-73416ad15b0b",
+      "timestamp": "2025-09-13T19:39:27.930858",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 9,
+        "y": 5
+      },
+      "target_room": "101",
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 5
+        },
+        {
+          "x": 7,
+          "y": 5
+        },
+        {
+          "x": 8,
+          "y": 5
+        },
+        {
+          "x": 9,
+          "y": 5
+        }
+      ],
+      "instructions": [
+        "Go straight for 9 steps",
+        "You have arrived at 测试房间"
+      ],
+      "total_steps": 10,
+      "estimated_time": 10.0
+    },
+    {
+      "id": "495ff443-934e-4aa5-91c3-d388e5e00340",
+      "timestamp": "2025-09-13T19:49:13.242813",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 9,
+        "y": 5
+      },
+      "target_room": "101",
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 5
+        },
+        {
+          "x": 7,
+          "y": 5
+        },
+        {
+          "x": 8,
+          "y": 5
+        },
+        {
+          "x": 9,
+          "y": 5
+        }
+      ],
+      "instructions": [
+        "Go straight for 9 steps",
+        "You have arrived at 测试房间"
+      ],
+      "total_steps": 10,
+      "estimated_time": 10.0
+    },
+    {
+      "id": "6345f0b1-cd83-4c76-93a3-2fa7ae4c000b",
+      "timestamp": "2025-09-13T19:49:27.182990",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 9,
+        "y": 5
+      },
+      "target_room": "101",
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 5
+        },
+        {
+          "x": 7,
+          "y": 5
+        },
+        {
+          "x": 8,
+          "y": 5
+        },
+        {
+          "x": 9,
+          "y": 5
+        }
+      ],
+      "instructions": [
+        "Go straight for 9 steps",
+        "You have arrived at 测试房间"
+      ],
+      "total_steps": 10,
+      "estimated_time": 10.0
+    },
+    {
+      "id": "4c0b13cc-a51b-4adc-a64d-2cdec10e9381",
+      "timestamp": "2025-09-13T19:49:30.349976",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 5,
+        "y": 7
+      },
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 6
+        },
+        {
+          "x": 5,
+          "y": 7
+        }
+      ],
+      "instructions": [
+        "Go straight for 5 steps",
+        "Turn right",
+        "Go straight for 2 steps",
+        "You have arrived at your destination"
+      ],
+      "total_steps": 8,
+      "estimated_time": 9.0,
+      "algorithm": "bfs"
+    },
+    {
+      "id": "a80f44e3-86e2-4942-b675-ec6f687b1286",
+      "timestamp": "2025-09-13T19:49:32.251506",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 7,
+        "y": 5
+      },
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 5
+        },
+        {
+          "x": 7,
+          "y": 5
+        }
+      ],
+      "instructions": [
+        "Go straight for 7 steps",
+        "You have arrived at your destination"
+      ],
+      "total_steps": 8,
+      "estimated_time": 8.0,
+      "algorithm": "bfs"
+    },
+    {
+      "id": "78090df9-1051-421a-b033-580472f8a801",
+      "timestamp": "2025-09-13T19:49:34.058138",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 5,
+        "y": 2
+      },
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 0,
+          "y": 4
+        },
+        {
+          "x": 0,
+          "y": 3
+        },
+        {
+          "x": 0,
+          "y": 2
+        },
+        {
+          "x": 1,
+          "y": 2
+        },
+        {
+          "x": 2,
+          "y": 2
+        },
+        {
+          "x": 3,
+          "y": 2
+        },
+        {
+          "x": 4,
+          "y": 2
+        },
+        {
+          "x": 5,
+          "y": 2
+        }
+      ],
+      "instructions": [
+        "Go straight for 3 steps",
+        "Turn right",
+        "Go straight for 5 steps",
+        "You have arrived at your destination"
+      ],
+      "total_steps": 9,
+      "estimated_time": 10.0,
+      "algorithm": "bfs"
+    },
+    {
+      "id": "1c124a30-f64d-4889-9ac6-14e001deaf4b",
+      "timestamp": "2025-09-13T19:49:35.928579",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 3,
+        "y": 8
+      },
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 6
+        },
+        {
+          "x": 3,
+          "y": 7
+        },
+        {
+          "x": 3,
+          "y": 8
+        }
+      ],
+      "instructions": [
+        "Go straight for 3 steps",
+        "Turn right",
+        "Go straight for 3 steps",
+        "You have arrived at your destination"
+      ],
+      "total_steps": 7,
+      "estimated_time": 8.0,
+      "algorithm": "bfs"
+    },
+    {
+      "id": "909cf0e1-7ae2-4d21-b4f7-c84e4a14815e",
+      "timestamp": "2025-09-13T19:49:52.121159",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 4,
+        "y": 1
+      },
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 0,
+          "y": 4
+        },
+        {
+          "x": 0,
+          "y": 3
+        },
+        {
+          "x": 0,
+          "y": 2
+        },
+        {
+          "x": 0,
+          "y": 1
+        },
+        {
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 2,
+          "y": 1
+        },
+        {
+          "x": 3,
+          "y": 1
+        },
+        {
+          "x": 4,
+          "y": 1
+        }
+      ],
+      "instructions": [
+        "Go straight for 4 steps",
+        "Turn right",
+        "Go straight for 4 steps",
+        "You have arrived at your destination"
+      ],
+      "total_steps": 9,
+      "estimated_time": 10.0,
+      "algorithm": "bfs"
+    },
+    {
+      "id": "8d7d8fa6-05b9-4259-843e-5207525d80b9",
+      "timestamp": "2025-09-13T19:49:55.054746",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 7,
+        "y": 7
+      },
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 5
+        },
+        {
+          "x": 7,
+          "y": 5
+        },
+        {
+          "x": 7,
+          "y": 6
+        },
+        {
+          "x": 7,
+          "y": 7
+        }
+      ],
+      "instructions": [
+        "Go straight for 7 steps",
+        "Turn right",
+        "Go straight for 2 steps",
+        "You have arrived at your destination"
+      ],
+      "total_steps": 10,
+      "estimated_time": 11.0,
+      "algorithm": "bfs"
+    },
+    {
+      "id": "4ab06bb4-8b99-47c9-adff-1ebd39ed69c3",
+      "timestamp": "2025-09-13T20:05:59.569689",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 9,
+        "y": 5
+      },
+      "target_room": "101",
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 5
+        },
+        {
+          "x": 7,
+          "y": 5
+        },
+        {
+          "x": 8,
+          "y": 5
+        },
+        {
+          "x": 9,
+          "y": 5
+        }
+      ],
+      "instructions": [
+        "Go straight for 9 steps",
+        "You have arrived at 测试房间"
+      ],
+      "total_steps": 10,
+      "estimated_time": 10.0
+    },
+    {
+      "id": "d019c9a3-9447-4682-ab7d-fbd72fe5aaee",
+      "timestamp": "2025-09-13T20:06:03.753562",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 9,
+        "y": 5
+      },
+      "target_room": "101",
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 5
+        },
+        {
+          "x": 7,
+          "y": 5
+        },
+        {
+          "x": 8,
+          "y": 5
+        },
+        {
+          "x": 9,
+          "y": 5
+        }
+      ],
+      "instructions": [
+        "Go straight for 9 steps",
+        "You have arrived at 测试房间"
+      ],
+      "total_steps": 10,
+      "estimated_time": 10.0
+    },
+    {
+      "id": "afbac7cd-ad9c-44d1-b649-ae9db7efd132",
+      "timestamp": "2025-09-13T20:06:13.781247",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 9,
+        "y": 5
+      },
+      "target_room": "101",
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 5
+        },
+        {
+          "x": 7,
+          "y": 5
+        },
+        {
+          "x": 8,
+          "y": 5
+        },
+        {
+          "x": 9,
+          "y": 5
+        }
+      ],
+      "instructions": [
+        "Go straight for 9 steps",
+        "You have arrived at 测试房间"
+      ],
+      "total_steps": 10,
+      "estimated_time": 10.0
+    },
+    {
+      "id": "6f7d25be-6555-4379-aa60-79ee5437da7a",
+      "timestamp": "2025-09-13T20:11:05.208081",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 7,
+        "y": 7
+      },
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 5
+        },
+        {
+          "x": 7,
+          "y": 5
+        },
+        {
+          "x": 7,
+          "y": 6
+        },
+        {
+          "x": 7,
+          "y": 7
+        }
+      ],
+      "instructions": [
+        "Go straight for 7 steps",
+        "Turn right",
+        "Go straight for 2 steps",
+        "You have arrived at your destination"
+      ],
+      "total_steps": 10,
+      "estimated_time": 11.0,
+      "algorithm": "bfs"
+    },
+    {
+      "id": "bbf2af35-55dc-4ca9-9b9d-33d805c05a5d",
+      "timestamp": "2025-09-13T20:11:08.062840",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 6,
+        "y": 2
+      },
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 0,
+          "y": 4
+        },
+        {
+          "x": 0,
+          "y": 3
+        },
+        {
+          "x": 0,
+          "y": 2
+        },
+        {
+          "x": 1,
+          "y": 2
+        },
+        {
+          "x": 2,
+          "y": 2
+        },
+        {
+          "x": 3,
+          "y": 2
+        },
+        {
+          "x": 4,
+          "y": 2
+        },
+        {
+          "x": 5,
+          "y": 2
+        },
+        {
+          "x": 6,
+          "y": 2
+        }
+      ],
+      "instructions": [
+        "Go straight for 3 steps",
+        "Turn right",
+        "Go straight for 6 steps",
+        "You have arrived at your destination"
+      ],
+      "total_steps": 10,
+      "estimated_time": 11.0,
+      "algorithm": "bfs"
+    },
+    {
+      "id": "b5f4fa9b-0f1f-4861-9095-d27769a91725",
+      "timestamp": "2025-09-13T20:20:01.494716",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 9,
+        "y": 5
+      },
+      "target_room": "101",
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 5
+        },
+        {
+          "x": 7,
+          "y": 5
+        },
+        {
+          "x": 8,
+          "y": 5
+        },
+        {
+          "x": 9,
+          "y": 5
+        }
+      ],
+      "instructions": [
+        "Go straight for 9 steps",
+        "You have arrived at 测试房间"
+      ],
+      "total_steps": 10,
+      "estimated_time": 10.0
+    },
+    {
+      "id": "569d3792-241c-4e30-a18d-535d4a20572b",
+      "timestamp": "2025-09-13T20:20:47.317191",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 9,
+        "y": 5
+      },
+      "target_room": "101",
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 5
+        },
+        {
+          "x": 7,
+          "y": 5
+        },
+        {
+          "x": 8,
+          "y": 5
+        },
+        {
+          "x": 9,
+          "y": 5
+        }
+      ],
+      "instructions": [
+        "Go straight for 9 steps",
+        "You have arrived at 测试房间"
+      ],
+      "total_steps": 10,
+      "estimated_time": 10.0
+    },
+    {
+      "id": "27f451f8-074e-4582-b56d-e87d24c5c0ae",
+      "timestamp": "2025-09-13T20:20:51.612127",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 6,
+        "y": 2
+      },
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 0,
+          "y": 4
+        },
+        {
+          "x": 0,
+          "y": 3
+        },
+        {
+          "x": 0,
+          "y": 2
+        },
+        {
+          "x": 1,
+          "y": 2
+        },
+        {
+          "x": 2,
+          "y": 2
+        },
+        {
+          "x": 3,
+          "y": 2
+        },
+        {
+          "x": 4,
+          "y": 2
+        },
+        {
+          "x": 5,
+          "y": 2
+        },
+        {
+          "x": 6,
+          "y": 2
+        }
+      ],
+      "instructions": [
+        "Go straight for 3 steps",
+        "Turn right",
+        "Go straight for 6 steps",
+        "You have arrived at your destination"
+      ],
+      "total_steps": 10,
+      "estimated_time": 11.0,
+      "algorithm": "bfs"
+    },
+    {
+      "id": "cca34190-b705-4b95-b2d6-352aec1721d6",
+      "timestamp": "2025-09-13T20:33:37.717582",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 9,
+        "y": 5
+      },
+      "target_room": "101",
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 5
+        },
+        {
+          "x": 7,
+          "y": 5
+        },
+        {
+          "x": 8,
+          "y": 5
+        },
+        {
+          "x": 9,
+          "y": 5
+        }
+      ],
+      "instructions": [
+        "Go straight for 9 steps",
+        "You have arrived at 测试房间"
+      ],
+      "total_steps": 10,
+      "estimated_time": 10.0
+    },
+    {
+      "id": "1c364233-0b71-4d50-b4c4-c86474f649e8",
+      "timestamp": "2025-09-13T20:33:57.923833",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 6,
+        "y": 6
+      },
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 6
+        }
+      ],
+      "instructions": [
+        "Go straight for 6 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "You have arrived at your destination"
+      ],
+      "total_steps": 8,
+      "estimated_time": 9.0,
+      "algorithm": "bfs"
+    },
+    {
+      "id": "10be5e81-49a8-4265-9a27-d8a069f6923b",
+      "timestamp": "2025-09-13T20:55:37.241497",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 6,
+        "y": 6
+      },
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 6
+        }
+      ],
+      "instructions": [
+        "Go straight for 6 steps",
+        "Turn right",
+        "Go straight for 1 step",
+        "You have arrived at your destination"
+      ],
+      "total_steps": 8,
+      "estimated_time": 9.0,
+      "algorithm": "bfs"
+    },
+    {
+      "id": "e8e0d9ad-eee8-4fa8-8aa3-efd9e030d85b",
+      "timestamp": "2025-09-13T21:03:46.940936",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 9,
+        "y": 5
+      },
+      "target_room": "101",
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 5
+        },
+        {
+          "x": 7,
+          "y": 5
+        },
+        {
+          "x": 8,
+          "y": 5
+        },
+        {
+          "x": 9,
+          "y": 5
+        }
+      ],
+      "instructions": [
+        "Go straight for 9 steps",
+        "You have arrived at 测试房间"
+      ],
+      "total_steps": 10,
+      "estimated_time": 10.0
+    },
+    {
+      "id": "efbff46f-fc0a-48b2-8dc6-72ca0caf7b3c",
+      "timestamp": "2025-09-13T21:03:54.851589",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 8,
+        "y": 7
+      },
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 5
+        },
+        {
+          "x": 7,
+          "y": 5
+        },
+        {
+          "x": 8,
+          "y": 5
+        },
+        {
+          "x": 8,
+          "y": 6
+        },
+        {
+          "x": 8,
+          "y": 7
+        }
+      ],
+      "instructions": [
+        "Go straight for 8 steps",
+        "Turn right",
+        "Go straight for 2 steps",
+        "You have arrived at your destination"
+      ],
+      "total_steps": 11,
+      "estimated_time": 12.0,
+      "algorithm": "bfs"
+    },
+    {
+      "id": "d13bb394-5870-4201-9669-5aec97d51e87",
+      "timestamp": "2025-09-13T21:57:15.999818",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 9,
+        "y": 5
+      },
+      "target_room": "101",
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 5
+        },
+        {
+          "x": 7,
+          "y": 5
+        },
+        {
+          "x": 8,
+          "y": 5
+        },
+        {
+          "x": 9,
+          "y": 5
+        }
+      ],
+      "instructions": [
+        "Go straight for 9 steps",
+        "You have arrived at 测试房间"
+      ],
+      "total_steps": 10,
+      "estimated_time": 10.0
+    },
+    {
+      "id": "b5c53024-8aad-4f4a-b153-a2b15e49b4c2",
+      "timestamp": "2025-09-13T21:57:22.571867",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 7,
+        "y": 8
+      },
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 5
+        },
+        {
+          "x": 7,
+          "y": 5
+        },
+        {
+          "x": 7,
+          "y": 6
+        },
+        {
+          "x": 7,
+          "y": 7
+        },
+        {
+          "x": 7,
+          "y": 8
+        }
+      ],
+      "instructions": [
+        "Go straight for 7 steps",
+        "Turn right",
+        "Go straight for 3 steps",
+        "You have arrived at your destination"
+      ],
+      "total_steps": 11,
+      "estimated_time": 12.0,
+      "algorithm": "bfs"
+    },
+    {
+      "id": "7a618201-9581-458e-a499-79ba974c1432",
+      "timestamp": "2025-09-13T21:59:23.336913",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 9,
+        "y": 5
+      },
+      "target_room": "101",
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 5
+        },
+        {
+          "x": 7,
+          "y": 5
+        },
+        {
+          "x": 8,
+          "y": 5
+        },
+        {
+          "x": 9,
+          "y": 5
+        }
+      ],
+      "instructions": [
+        "Go straight for 9 steps",
+        "You have arrived at 测试房间"
+      ],
+      "total_steps": 10,
+      "estimated_time": 10.0
+    },
+    {
+      "id": "e419f1fd-0c00-4006-9b75-08df8fe84d0b",
+      "timestamp": "2025-09-13T21:59:35.711911",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 5,
+        "y": 2
+      },
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 0,
+          "y": 4
+        },
+        {
+          "x": 0,
+          "y": 3
+        },
+        {
+          "x": 0,
+          "y": 2
+        },
+        {
+          "x": 1,
+          "y": 2
+        },
+        {
+          "x": 2,
+          "y": 2
+        },
+        {
+          "x": 3,
+          "y": 2
+        },
+        {
+          "x": 4,
+          "y": 2
+        },
+        {
+          "x": 5,
+          "y": 2
+        }
+      ],
+      "instructions": [
+        "Go straight for 3 steps",
+        "Turn right",
+        "Go straight for 5 steps",
+        "You have arrived at your destination"
+      ],
+      "total_steps": 9,
+      "estimated_time": 10.0,
+      "algorithm": "bfs"
+    },
+    {
+      "id": "2db849b9-39dc-4ab1-ad74-85c5b8fe319c",
+      "timestamp": "2025-09-13T21:59:38.118162",
+      "map_id": 1,
+      "start": {
+        "x": 0,
+        "y": 5
+      },
+      "end": {
+        "x": 9,
+        "y": 9
+      },
+      "path_data": [
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 1,
+          "y": 5
+        },
+        {
+          "x": 2,
+          "y": 5
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        },
+        {
+          "x": 6,
+          "y": 5
+        },
+        {
+          "x": 7,
+          "y": 5
+        },
+        {
+          "x": 8,
+          "y": 5
+        },
+        {
+          "x": 9,
+          "y": 5
+        },
+        {
+          "x": 9,
+          "y": 6
+        },
+        {
+          "x": 9,
+          "y": 7
+        },
+        {
+          "x": 9,
+          "y": 8
+        },
+        {
+          "x": 9,
+          "y": 9
+        }
+      ],
+      "instructions": [
+        "Go straight for 9 steps",
+        "Turn right",
+        "Go straight for 4 steps",
+        "You have arrived at your destination"
+      ],
+      "total_steps": 14,
+      "estimated_time": 15.0,
+      "algorithm": "bfs"
+    }
+  ]
+}

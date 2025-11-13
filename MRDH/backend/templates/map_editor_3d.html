@@ -1,0 +1,2260 @@
+{% extends "base.html" %}
+
+{% block title %}3D Map Editor - Navigation System Admin Backend{% endblock %}
+
+{% block extra_css %}
+<style>
+        .floor-tabs {
+            border-bottom: 2px solid #dee2e6;
+            margin-bottom: 20px;
+        }
+        
+        .floor-tab {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-right: 10px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .floor-tab.active {
+            background: #007bff;
+            color: white;
+            border-color: #007bff;
+            border-bottom-color: #007bff;
+        }
+        
+        .floor-tab:hover {
+            background: #e9ecef;
+        }
+        
+        .floor-tab.active:hover {
+            background: #0056b3;
+        }
+        
+        .floor-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+        
+        .connection-list {
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 10px;
+        }
+        
+        /* Room selected state style */
+        .room-item.selected {
+            background-color: #e3f2fd !important;
+            border: 2px solid #2196f3 !important;
+            box-shadow: 0 2px 8px rgba(33, 150, 243, 0.3);
+            transform: translateX(2px);
+        }
+        
+        .room-item:hover {
+            transform: translateX(1px);
+            transition: all 0.2s ease;
+        }
+        
+        .room-item.selected:hover {
+            transform: translateX(2px);
+        }
+        
+        .connection-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px;
+            margin-bottom: 8px;
+            background: #f8f9fa;
+            border-radius: 6px;
+        }
+        
+        .connection-stair {
+            background: #e1f5fe;
+        }
+        
+        .connection-elevator {
+            background: #fce4ec;
+        }
+        
+        .map-3d-info {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .tool-section {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .tool-section h5 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #495057;
+        }
+        
+        /* Map canvas style */
+        .map-container {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+        }
+        
+        .map-canvas {
+            overflow: auto;
+            max-height: 60vh;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            background: #f8f9fa;
+        }
+        
+        /* Grid cell style */
+        .grid-cell {
+            width: 25px;
+            height: 25px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .grid-cell:hover {
+            opacity: 0.8;
+            transform: scale(1.1);
+        }
+        
+        /* Tool button active state */
+        .btn.active {
+            background: linear-gradient(135deg, #007bff, #0056b3) !important;
+            color: white !important;
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+        }
+        
+        /* Status bar style */
+        .status-bar {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        /* Floor tab style enhancement */
+        .floor-tab:not(.active):hover {
+            background: #e9ecef;
+            transform: translateY(-2px);
+        }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="mb-4">
+            <i class="fas fa-cube me-2"></i>
+            3D Map Editor
+        </h1>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Toolbar -->
+    <div class="col-md-3 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-tools me-2"></i>
+                    3D Editing Tools
+                </h5>
+            </div>
+            <div class="card-body p-3">
+
+                <!-- 3D map information -->
+                <div class="map-3d-info">
+                    <h6 class="mb-2">🌟 3D Navigation System</h6>
+                    <small class="mb-2 d-block">Multi-floor building navigation, supports stairs, elevators and other vertical connections</small>
+                    <div class="d-flex justify-content-between">
+                        <small>Floors: <strong id="totalFloors">1</strong></small>
+                        <small>Connections: <strong id="totalConnections">0</strong></small>
+                    </div>
+                </div>
+
+                <!-- Floor management -->
+                <div class="tool-section">
+                    <h5>🏢 Floor Management</h5>
+                    <div class="mb-3">
+                        <button id="addFloorBtn" class="btn btn-success btn-sm w-100">
+                            ➕ Add Floor
+                        </button>
+                    </div>
+                    <div id="floorsList"></div>
+                </div>
+
+                <!-- Vertical connection tool -->
+                <div class="tool-section">
+                    <h5>🔄 Vertical Connections</h5>
+                    <div class="btn-group w-100 mb-2">
+                        <button id="stairTool" class="btn btn-outline-info connection-tool" data-type="stair">
+                            🪜 Stairs
+                        </button>
+                        <button id="elevatorTool" class="btn btn-outline-danger connection-tool" data-type="elevator">
+                            🛗 Elevator
+                        </button>
+                    </div>
+                    <div class="connection-list" id="connectionsList">
+                        <!-- Connection point list -->
+                    </div>
+                </div>
+
+                    <!-- Drawing tool -->
+                <div class="tool-section">
+                    <h5>🎨 Drawing Tools</h5>
+                    <button id="emptyTool" class="btn btn-outline-secondary w-100 mb-1 btn-sm active" data-tool="empty">
+                        🟫 Empty Space (Walkable)
+                    </button>
+                    <button id="obstacleTool" class="btn btn-outline-dark w-100 mb-1 btn-sm" data-tool="obstacle">
+                        ⬛ Obstacle (Wall)
+                    </button>
+                    <button id="roomTool" class="btn btn-primary w-100 mb-1 btn-sm" data-tool="room">
+                        🏠 Room
+                    </button>
+                    <button id="entranceTool" class="btn btn-success w-100 mb-2 btn-sm" data-tool="entrance">
+                        🚪 Entrance
+                    </button>
+                </div>
+
+                <!-- Room management -->
+                <div class="tool-section">
+                    <h5>🏠 Room Management</h5>
+                    <div class="mb-2">
+                        <small class="text-muted">Room list for current floor</small>
+                    </div>
+                    <div class="room-list" id="roomsList" style="max-height: 150px; overflow-y: auto;">
+                        <!-- Room list -->
+                    </div>
+                    <div class="mt-2">
+                        <small class="text-info">
+                            <i class="fas fa-info-circle"></i>
+                            Click 🏠 Room tool, then click on the map to add rooms
+                        </small>
+                    </div>
+                </div>
+
+                <!-- Location information -->
+                <div class="tool-section">
+                    <h5>📍 Location information</h5>
+                    <div id="positionInfo" style="font-size: 12px;">
+                        <div class="mb-1">
+                            <strong>Coordinates:</strong> (<span id="currentX">-</span>, <span id="currentY">-</span>)
+                        </div>
+                        <div class="mb-1">
+                            <strong>Content:</strong> <span id="currentContent">Please hover the mouse over the map</span>
+                        </div>
+                        <div class="mb-1">
+                            <strong>Floor:</strong> <span id="currentFloorName">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Map settings -->
+                <div class="tool-section">
+                    <h5>⚙️ Map settings</h5>
+                    <div class="row mb-2">
+                        <label class="col-4 col-form-label col-form-label-sm">Name:</label>
+                        <div class="col-8">
+                            <input type="text" id="mapName" class="form-control form-control-sm" placeholder="Map Name" value="New 3D Map">
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label class="col-4 col-form-label col-form-label-sm">Width:</label>
+                        <div class="col-8">
+                            <input type="number" id="mapWidth" class="form-control form-control-sm" min="10" max="50" value="20">
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label class="col-4 col-form-label col-form-label-sm">Height:</label>
+                        <div class="col-8">
+                            <input type="number" id="mapHeight" class="form-control form-control-sm" min="10" max="50" value="15">
+                        </div>
+                    </div>
+                    <button id="saveMapBtn" class="btn btn-success w-100 mt-2">
+                        💾 Save 3D map
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main editing area -->
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <!-- Floor tabs -->
+                <div class="floor-tabs" id="floorTabs">
+                    <div class="floor-tab active" data-floor="1">1 Floor</div>
+                </div>
+
+                <!-- Floor control -->
+                <div class="floor-controls">
+                    <span>Current floor: <strong id="currentFloorDisplay">1 Floor</strong></span>
+                    <div class="ms-auto">
+                        <button class="btn btn-sm btn-outline-secondary" id="showAllFloorsBtn">
+                            👁️ Show all floors
+                        </button>
+                        <button class="btn btn-sm btn-outline-primary" id="previewBtn">
+                            🔍 3D preview
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Map canvas -->
+                <div class="map-container">
+                    <div id="mapCanvas" class="map-canvas">
+                        <!-- Dynamically generated grid -->
+                    </div>
+                </div>
+
+                <!-- Status bar -->
+                <div class="status-bar mt-3">
+                    <span id="statusText">Ready - click to select tool to start editing</span>
+                    <span class="ms-auto">
+                        Floors: <span id="statusFloor">1</span> | 
+                        Rooms: <span id="statusRooms">0</span> | 
+                        Connections: <span id="statusConnections">0</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Floor edit modal -->
+    <div class="modal fade" id="floorModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Floor settings</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="floorName" class="form-label">Floor name</label>
+                        <input type="text" class="form-control" id="floorName" placeholder="e.g.: First Floor, Second Floor">
+                    </div>
+                    <div class="mb-3">
+                        <label for="floorHeight" class="form-label">Floor height (meters)</label>
+                        <input type="number" class="form-control" id="floorHeight" value="3.5" step="0.1">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="cancelFloorBtn">Cancel</button>
+                    <button type="button" class="btn btn-warning btn-sm" id="forceCloseFloorBtn" style="margin-right: auto;">Force Close</button>
+                    <button type="button" class="btn btn-primary" id="saveFloorBtn">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Connection point modal -->
+    <div class="modal fade" id="connectionModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="connectionModalTitle">Add connection point</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="connectionType" class="form-label">Connection type</label>
+                        <select class="form-select" id="connectionType">
+                            <option value="stair">Stairs</option>
+                            <option value="elevator">Elevator</option>
+                            <option value="escalator">Escalator</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="startFloor" class="form-label">Starting floor</label>
+                        <select class="form-select" id="startFloor">
+                            <option value="1">1 Floor</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="endFloor" class="form-label">Target floor</label>
+                        <select class="form-select" id="endFloor">
+                            <option value="2">2 Floor</option>
+                        </select>
+                    </div>
+                    <div class="mb-3" id="stairOptions" style="display:none;">
+                        <label for="stairSteps" class="form-label">Stairs steps</label>
+                        <input type="number" class="form-control" id="stairSteps" value="20">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="cancelConnectionBtn">Cancel</button>
+                    <button type="button" class="btn btn-warning btn-sm" id="forceCloseConnectionBtn" style="margin-right: auto;">Force Close</button>
+                    <button type="button" class="btn btn-primary" id="saveConnectionBtn">Save Connection</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Room edit modal -->
+    <div class="modal fade" id="roomModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="roomModalTitle">Edit room</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="roomName" class="form-label">Room name</label>
+                        <input type="text" class="form-control" id="roomName" placeholder="Please enter room name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="roomDescription" class="form-label">Room description (optional)</label>
+                        <textarea class="form-control" id="roomDescription" rows="2" placeholder="Please enter room description"></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <label class="form-label">Location</label>
+                            <div class="input-group">
+                                <span class="input-group-text">X:</span>
+                                <input type="number" class="form-control" id="roomX" readonly>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mt-4">
+                                <div class="input-group">
+                                    <span class="input-group-text">Y:</span>
+                                    <input type="number" class="form-control" id="roomY" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="cancelRoomBtn">Cancel</button>
+                    <button type="button" class="btn btn-danger btn-sm" id="deleteRoomBtn">Delete Room</button>
+                    <button type="button" class="btn btn-primary" id="saveRoomBtn">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 3D map editor JavaScript code
+        console.log('3D map editor loaded');
+        
+        // Global variables
+        let mapData = {
+            id: null,
+            name: 'New 3D map',
+            width: 20,
+            height: 15,
+            current_floor: 1,
+            is_3d: true,
+            floors: {
+                1: {
+                    id: 1,
+                    name: '1 Floor',
+                    height: 3.5,
+                    width: 20,
+                    height_grid: 15,
+                    grid: [],
+                    rooms: [],
+                    entrance: null
+                },
+                2: {
+                    id: 2,
+                    name: '2 Floor',
+                    height: 3.5,
+                    width: 20,
+                    height_grid: 15,
+                    grid: [],
+                    rooms: [],
+                    entrance: null
+                }
+            },
+            vertical_connections: []
+        };
+        
+        let currentTool = 'empty'; // Default empty space tool
+        // let isDrawing = false;  // ❌ Disabled drag and drop drawing function, no longer need this variable
+        let editingRoom = null;
+        
+        // Initialize editor
+        function init3DEditor() {
+            console.log('Initialize 3D map editor');
+            
+            // 🔧 Initialize size input fields
+            const widthInput = document.getElementById('mapWidth');
+            const heightInput = document.getElementById('mapHeight');
+            if (widthInput) widthInput.value = mapData.width;
+            if (heightInput) heightInput.value = mapData.height;
+            
+            // Ensure all floors have grid data
+            Object.keys(mapData.floors).forEach(floorId => {
+                const floor = mapData.floors[floorId];
+                
+                // 🔧 Synchronize floor size with main map
+                floor.width = mapData.width;
+                floor.height_grid = mapData.height;
+                
+                if (!floor.grid || floor.grid.length === 0) {
+                    console.log(`Initialize grid data for floor ${floorId}`);
+                    floor.grid = [];
+                    for (let y = 0; y < mapData.height; y++) {
+                        floor.grid[y] = [];
+                        for (let x = 0; x < mapData.width; x++) {
+                            floor.grid[y][x] = 0; // Empty space
+                        }
+                    }
+                }
+            });
+            
+            // Initialize grid
+            initMapGrid();
+            
+            // Bind events
+            bindEvents();
+            
+            // Update status display
+            updateStatus();
+            
+            // Update floor display
+            updateFloorTabs();
+            
+            // Update tool status
+            updateToolStatus();
+            
+            // Update connection list
+            updateConnectionsList();
+            
+            // Update room list
+            updateRoomsList();
+            
+            console.log('3D map editor initialized', {
+                floors: Object.keys(mapData.floors),
+                currentFloor: mapData.current_floor
+            });
+        }
+        
+        // 🔧 Get the effective size of the current floor
+        function getCurrentFloorDimensions() {
+            const currentFloor = getCurrentFloorData();
+            if (!currentFloor) {
+                return { width: mapData.width, height: mapData.height };
+            }
+            
+            return {
+                width: currentFloor.width || mapData.width,
+                height: currentFloor.height_grid || mapData.height
+            };
+        }
+
+        // Initialize map grid
+        function initMapGrid() {
+            const mapCanvas = document.getElementById('mapCanvas');
+            if (!mapCanvas) return;
+            
+            const currentFloor = getCurrentFloorData();
+            if (!currentFloor) return;
+            
+            // 🔧 Get the actual size of the current floor
+            const dimensions = getCurrentFloorDimensions();
+            
+            console.log('🏢 Render floor grid:', {
+                floorId: mapData.current_floor,
+                dimensions: `${dimensions.width}x${dimensions.height}`,
+                mainMapSize: `${mapData.width}x${mapData.height}`
+            });
+            
+            // Clear existing content
+            mapCanvas.innerHTML = '';
+            
+            // 🔧 Use the current floor size to create a grid
+            mapCanvas.style.cssText = `
+                display: grid;
+                grid-template-columns: repeat(${dimensions.width}, 25px);
+                grid-template-rows: repeat(${dimensions.height}, 25px);
+                gap: 1px;
+                background-color: #f0f0f0;
+                padding: 20px;
+                border: 2px solid #dee2e6;
+                border-radius: 8px;
+                margin: 20px 0;
+                justify-content: start;
+            `;
+            
+            // Initialize grid data
+            if (!currentFloor.grid || currentFloor.grid.length === 0) {
+                currentFloor.grid = [];
+                for (let y = 0; y < dimensions.height; y++) {
+                    currentFloor.grid[y] = [];
+                    for (let x = 0; x < dimensions.width; x++) {
+                        currentFloor.grid[y][x] = 0; // 0=Empty space, 1=Wall, 2=Entrance, 3=Room
+                    }
+                }
+            }
+            
+            // 🔧 Use the current floor size to create cells
+            for (let y = 0; y < dimensions.height; y++) {
+                for (let x = 0; x < dimensions.width; x++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'grid-cell';
+                    cell.style.cssText = `
+                        width: 25px;
+                        height: 25px;
+                        border: 1px solid #ccc;
+                        cursor: pointer;
+                        position: relative;
+                    `;
+                    
+                    cell.dataset.x = x;
+                    cell.dataset.y = y;
+                    
+                    // Set cell color
+                    updateCellStyle(cell, currentFloor.grid[y][x]);
+                    
+                    // Bind click events
+                    cell.addEventListener('mousedown', handleCellMouseDown);
+                    cell.addEventListener('mouseenter', handleCellMouseEnter);
+                    cell.addEventListener('mouseup', handleCellMouseUp);
+                    
+                    // Bind hover event to display position information
+                    cell.addEventListener('mouseenter', () => showPositionInfo(x, y, currentFloor.grid[y][x]));
+                    cell.addEventListener('mouseleave', hidePositionInfo);
+                    
+                    mapCanvas.appendChild(cell);
+                }
+            }
+            
+            console.log('Map grid initialized');
+        }
+        
+        // Update cell style
+        function updateCellStyle(cell, type) {
+            cell.className = 'grid-cell';
+            cell.innerHTML = ''; // Clear content
+            
+            // Get position information
+            const x = parseInt(cell.dataset.x);
+            const y = parseInt(cell.dataset.y);
+            const currentFloor = getCurrentFloorData();
+            
+            switch (type) {
+                case 0: // Empty space
+                    cell.style.backgroundColor = '#ffffff';
+                    cell.style.border = '1px solid #ccc';
+                    cell.style.color = '';
+                    break;
+                case 1: // Wall/obstacle
+                    cell.style.backgroundColor = '#6c757d';
+                    cell.style.border = '1px solid #495057';
+                    cell.style.color = '#ffffff';
+                    cell.innerHTML = '<div style="font-size: 8px; text-align: center; line-height: 23px;">■</div>';
+                    break;
+                case 2: // Entrance
+                    cell.style.backgroundColor = '#28a745';
+                    cell.style.border = '1px solid #1e7e34';
+                    cell.style.color = '#ffffff';
+                    cell.innerHTML = '<div style="font-size: 10px; text-align: center; line-height: 23px;">🚪</div>';
+                    break;
+                case 3: // Room
+                    cell.style.backgroundColor = '#007bff';
+                    cell.style.border = '1px solid #0056b3';
+                    cell.style.color = '#ffffff';
+                    
+                    // Display room information
+                    const room = currentFloor ? currentFloor.rooms.find(r => r.x === x && r.y === y) : null;
+                    const roomText = room ? room.name.substring(0, 2) : '🏠';
+                    cell.innerHTML = `<div style="font-size: 8px; text-align: center; line-height: 11px; word-break: break-all;">${roomText}</div>`;
+                    
+                    // Add double-click edit functionality
+                    cell.addEventListener('dblclick', () => {
+                        if (room) {
+                            const roomIndex = currentFloor.rooms.findIndex(r => r.x === x && r.y === y);
+                            if (roomIndex !== -1) {
+                                editRoom(roomIndex);
+                            }
+                        }
+                    });
+                    break;
+                case 4: // Vertical connection point
+                    cell.style.backgroundColor = '#ffc107';
+                    cell.style.border = '2px solid #e0a800';
+                    cell.style.color = '#212529';
+                    cell.innerHTML = '<div style="font-size: 10px; text-align: center; line-height: 21px;">🔗</div>';
+                    break;
+            }
+        }
+        
+        // Get current floor data
+        function getCurrentFloorData() {
+            return mapData.floors[mapData.current_floor];
+        }
+        
+        // Force clean all room selection related event listeners
+        function forceCleanRoomListeners() {
+            console.log('🧹 Force clean all room selection related event listeners');
+            
+            // Clean all possible room-item
+            const allRoomItems = document.querySelectorAll('.room-item');
+            console.log(`Found ${allRoomItems.length} room items to clean`);
+            
+            allRoomItems.forEach((item, index) => {
+                console.log(`Clean room item ${index + 1}`);
+                // The most thorough method to remove all event listeners: clone and replace
+                const parent = item.parentNode;
+                if (parent) {
+                    const newItem = item.cloneNode(true);
+                    parent.replaceChild(newItem, item);
+                }
+            });
+            
+            // Clean room list container
+            const roomsList = document.getElementById('roomsList');
+            if (roomsList) {
+                roomsList.innerHTML = '';
+                console.log('Room list container cleaned');
+            }
+            
+            console.log('✅ Force clean completed');
+        }
+
+        // Bind events
+        function bindEvents() {
+            console.log('🔧 Start binding event listeners');
+            
+            // First force clean all old room event listeners
+            forceCleanRoomListeners();
+            
+            // Draw tool buttons
+            document.getElementById('emptyTool')?.addEventListener('click', () => {
+                currentTool = 'empty';
+                updateToolStatus();
+            });
+            
+            document.getElementById('obstacleTool')?.addEventListener('click', () => {
+                currentTool = 'obstacle';
+                updateToolStatus();
+            });
+            
+            document.getElementById('roomTool')?.addEventListener('click', () => {
+                currentTool = 'room';
+                updateToolStatus();
+            });
+            
+            document.getElementById('entranceTool')?.addEventListener('click', () => {
+                currentTool = 'entrance';
+                updateToolStatus();
+            });
+            
+            // Vertical connection tool
+            document.getElementById('stairTool')?.addEventListener('click', () => {
+                currentTool = 'stair';
+                updateToolStatus();
+            });
+            
+            document.getElementById('elevatorTool')?.addEventListener('click', () => {
+                currentTool = 'elevator';
+                updateToolStatus();
+            });
+            
+            // Floor management
+            document.getElementById('addFloorBtn')?.addEventListener('click', showAddFloorModal);
+            
+            // Floor control buttons
+            document.getElementById('showAllFloorsBtn')?.addEventListener('click', toggleShowAllFloors);
+            document.getElementById('previewBtn')?.addEventListener('click', show3DPreview);
+            
+            // Save button
+            document.getElementById('saveMapBtn')?.addEventListener('click', saveMap);
+            
+            // Map name update
+            document.getElementById('mapName')?.addEventListener('change', updateMapName);
+            
+            // 🔧 Map size update listener
+            document.getElementById('mapWidth')?.addEventListener('change', updateMapDimensions);
+            document.getElementById('mapHeight')?.addEventListener('change', updateMapDimensions);
+            document.getElementById('mapWidth')?.addEventListener('input', updateMapDimensions);
+            document.getElementById('mapHeight')?.addEventListener('input', updateMapDimensions);
+            
+            // Modal
+            document.getElementById('saveFloorBtn')?.addEventListener('click', saveFloor);
+            document.getElementById('saveConnectionBtn')?.addEventListener('click', saveConnection);
+            
+            // Connection modal button
+            document.getElementById('cancelConnectionBtn')?.addEventListener('click', function() {
+                console.log('Cancel connection button clicked');
+                closeModal('connectionModal');
+            });
+            document.getElementById('forceCloseConnectionBtn')?.addEventListener('click', function() {
+                console.log('Force close connection modal button clicked');
+                forceCloseModal('connectionModal');
+            });
+            
+            // Floor modal button
+            document.getElementById('cancelFloorBtn')?.addEventListener('click', function() {
+                console.log('Cancel floor button clicked');
+                closeModal('floorModal');
+            });
+            document.getElementById('forceCloseFloorBtn')?.addEventListener('click', function() {
+                console.log('Force close floor modal button clicked');
+                forceCloseModal('floorModal');
+            });
+            
+            // Room modal button
+            document.getElementById('saveRoomBtn')?.addEventListener('click', saveRoomEdit);
+            document.getElementById('deleteRoomBtn')?.addEventListener('click', deleteRoom);
+            document.getElementById('cancelRoomBtn')?.addEventListener('click', function() {
+                console.log('Cancel room edit button clicked');
+                closeModal('roomModal');
+                window.currentEditingRoomIndex = undefined;
+            });
+            
+            // Modal close event listener
+            const floorModal = document.getElementById('floorModal');
+            const connectionModal = document.getElementById('connectionModal');
+            const roomModal = document.getElementById('roomModal');
+            
+            if (floorModal) {
+                floorModal.addEventListener('hidden.bs.modal', function() {
+                    resetFloorForm();
+                    console.log('Floor modal closed and reset');
+                });
+            }
+            
+            if (connectionModal) {
+                connectionModal.addEventListener('hidden.bs.modal', function() {
+                    resetConnectionForm();
+                    window.currentConnectionPos = null;
+                    console.log('Connection modal closed and reset');
+                });
+            }
+            
+            if (roomModal) {
+                roomModal.addEventListener('hidden.bs.modal', function() {
+                    resetRoomForm();
+                    window.currentEditingRoomIndex = undefined;
+                    console.log('Room modal closed and reset');
+                });
+            }
+            
+            console.log('Event binding completed');
+        }
+        
+        // Update tool status
+        function updateToolStatus() {
+            // Remove all tool button active status
+            document.querySelectorAll('[data-tool], #stairTool, #elevatorTool').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Activate current tool
+            switch (currentTool) {
+                case 'empty':
+                    document.getElementById('emptyTool')?.classList.add('active');
+                    break;
+                case 'obstacle':
+                    document.getElementById('obstacleTool')?.classList.add('active');
+                    break;
+                case 'room':
+                    document.getElementById('roomTool')?.classList.add('active');
+                    break;
+                case 'entrance':
+                    document.getElementById('entranceTool')?.classList.add('active');
+                    break;
+                case 'stair':
+                    document.getElementById('stairTool')?.classList.add('active');
+                    break;
+                case 'elevator':
+                    document.getElementById('elevatorTool')?.classList.add('active');
+                    break;
+            }
+            
+            // Update status hint
+            updateStatusText();
+        }
+        
+        // Grid mouse events
+        function handleCellMouseDown(e) {
+            console.log('🖱️ Map cell mouse down - only click to create, no drag and drop drawing');
+            // Remove drag and drop drawing functionality, only support click to create
+            // isDrawing = true;  // ❌ Disable drag mode
+            handleCellClick(e.target);
+        }
+        
+        function handleCellMouseEnter(e) {
+            console.log('🔵 Map cell mouse hover - drag and drop drawing disabled');
+          
+            
+            // Do not execute any drawing operation when hovering
+            return;
+        }
+        
+        function handleCellMouseUp(e) {
+            console.log('🖱️ Map cell mouse up');
+            // isDrawing = false;  // ❌ No longer need isDrawing state
+        }
+        
+        function handleCellClick(cell) {
+            const x = parseInt(cell.dataset.x);
+            const y = parseInt(cell.dataset.y);
+            const currentFloor = getCurrentFloorData();
+            
+            // Cancel room list selection status
+            clearRoomSelection();
+            
+            if (!currentTool) return;
+            
+            switch (currentTool) {
+                case 'empty':
+                    currentFloor.grid[y][x] = 0; // Empty space
+                    updateCellStyle(cell, 0);
+                    break;
+                    
+                case 'obstacle':
+                    currentFloor.grid[y][x] = 1; // Obstacle/wall
+                    updateCellStyle(cell, 1);
+                    break;
+                    
+                case 'room':
+                    currentFloor.grid[y][x] = 3; // Room
+                    updateCellStyle(cell, 3);
+                    // Can add room to room list
+                    addRoomToFloor(x, y);
+                    break;
+                    
+                case 'entrance':
+                    // Clear previous entrance on current floor
+                    if (currentFloor.entrance) {
+                        const oldCell = document.querySelector(`[data-x="${currentFloor.entrance.x}"][data-y="${currentFloor.entrance.y}"]`);
+                        if (oldCell) {
+                            currentFloor.grid[currentFloor.entrance.y][currentFloor.entrance.x] = 0;
+                            updateCellStyle(oldCell, 0);
+                        }
+                    }
+                    
+                    // Set new entrance
+                    currentFloor.grid[y][x] = 2; // Entrance
+                    currentFloor.entrance = { x, y };
+                    updateCellStyle(cell, 2);
+                    break;
+                    
+                case 'stair':
+                case 'elevator':
+                    // Vertical connection point processing
+                    handleVerticalConnection(x, y, currentTool);
+                    break;
+            }
+            
+            updateStatus();
+        }
+        
+        // Update status display
+        function updateStatus() {
+            const totalFloors = Object.keys(mapData.floors).length;
+            const totalConnections = mapData.vertical_connections.length;
+            const currentFloor = getCurrentFloorData();
+            const roomCount = currentFloor ? currentFloor.rooms.length : 0;
+            
+            document.getElementById('totalFloors').textContent = totalFloors;
+            document.getElementById('totalConnections').textContent = totalConnections;
+            document.getElementById('statusFloor').textContent = mapData.current_floor;
+            document.getElementById('statusRooms').textContent = roomCount;
+            document.getElementById('statusConnections').textContent = totalConnections;
+        }
+        
+        // Update floor tabs
+        function updateFloorTabs() {
+            const tabsContainer = document.getElementById('floorTabs');
+            if (!tabsContainer) return;
+            
+            tabsContainer.innerHTML = '';
+            
+            Object.keys(mapData.floors).forEach(floorId => {
+                const floor = mapData.floors[floorId];
+                const tab = document.createElement('div');
+                tab.className = `floor-tab ${floorId == mapData.current_floor ? 'active' : ''}`;
+                tab.textContent = floor.name;
+                tab.dataset.floor = floorId;
+                
+                tab.addEventListener('click', () => {
+                    mapData.current_floor = parseInt(floorId);
+                    updateFloorTabs();
+                    initMapGrid();
+                    updateStatus();
+                    updateRoomsList(); // Update room list when switching floors
+                });
+                
+                tabsContainer.appendChild(tab);
+            });
+        }
+        
+        // Show add floor modal
+        function showAddFloorModal() {
+            document.getElementById('floorName').value = '';
+            document.getElementById('floorHeight').value = '3.5';
+            
+            const modalElement = document.getElementById('floorModal');
+            let modal = bootstrap.Modal.getInstance(modalElement);
+            if (!modal) {
+                modal = new bootstrap.Modal(modalElement);
+            }
+            modal.show();
+        }
+        
+        // Save floor
+        function saveFloor() {
+            const name = document.getElementById('floorName').value.trim();
+            const height = parseFloat(document.getElementById('floorHeight').value);
+            
+            if (!name) {
+                alert('Please enter floor name');
+                return;
+            }
+            
+            const newFloorId = Math.max(...Object.keys(mapData.floors).map(Number)) + 1;
+            
+            mapData.floors[newFloorId] = {
+                id: newFloorId,
+                name: name,
+                height: height,
+                width: mapData.width,
+                height_grid: mapData.height,
+                grid: [],
+                rooms: [],
+                entrance: null
+            };
+            
+            // Initialize new floor grid
+            const newFloor = mapData.floors[newFloorId];
+            for (let y = 0; y < mapData.height; y++) {
+                newFloor.grid[y] = [];
+                for (let x = 0; x < mapData.width; x++) {
+                    newFloor.grid[y][x] = 0;
+                }
+            }
+            
+            updateFloorTabs();
+            updateStatus();
+            
+            // Show success hint
+            showToast(`Floor "${name}" added successfully!`, 'success');
+            
+            // Close floor modal
+            closeModal('floorModal');
+        }
+        
+        // Update status text
+        function updateStatusText() {
+            const statusText = document.getElementById('statusText');
+            if (statusText) {
+                const toolNames = {
+                    'empty': 'Empty space drawing mode - click to set passable area',
+                    'obstacle': 'Obstacle drawing mode - click to set wall or obstacle',
+                    'room': 'Room drawing mode - click to set room area',
+                    'entrance': 'Entrance setting mode - click to set floor entrance',
+                    'stair': 'Stair connection mode - click to set stair connection point',
+                    'elevator': 'Elevator connection mode - click to set elevator connection point'
+                };
+                statusText.textContent = toolNames[currentTool] || 'Please select drawing tool';
+            }
+        }
+        
+        // Add room to floor
+        function addRoomToFloor(x, y) {
+            const currentFloor = getCurrentFloorData();
+            const roomId = `room_${mapData.current_floor}_${x}_${y}`;
+            
+            // Check if it already exists
+            const existingRoom = currentFloor.rooms.find(room => room.x === x && room.y === y);
+            if (!existingRoom) {
+                const roomName = `Room${currentFloor.rooms.length + 1}`;
+                const newRoom = {
+                    id: roomId,
+                    name: roomName,
+                    x: x,
+                    y: y,
+                    floor: mapData.current_floor,
+                    description: ''
+                };
+                currentFloor.rooms.push(newRoom);
+                
+                // Update room list display
+                updateRoomsList();
+                
+                // Show success hint
+                showToast(`Room "${roomName}" added to coordinates (${x}, ${y})`, 'success');
+            } else {
+                showToast('Room already exists at this position!', 'warning');
+            }
+        }
+        
+        // Update room list display
+        function updateRoomsList() {
+            const roomsList = document.getElementById('roomsList');
+            const currentFloor = getCurrentFloorData();
+            
+            if (!currentFloor || !roomsList) return;
+            
+            console.log('📝 Start updating room list, current floor:', mapData.current_floor);
+            
+            // Force clean all old room event listeners
+            forceCleanRoomListeners();
+            
+            console.log('🧽 Room list cleared, old event listeners removed');
+            
+            if (currentFloor.rooms.length === 0) {
+                roomsList.innerHTML = '<small class="text-muted">Current floor has no rooms</small>';
+                return;
+            }
+            
+            currentFloor.rooms.forEach((room, index) => {
+                const roomItem = document.createElement('div');
+                roomItem.className = 'room-item';
+                roomItem.style.cssText = `
+                    padding: 8px;
+                    margin-bottom: 4px;
+                    background: #f8f9fa;
+                    border: 1px solid #dee2e6;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+                `;
+                roomItem.innerHTML = `
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <strong style="font-size: 12px;">${room.name}</strong>
+                            <br>
+                            <small class="text-muted">(${room.x}, ${room.y})</small>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn btn-sm btn-outline-primary" onclick="editRoom(${index})" title="Edit Room">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger" onclick="removeRoomFromFloor(${index})" title="Delete Room">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                // ===== Only click to select, absolutely not allow mouse hover to select =====
+                roomItem.addEventListener('click', (e) => {
+                    // Prevent event bubbling to edit/delete buttons
+                    if (e.target.closest('button')) {
+                        return;
+                    }
+                    
+                    console.log(`✅ Click to select room: ${room.name} (${room.x}, ${room.y}) on floor ${mapData.current_floor}`);
+                
+                // Additional protection: force clean possible old selection status
+                removeHighlight();
+                    
+                    // Remove selected status of other rooms
+                    document.querySelectorAll('.room-item').forEach(item => {
+                        item.classList.remove('selected');
+                        item.style.backgroundColor = '#f8f9fa';
+                        item.style.border = '1px solid #dee2e6';
+                        item.style.boxShadow = '';
+                        item.style.transform = '';
+                    });
+                    
+                    // Set current room as selected state
+                    roomItem.classList.add('selected');
+                    roomItem.style.backgroundColor = '#e3f2fd';
+                    roomItem.style.border = '2px solid #2196f3';
+                    roomItem.style.boxShadow = '0 2px 8px rgba(33, 150, 243, 0.3)';
+                    roomItem.style.transform = 'translateX(2px)';
+                    
+                    // Highlight corresponding map grid
+                    removeHighlight();
+                    highlightCell(room.x, room.y);
+                });
+                
+                // ===== Pure visual hover effect (absolutely not trigger selection or highlight map) =====
+                roomItem.addEventListener('mouseenter', (e) => {
+                    console.log(`🔵 Mouse hover room: ${room.name} - only visual effect, no selection`);
+                    
+                    // Force prevent any selection logic: actively prevent event propagation
+                    e.stopPropagation();
+                    e.preventDefault();
+                    
+                    if (!roomItem.classList.contains('selected')) {
+                        roomItem.style.backgroundColor = '#f0f0f0';
+                        roomItem.style.transform = 'translateX(1px)';
+                    }
+                    // ⚠️ Absolutely forbidden: Do not call highlightCell, removeHighlight or any selection logic
+                    console.log(`🚫 Hover event has been completely isolated, will not trigger selection`);
+                });
+                
+                roomItem.addEventListener('mouseleave', (e) => {
+                    console.log(`🔴 Mouse leave room: ${room.name}`);
+                    
+                    // Force prevent any selection logic: actively prevent event propagation
+                    e.stopPropagation();
+                    e.preventDefault();
+                    
+                    if (!roomItem.classList.contains('selected')) {
+                        roomItem.style.backgroundColor = '#f8f9fa';
+                        roomItem.style.transform = '';
+                    }
+                    // ⚠️ Absolutely forbidden: Do not call any highlight or selection related code
+                    console.log(`🚫 Leave event has been completely isolated`);
+                });
+                
+                roomsList.appendChild(roomItem);
+            });
+            
+            console.log('Room list updated, only support click to select');
+        }
+        
+        // Highlight cell
+        function highlightCell(x, y) {
+            removeHighlight(); // First remove previous highlight
+            const cell = document.querySelector(`[data-x="${x}"][data-y="${y}"]`);
+            if (cell) {
+                cell.classList.add('cell-highlight');
+                cell.style.boxShadow = '0 0 10px #ffc107';
+                cell.style.transform = 'scale(1.2)';
+                cell.style.zIndex = '100';
+                cell.style.position = 'relative';
+            }
+        }
+        
+        // Remove cell highlight
+        function removeHighlight() {
+            const highlightedCells = document.querySelectorAll('.cell-highlight');
+            highlightedCells.forEach(cell => {
+                cell.classList.remove('cell-highlight');
+                cell.style.boxShadow = '';
+                cell.style.transform = '';
+                cell.style.zIndex = '';
+                cell.style.position = '';
+            });
+        }
+        
+        // Clear room selection status
+        function clearRoomSelection() {
+            document.querySelectorAll('.room-item').forEach(item => {
+                item.classList.remove('selected');
+                item.style.backgroundColor = '#f8f9fa';
+                item.style.border = '1px solid #dee2e6';
+            });
+            removeHighlight();
+        }
+        
+        // Edit room
+        function editRoom(roomIndex) {
+            const currentFloor = getCurrentFloorData();
+            const room = currentFloor.rooms[roomIndex];
+            
+            if (!room) return;
+            
+            // Set modal data
+            document.getElementById('roomName').value = room.name || '';
+            document.getElementById('roomDescription').value = room.description || '';
+            document.getElementById('roomX').value = room.x;
+            document.getElementById('roomY').value = room.y;
+            
+            // Save current editing room index
+            window.currentEditingRoomIndex = roomIndex;
+            
+            // Show modal
+            const modalElement = document.getElementById('roomModal');
+            let modal = bootstrap.Modal.getInstance(modalElement);
+            if (!modal) {
+                modal = new bootstrap.Modal(modalElement);
+            }
+            modal.show();
+        }
+        
+        // Save room edit
+        function saveRoomEdit() {
+            const currentFloor = getCurrentFloorData();
+            const roomIndex = window.currentEditingRoomIndex;
+            
+            if (roomIndex === undefined || !currentFloor.rooms[roomIndex]) {
+                showToast('Save failed: room data invalid', 'error');
+                return;
+            }
+            
+            const roomName = document.getElementById('roomName').value.trim();
+            const roomDescription = document.getElementById('roomDescription').value.trim();
+            
+            if (!roomName) {
+                showToast('Room name cannot be empty!', 'error');
+                return;
+            }
+            
+            // Update room information
+            currentFloor.rooms[roomIndex].name = roomName;
+            currentFloor.rooms[roomIndex].description = roomDescription;
+            
+            // Update room list display
+            updateRoomsList();
+            
+            // Show success hint
+            showToast(`Room "${roomName}" updated`, 'success');
+            
+            // Close modal
+            closeModal('roomModal');
+            window.currentEditingRoomIndex = undefined;
+        }
+        
+        // Delete room
+        function deleteRoom() {
+            const currentFloor = getCurrentFloorData();
+            const roomIndex = window.currentEditingRoomIndex;
+            
+            if (roomIndex === undefined || !currentFloor.rooms[roomIndex]) {
+                showToast('Delete failed: room data invalid', 'error');
+                return;
+            }
+            
+            const room = currentFloor.rooms[roomIndex];
+            
+            if (confirm(`Are you sure you want to delete room "${room.name}"?`)) {
+                // Clear room mark in grid
+                currentFloor.grid[room.y][room.x] = 0;
+                
+                // Remove from room list
+                currentFloor.rooms.splice(roomIndex, 1);
+                
+                // Re-render map
+                initMapGrid();
+                
+                // Update room list display
+                updateRoomsList();
+                
+                // Show delete success hint
+                showToast(`Room "${room.name}" deleted`, 'info');
+                
+                // Close modal
+                closeModal('roomModal');
+                window.currentEditingRoomIndex = undefined;
+            }
+        }
+        
+            // Remove room from floor (used for delete button in room list)
+        function removeRoomFromFloor(roomIndex) {
+            const currentFloor = getCurrentFloorData();
+            const room = currentFloor.rooms[roomIndex];
+            
+            if (!room) return;
+            
+            if (confirm(`Are you sure you want to delete room "${room.name}"?`)) {
+                // Clear room mark in grid
+                currentFloor.grid[room.y][room.x] = 0;
+                
+                // Remove from room list
+                currentFloor.rooms.splice(roomIndex, 1);
+                
+                // Re-render map
+                initMapGrid();
+                
+                // Update room list display
+                updateRoomsList();
+                
+                // Show delete success hint
+                showToast(`Room "${room.name}" deleted`, 'info');
+            }
+        }
+        
+        // Show position info
+        function showPositionInfo(x, y, cellType) {
+            const currentFloor = getCurrentFloorData();
+            if (!currentFloor) return;
+            
+            document.getElementById('currentX').textContent = x;
+            document.getElementById('currentY').textContent = y;
+            document.getElementById('currentFloorName').textContent = currentFloor.name;
+            
+            // Show content based on cell type
+            let contentText = '';
+            let contentColor = '';
+            switch (cellType) {
+                case 0:
+                    contentText = 'Empty Space';
+                    contentColor = '#6c757d';
+                    break;
+                case 1:
+                    contentText = 'Obstacle';
+                    contentColor = '#6c757d';
+                    break;
+                case 2:
+                    contentText = 'Entrance';
+                    contentColor = '#28a745';
+                    break;
+                case 3:
+                    // Find room information
+                    const room = currentFloor.rooms.find(r => r.x === x && r.y === y);
+                    contentText = room ? `Room: ${room.name}` : 'Room';
+                    contentColor = '#007bff';
+                    break;
+                case 4:
+                    contentText = 'Vertical Connection';
+                    contentColor = '#ffc107';
+                    break;
+                default:
+                    contentText = 'Unknown';
+                    contentColor = '#dc3545';
+            }
+            
+            const contentSpan = document.getElementById('currentContent');
+            contentSpan.textContent = contentText;
+            contentSpan.style.color = contentColor;
+            contentSpan.style.fontWeight = 'bold';
+        }
+        
+        // Hide position information
+        function hidePositionInfo() {
+            document.getElementById('currentX').textContent = '-';
+            document.getElementById('currentY').textContent = '-';
+            document.getElementById('currentFloorName').textContent = '-';
+            document.getElementById('currentContent').textContent = 'Please hover the mouse over the map';
+            document.getElementById('currentContent').style.color = '';
+            document.getElementById('currentContent').style.fontWeight = '';
+        }
+        
+        // Handle vertical connections
+        function handleVerticalConnection(x, y, connectionType) {
+            // Check if there are other floors to connect
+            const floorIds = Object.keys(mapData.floors).map(Number).sort();
+            const currentFloorIndex = floorIds.indexOf(mapData.current_floor);
+            
+            if (floorIds.length < 2) {
+                alert('At least 2 floors are required to create vertical connections! Please add more floors first.');
+                return;
+            }
+            
+            // Show connection target floor selection
+            showConnectionModal(x, y, connectionType);
+        }
+        
+        // Show connection modal
+        function showConnectionModal(x, y, connectionType) {
+            console.log('Show connection modal:', { x, y, connectionType });
+            
+            // Update modal title
+            const modalTitle = document.getElementById('connectionModalTitle');
+            const typeNames = { 'stair': 'Stair', 'elevator': 'Elevator' };
+            modalTitle.textContent = `Add ${typeNames[connectionType]} Connection`;
+            
+            // Set connection type
+            document.getElementById('connectionType').value = connectionType;
+            
+            // Update floor options
+            updateFloorOptions();
+            
+            // Debug: Check if floor options are generated correctly
+            const startFloor = document.getElementById('startFloor');
+            const endFloor = document.getElementById('endFloor');
+            console.log('Floor options count:', {
+                start: startFloor.options.length, 
+                end: endFloor.options.length,
+                floors: Object.keys(mapData.floors)
+            });
+            
+            // Save current position information
+            window.currentConnectionPos = { x, y, type: connectionType };
+            
+            // Show modal
+            const modalElement = document.getElementById('connectionModal');
+            let modal = bootstrap.Modal.getInstance(modalElement);
+            if (!modal) {
+                modal = new bootstrap.Modal(modalElement);
+            }
+            modal.show();
+        }
+        
+        // Update floor options
+        function updateFloorOptions() {
+            const startFloorSelect = document.getElementById('startFloor');
+            const endFloorSelect = document.getElementById('endFloor');
+            
+            // Clear existing options
+            startFloorSelect.innerHTML = '';
+            endFloorSelect.innerHTML = '';
+            
+            const floorIds = Object.keys(mapData.floors).sort((a, b) => parseInt(a) - parseInt(b));
+            console.log('Available floors:', floorIds);
+            
+            // Add floor options
+            floorIds.forEach((floorId, index) => {
+                const floor = mapData.floors[floorId];
+                
+                // Start floor option
+                const startOption = document.createElement('option');
+                startOption.value = floorId;
+                startOption.textContent = floor.name;
+                if (parseInt(floorId) === mapData.current_floor) {
+                    startOption.selected = true;
+                }
+                startFloorSelect.appendChild(startOption);
+                
+                // Target floor option
+                const endOption = document.createElement('option');
+                endOption.value = floorId;
+                endOption.textContent = floor.name;
+                // Default select a floor different from start floor
+                if (floorIds.length > 1) {
+                    if (parseInt(floorId) === mapData.current_floor) {
+                        // If current is start floor, don't set as default selected
+                    } else if (index === 0 && mapData.current_floor !== parseInt(floorId)) {
+                        endOption.selected = true;
+                    } else if (index === 1 && mapData.current_floor === parseInt(floorIds[0])) {
+                        endOption.selected = true;
+                    }
+                }
+                endFloorSelect.appendChild(endOption);
+            });
+            
+            console.log('Floor options update completed', {
+                startSelected: startFloorSelect.value,
+                endSelected: endFloorSelect.value
+            });
+        }
+        
+        // Show all floors
+        function toggleShowAllFloors() {
+            const button = document.getElementById('showAllFloorsBtn');
+            const isShowing = button.classList.contains('active');
+            
+            if (isShowing) {
+                button.classList.remove('active');
+                button.textContent = '👁️ Show All Floors';
+                // Show only current floor
+                showSingleFloor();
+            } else {
+                button.classList.add('active');
+                button.textContent = '👁️ Hide Other Floors';
+                // Show all floors (semi-transparent overlay)
+                showAllFloors();
+            }
+        }
+        
+        // Show single floor
+        function showSingleFloor() {
+            // Re-initialize map grid, show only current floor
+            initMapGrid();
+        }
+        
+        // Show all floors
+        function showAllFloors() {
+            const mapCanvas = document.getElementById('mapCanvas');
+            if (!mapCanvas) return;
+            
+            mapCanvas.innerHTML = '';
+            mapCanvas.style.cssText = `
+                position: relative;
+                width: ${mapData.width * 25 + 40}px;
+                height: ${mapData.height * 25 + 40}px;
+                margin: 20px auto;
+            `;
+            
+            // Create a layer for each floor
+            Object.keys(mapData.floors).forEach((floorId, index) => {
+                const floor = mapData.floors[floorId];
+                const floorDiv = document.createElement('div');
+                floorDiv.style.cssText = `
+                    position: absolute;
+                    top: ${index * 5}px;
+                    left: ${index * 5}px;
+                    opacity: ${parseInt(floorId) === mapData.current_floor ? 1 : 0.5};
+                    border: 2px solid ${parseInt(floorId) === mapData.current_floor ? '#007bff' : '#ccc'};
+                    border-radius: 8px;
+                    padding: 20px;
+                    background: ${parseInt(floorId) === mapData.current_floor ? '#fff' : '#f8f9fa'};
+                `;
+                
+                // Add floor label
+                const label = document.createElement('div');
+                label.textContent = floor.name;
+                label.style.cssText = `
+                    position: absolute;
+                    top: -30px;
+                    left: 0;
+                    font-size: 12px;
+                    font-weight: bold;
+                    color: ${parseInt(floorId) === mapData.current_floor ? '#007bff' : '#666'};
+                `;
+                floorDiv.appendChild(label);
+                
+                // Create grid for this floor
+                createFloorGrid(floorDiv, floor, parseInt(floorId) === mapData.current_floor);
+                
+                mapCanvas.appendChild(floorDiv);
+            });
+        }
+        
+        // Create floor grid
+        function createFloorGrid(container, floor, isActive) {
+            const gridDiv = document.createElement('div');
+            gridDiv.style.cssText = `
+                display: grid;
+                grid-template-columns: repeat(${mapData.width}, 25px);
+                grid-template-rows: repeat(${mapData.height}, 25px);
+                gap: 1px;
+            `;
+            
+            for (let y = 0; y < mapData.height; y++) {
+                for (let x = 0; x < mapData.width; x++) {
+                    const cell = document.createElement('div');
+                    cell.style.cssText = `
+                        width: 25px;
+                        height: 25px;
+                        border: 1px solid #ccc;
+                        cursor: ${isActive ? 'pointer' : 'default'};
+                    `;
+                    
+                    if (isActive) {
+                        cell.dataset.x = x;
+                        cell.dataset.y = y;
+                        cell.addEventListener('mousedown', handleCellMouseDown);
+                        cell.addEventListener('mouseenter', handleCellMouseEnter);
+                        cell.addEventListener('mouseup', handleCellMouseUp);
+                    }
+                    
+                    // Set cell color
+                    const cellType = (floor.grid && floor.grid[y] && floor.grid[y][x] !== undefined) ? floor.grid[y][x] : 0;
+                    updateCellStyle(cell, cellType);
+                    
+                    gridDiv.appendChild(cell);
+                }
+            }
+            
+            container.appendChild(gridDiv);
+        }
+        
+        // 3D Preview
+        function show3DPreview() {
+            const previewData = {
+                mapData: mapData,
+                currentFloor: mapData.current_floor
+            };
+            
+            // Create preview window
+            const previewWindow = window.open('', '3D Preview', 'width=800,height=600');
+            previewWindow.document.write(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>3D Map Preview</title>
+                    <style>
+                        body { margin: 0; padding: 20px; font-family: Arial, sans-serif; background: #f5f5f5; }
+                        .preview-container { 
+                            background: white; 
+                            border-radius: 12px; 
+                            padding: 20px; 
+                            box-shadow: 0 4px 20px rgba(0,0,0,0.1); 
+                        }
+                        .floor-info { 
+                            display: flex; 
+                            justify-content: space-between; 
+                            margin-bottom: 20px; 
+                            padding: 10px; 
+                            background: #f8f9fa; 
+                            border-radius: 8px; 
+                        }
+                        .floor-grid { 
+                            display: grid; 
+                            gap: 2px; 
+                            margin: 10px 0; 
+                            padding: 15px; 
+                            border: 2px solid #dee2e6; 
+                            border-radius: 8px; 
+                            background: #fff; 
+                        }
+                        .preview-cell { 
+                            width: 15px; 
+                            height: 15px; 
+                            border: 1px solid #ddd; 
+                            border-radius: 2px; 
+                        }
+                        .legend { 
+                            display: flex; 
+                            gap: 20px; 
+                            margin-top: 20px; 
+                            padding: 15px; 
+                            background: #f8f9fa; 
+                            border-radius: 8px; 
+                        }
+                        .legend-item { 
+                            display: flex; 
+                            align-items: center; 
+                            gap: 8px; 
+                        }
+                        .legend-color { 
+                            width: 20px; 
+                            height: 20px; 
+                            border: 1px solid #ccc; 
+                            border-radius: 3px; 
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="preview-container">
+                        <h2>🏢 3D Map Preview - ${mapData.name}</h2>
+                        <div id="floorsContainer"></div>
+                        <div class="legend">
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: #ffffff;"></div>
+                                <span>Empty Space</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: #6c757d;"></div>
+                                <span>Obstacle</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: #28a745;"></div>
+                                <span>Entrance</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: #007bff;"></div>
+                                <span>Room</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: #ffc107;"></div>
+                                <span>Connection Point</span>
+                            </div>
+                        </div>
+                    </div>
+                </body>
+                </html>
+            `);
+            
+            // Render floors
+            setTimeout(() => {
+                renderFloorsPreview(previewWindow, mapData);
+            }, 100);
+        }
+        
+        // Render floor preview
+        function renderFloorsPreview(previewWindow, mapData) {
+            const container = previewWindow.document.getElementById('floorsContainer');
+            if (!container) return;
+            
+            Object.keys(mapData.floors).sort((a, b) => b - a).forEach(floorId => {
+                const floor = mapData.floors[floorId];
+                
+                const floorDiv = previewWindow.document.createElement('div');
+                floorDiv.innerHTML = `
+                    <div class="floor-info">
+                        <h4>${floor.name}</h4>
+                        <span>Rooms: ${floor.rooms ? floor.rooms.length : 0}</span>
+                    </div>
+                `;
+                
+                const gridDiv = previewWindow.document.createElement('div');
+                gridDiv.className = 'floor-grid';
+                gridDiv.style.gridTemplateColumns = `repeat(${mapData.width}, 15px)`;
+                
+                for (let y = 0; y < mapData.height; y++) {
+                    for (let x = 0; x < mapData.width; x++) {
+                        const cell = previewWindow.document.createElement('div');
+                        cell.className = 'preview-cell';
+                        
+                        const cellType = (floor.grid && floor.grid[y] && floor.grid[y][x] !== undefined) ? floor.grid[y][x] : 0;
+                        switch (cellType) {
+                            case 0: cell.style.backgroundColor = '#ffffff'; break;
+                            case 1: cell.style.backgroundColor = '#6c757d'; break;
+                            case 2: cell.style.backgroundColor = '#28a745'; break;
+                            case 3: cell.style.backgroundColor = '#007bff'; break;
+                            case 4: cell.style.backgroundColor = '#ffc107'; break; // Connection point
+                        }
+                        
+                        gridDiv.appendChild(cell);
+                    }
+                }
+                
+                floorDiv.appendChild(gridDiv);
+                container.appendChild(floorDiv);
+            });
+        }
+        
+        // Common modal close function
+        function closeModal(modalId) {
+            try {
+                const modalElement = document.getElementById(modalId);
+                const modal = bootstrap.Modal.getInstance(modalElement);
+                if (modal) {
+                    modal.hide();
+                } else {
+                    // If no instance, directly hide
+                    modalElement.style.display = 'none';
+                    document.body.classList.remove('modal-open');
+                    const backdrop = document.querySelector('.modal-backdrop');
+                    if (backdrop) {
+                        backdrop.remove();
+                    }
+                }
+                
+                // Reset form data
+                if (modalId === 'connectionModal') {
+                    resetConnectionForm();
+                } else if (modalId === 'floorModal') {
+                    resetFloorForm();
+                } else if (modalId === 'roomModal') {
+                    resetRoomForm();
+                }
+                
+                console.log(`Modal ${modalId} has been closed and reset`);
+            } catch (error) {
+                console.error(`Failed to close modal ${modalId}:`, error);
+                // Force close modal
+                const modalElement = document.getElementById(modalId);
+                if (modalElement) {
+                    modalElement.style.display = 'none';
+                }
+                document.body.classList.remove('modal-open');
+                const backdrop = document.querySelector('.modal-backdrop');
+                if (backdrop) {
+                    backdrop.remove();
+                }
+            }
+        }
+        
+        // Reset connection form
+        function resetConnectionForm() {
+            document.getElementById('connectionType').value = 'stair';
+            document.getElementById('startFloor').innerHTML = '';
+            document.getElementById('endFloor').innerHTML = '';
+        }
+        
+        // Reset floor form
+        function resetFloorForm() {
+            document.getElementById('floorName').value = '';
+            document.getElementById('floorHeight').value = '3.5';
+        }
+        
+        // Reset room form
+        function resetRoomForm() {
+            document.getElementById('roomName').value = '';
+            document.getElementById('roomDescription').value = '';
+            document.getElementById('roomX').value = '';
+            document.getElementById('roomY').value = '';
+        }
+        
+        // Force close modal
+        function forceCloseModal(modalId) {
+            console.log(`Force closing modal: ${modalId}`);
+            
+            const modalElement = document.getElementById(modalId);
+            if (modalElement) {
+                // Force hide modal
+                modalElement.style.display = 'none';
+                modalElement.classList.remove('show');
+                modalElement.setAttribute('aria-hidden', 'true');
+                modalElement.removeAttribute('aria-modal');
+                modalElement.removeAttribute('role');
+            }
+            
+            // Remove modal-related classes and background
+            document.body.classList.remove('modal-open');
+            document.body.style.overflow = '';
+            document.body.style.paddingRight = '';
+            
+            // Remove all backdrop overlays
+            const backdrops = document.querySelectorAll('.modal-backdrop');
+            backdrops.forEach(backdrop => {
+                backdrop.remove();
+            });
+            
+            // Reset form data
+            if (modalId === 'connectionModal') {
+                resetConnectionForm();
+                window.currentConnectionPos = null;
+            } else if (modalId === 'floorModal') {
+                resetFloorForm();
+            } else if (modalId === 'roomModal') {
+                resetRoomForm();
+                window.currentEditingRoomIndex = undefined;
+            }
+            
+            console.log(`Modal ${modalId} has been force closed`);
+            showToast('Modal has been force closed', 'info');
+        }
+        
+        // Show Toast notification
+        function showToast(message, type = 'info') {
+            // Create Toast container (if not exists)
+            let toastContainer = document.getElementById('toastContainer');
+            if (!toastContainer) {
+                toastContainer = document.createElement('div');
+                toastContainer.id = 'toastContainer';
+                toastContainer.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    z-index: 9999;
+                `;
+                document.body.appendChild(toastContainer);
+            }
+            
+            // Create Toast element
+            const toast = document.createElement('div');
+            const bgColor = type === 'success' ? '#28a745' : type === 'error' ? '#dc3545' : '#17a2b8';
+            toast.style.cssText = `
+                background: ${bgColor};
+                color: white;
+                padding: 12px 20px;
+                border-radius: 8px;
+                margin-bottom: 10px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+                opacity: 0;
+                transform: translateX(100%);
+                transition: all 0.3s ease;
+                font-size: 14px;
+                min-width: 250px;
+                max-width: 400px;
+            `;
+            toast.textContent = message;
+            toastContainer.appendChild(toast);
+            
+            // Animation show
+            setTimeout(() => {
+                toast.style.opacity = '1';
+                toast.style.transform = 'translateX(0)';
+            }, 10);
+            
+            // Auto disappear
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    if (toast.parentNode) {
+                        toast.parentNode.removeChild(toast);
+                    }
+                }, 300);
+            }, 3000);
+        }
+        
+        // Update map name
+        function updateMapName() {
+            const nameInput = document.getElementById('mapName');
+            if (nameInput) {
+                mapData.name = nameInput.value.trim() || 'New 3D Map';
+                console.log('Map name updated to:', mapData.name);
+            }
+        }
+        
+        // 🔧 Update map size (sync all floors)
+        function updateMapDimensions() {
+            const widthInput = document.getElementById('mapWidth');
+            const heightInput = document.getElementById('mapHeight');
+            
+            if (!widthInput || !heightInput) return;
+            
+            const newWidth = parseInt(widthInput.value) || 20;
+            const newHeight = parseInt(heightInput.value) || 15;
+            
+            // Validate size range
+            if (newWidth < 10 || newWidth > 50 || newHeight < 10 || newHeight > 50) {
+                console.warn('Map size out of range:', { width: newWidth, height: newHeight });
+                return;
+            }
+            
+            console.log('🔧 Update map size:', { 
+                oldSize: `${mapData.width}x${mapData.height}`,
+                newSize: `${newWidth}x${newHeight}`
+            });
+            
+            // Update main map size
+            const oldWidth = mapData.width;
+            const oldHeight = mapData.height;
+            mapData.width = newWidth;
+            mapData.height = newHeight;
+            
+            // 🔧 Sync update all floors' size and grid data
+            Object.keys(mapData.floors).forEach(floorId => {
+                const floor = mapData.floors[floorId];
+                
+                // Update floor size
+                floor.width = newWidth;
+                floor.height_grid = newHeight;
+                
+                // Adjust grid data
+                if (!floor.grid) {
+                    floor.grid = [];
+                }
+                
+                // Create new grid array
+                const newGrid = [];
+                for (let y = 0; y < newHeight; y++) {
+                    newGrid[y] = [];
+                    for (let x = 0; x < newWidth; x++) {
+                        // Keep original data or fill with empty space
+                        if (y < oldHeight && x < oldWidth && floor.grid[y] && floor.grid[y][x] !== undefined) {
+                            newGrid[y][x] = floor.grid[y][x];
+                        } else {
+                            newGrid[y][x] = 0; // Empty space
+                        }
+                    }
+                }
+                floor.grid = newGrid;
+                
+                // 🔧 Adjust room positions (remove rooms outside boundaries)
+                if (floor.rooms) {
+                    floor.rooms = floor.rooms.filter(room => {
+                        if (room.x >= newWidth || room.y >= newHeight) {
+                            console.log(`Remove room outside boundaries: ${room.name} (${room.x}, ${room.y})`);
+                            return false;
+                        }
+                        return true;
+                    });
+                }
+                
+                // 🔧 Adjust entrance position
+                if (floor.entrance && (floor.entrance.x >= newWidth || floor.entrance.y >= newHeight)) {
+                    console.log(`Entrance position outside boundaries, reset entrance: Floor ${floorId}`);
+                    floor.entrance = null;
+                }
+            });
+            
+            // 🔧 Adjust vertical connection points
+            if (mapData.vertical_connections) {
+                mapData.vertical_connections = mapData.vertical_connections.filter(conn => {
+                    let isValid = true;
+                    
+                    if (conn.start_pos && (conn.start_pos.x >= newWidth || conn.start_pos.y >= newHeight)) {
+                        console.log(`Remove connection point outside boundaries: ${conn.name}`);
+                        isValid = false;
+                    }
+                    
+                    if (conn.end_pos && (conn.end_pos.x >= newWidth || conn.end_pos.y >= newHeight)) {
+                        console.log(`Remove connection point outside boundaries: ${conn.name}`);
+                        isValid = false;
+                    }
+                    
+                    return isValid;
+                });
+            }
+            
+            // 🔧 Re-render map to show current floor
+            initMapGrid();
+            updateRoomsList();
+            updateStatus();
+            
+            console.log('✅ Map size update completed, all floors synchronized');
+        }
+        
+        // Save map
+        async function saveMap() {
+            try {
+                // Update map name
+                updateMapName();
+                
+                // 🔧 Update map size (ensure sync with input fields)
+                updateMapDimensions();
+                
+                // Update map data
+                mapData.updated_at = new Date().toISOString();
+                
+                console.log('Preparing to save map data:', mapData);
+                
+                const response = await fetch('/api/maps/3d', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(mapData)
+                });
+                
+                const result = await response.json();
+                console.log('Save response:', result);
+                
+                if (result.code === 200) {
+                    mapData.id = result.data.id;
+                    alert('3D map saved successfully!');
+                } else {
+                    alert('Save failed: ' + result.message);
+                }
+            } catch (error) {
+                console.error('Save failed:', error);
+                alert('Save failed: Network error - ' + error.message);
+            }
+        }
+        
+        // Save vertical connection
+        function saveConnection() {
+            console.log('Start saving connection...');
+            
+            const connectionType = document.getElementById('connectionType').value;
+            const startFloorValue = document.getElementById('startFloor').value;
+            const endFloorValue = document.getElementById('endFloor').value;
+            const startFloor = parseInt(startFloorValue);
+            const endFloor = parseInt(endFloorValue);
+            
+            console.log('Connection data:', {
+                connectionType,
+                startFloorValue,
+                endFloorValue,
+                startFloor,
+                endFloor,
+                currentPos: window.currentConnectionPos
+            });
+            
+            // Validate input data
+            if (isNaN(startFloor) || isNaN(endFloor)) {
+                console.log('Invalid floor data');
+                showToast('Please select valid floors!', 'error');
+                closeModal('connectionModal');
+                return;
+            }
+            
+            if (startFloor === endFloor) {
+                showToast('Start floor and target floor cannot be the same!', 'error');
+                closeModal('connectionModal');
+                return;
+            }
+            
+            if (!window.currentConnectionPos) {
+                showToast('Missing connection position information, please reselect position!', 'error');
+                closeModal('connectionModal');
+                return;
+            }
+            
+            // Check if connection already exists at the same location
+            const existingConnection = mapData.vertical_connections.find(conn => 
+                (conn.start_floor === startFloor && conn.end_floor === endFloor && 
+                 conn.start_pos.x === window.currentConnectionPos.x && 
+                 conn.start_pos.y === window.currentConnectionPos.y) ||
+                (conn.start_floor === endFloor && conn.end_floor === startFloor && 
+                 conn.end_pos.x === window.currentConnectionPos.x && 
+                 conn.end_pos.y === window.currentConnectionPos.y)
+            );
+            
+            if (existingConnection) {
+                showToast('Connection already exists at this location!', 'error');
+                closeModal('connectionModal');
+                return;
+            }
+            
+            const connectionData = {
+                type: connectionType,
+                start_floor: startFloor,
+                end_floor: endFloor,
+                start_pos: {
+                    x: window.currentConnectionPos.x,
+                    y: window.currentConnectionPos.y
+                },
+                end_pos: {
+                    x: window.currentConnectionPos.x,
+                    y: window.currentConnectionPos.y
+                }
+            };
+            
+            // Add to vertical connections list
+            mapData.vertical_connections.push(connectionData);
+            
+            // Mark connection points at corresponding positions on both floors
+            const startFloorData = mapData.floors[startFloor];
+            const endFloorData = mapData.floors[endFloor];
+            
+            if (startFloorData && startFloorData.grid) {
+                startFloorData.grid[connectionData.start_pos.y][connectionData.start_pos.x] = 4; // Connection point marker
+            }
+            if (endFloorData && endFloorData.grid) {
+                endFloorData.grid[connectionData.end_pos.y][connectionData.end_pos.x] = 4; // Connection point marker
+            }
+            
+            // Update connection list display
+            updateConnectionsList();
+            
+            // Update status
+            updateStatus();
+            
+            // Refresh current floor display
+            initMapGrid();
+            
+            console.log('Vertical connection added:', connectionData);
+            
+            // Show success message
+            showToast(`${connectionData.type === 'stair' ? 'Stair' : 'Elevator'} connection added successfully!`, 'success');
+            
+            // Close modal and clean up state
+            closeModal('connectionModal');
+            window.currentConnectionPos = null;
+        }
+        
+        // Update connection list display
+        function updateConnectionsList() {
+            const connectionsList = document.getElementById('connectionsList');
+            if (!connectionsList) return;
+            
+            connectionsList.innerHTML = '';
+            
+            mapData.vertical_connections.forEach((connection, index) => {
+                const connectionItem = document.createElement('div');
+                connectionItem.className = `connection-item connection-${connection.type}`;
+                connectionItem.innerHTML = `
+                    <div>
+                        <strong>${connection.type === 'stair' ? '🪜 Stair' : '🛗 Elevator'}</strong><br>
+                        <small>${mapData.floors[connection.start_floor]?.name} → ${mapData.floors[connection.end_floor]?.name}</small>
+                    </div>
+                    <button class="btn btn-sm btn-danger" onclick="removeConnection(${index})">Delete</button>
+                `;
+                connectionsList.appendChild(connectionItem);
+            });
+        }
+        
+        // Delete connection
+        function removeConnection(index) {
+            if (confirm('Are you sure you want to delete this connection?')) {
+                const connection = mapData.vertical_connections[index];
+                const connectionName = connection.type === 'stair' ? 'Stair' : 'Elevator';
+                
+                // Remove connection point markers from floor grids
+                const startFloorData = mapData.floors[connection.start_floor];
+                const endFloorData = mapData.floors[connection.end_floor];
+                
+                if (startFloorData && startFloorData.grid) {
+                    startFloorData.grid[connection.start_pos.y][connection.start_pos.x] = 0; // Reset to empty space
+                }
+                if (endFloorData && endFloorData.grid) {
+                    endFloorData.grid[connection.end_pos.y][connection.end_pos.x] = 0; // Reset to empty space
+                }
+                
+                // Remove from connection list
+                mapData.vertical_connections.splice(index, 1);
+                
+                // Update display
+                updateConnectionsList();
+                updateStatus();
+                initMapGrid();
+                
+                // Show deletion success message
+                showToast(`${connectionName} connection deleted`, 'info');
+            }
+        }
+        
+        // Initialize after page load
+        document.addEventListener('DOMContentLoaded', init3DEditor);
+        
+        // Prevent drag selection
+        document.addEventListener('selectstart', e => e.preventDefault());
+    </script>
+{% endblock %}

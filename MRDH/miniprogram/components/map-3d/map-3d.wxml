@@ -1,0 +1,115 @@
+<!--3D Map Component Template-->
+<view class="map-3d-container">
+  <!-- 3D rendering area -->
+  <canvas 
+    type="2d" 
+    id="map3d-canvas"
+    class="map-3d-canvas"
+    bindtouchstart="onTouchStart"
+    bindtouchmove="onTouchMove"
+    bindtouchend="onTouchEnd"
+    bindtouchcancel="onTouchEnd"
+    catchtouchmove="onTouchMove"
+    disable-scroll="{{isRotating}}"
+    style="width: {{canvasWidth}}rpx; height: {{canvasHeight}}rpx;"
+  ></canvas>
+  
+  <!-- 3D interaction prompt -->
+  <view class="interaction-hint" wx:if="{{!isRotating && showHint}}">
+    <text class="hint-text">👆 Drag the screen to rotate the 3D view</text>
+  </view>
+  
+  <!-- Control Panel -->
+  <view class="controls-panel {{panelCollapsed ? 'collapsed' : ''}}">
+    <!-- Collapse Button -->
+    <view class="panel-toggle" bindtap="togglePanel">
+      <text class="toggle-icon">{{panelCollapsed ? '▶' : '◀'}}</text>
+    </view>
+    
+    <!-- Panel content -->
+    <view class="panel-content" wx:if="{{!panelCollapsed}}">
+      <!-- Floor selector -->
+      <view class="floor-selector">
+        <view class="floor-title">floor</view>
+        <scroll-view class="floor-list" scroll-y="true">
+          <view 
+            wx:for="{{floors}}" 
+            wx:key="id"
+            class="floor-item {{currentFloor === item.id ? 'active' : ''}}"
+            data-floor="{{item.id}}"
+            bindtap="onFloorSelect"
+          >
+            <text class="floor-name">{{item.name}}</text>
+            <text class="floor-rooms">{{item.roomCount}}between</text>
+          </view>
+        </scroll-view>
+      </view>
+      
+      <!-- Perspective control -->
+      <view class="view-controls">
+        <button class="control-btn" bindtap="resetView">
+          <text class="control-text">🏠 default</text>
+        </button>
+        <button class="control-btn" bindtap="topView">
+          <text class="control-text">👁️ look down from above</text>
+        </button>
+        <button class="control-btn" bindtap="sideView">
+          <text class="control-text">📐 side view</text>
+        </button>
+        <button class="control-btn" bindtap="perspectiveView">
+          <text class="control-text">🎯 perspective</text>
+        </button>
+      </view>
+      
+      <!-- Automatic demonstration control -->
+      <view class="demo-controls">
+        <button 
+          class="demo-btn {{isAutoRotating ? 'active' : ''}}" 
+          bindtap="{{isAutoRotating ? 'stopAutoRotation' : 'startAutoRotation'}}"
+        >
+          <text class="demo-text">{{isAutoRotating ? '⏹️ Stop the demonstration' : '▶️ 3D demonstration'}}</text>
+        </button>
+      </view>
+      
+      <!-- Display options (simplified version) -->
+      <view class="display-options">
+        <label class="option-item">
+          <switch checked="{{showLabels}}" bindchange="onToggleLabels" color="#36D399"/>
+          <text class="option-text">Tag</text>
+        </label>
+      </view>
+    </view>
+  </view>
+  
+  <!-- Information panel -->
+  <view class="info-panel" wx:if="{{selectedObject}}">
+    <view class="info-header">
+      <text class="info-title">{{selectedObject.name}}</text>
+      <button class="close-btn" bindtap="closeInfo">✕</button>
+    </view>
+    <view class="info-content">
+      <view class="info-item">
+        <text class="info-label">position:</text>
+        <text class="info-value">{{selectedObject.floor}}building ({{selectedObject.x}}, {{selectedObject.y}})</text>
+      </view>
+      
+      <view class="info-item" wx:if="{{selectedObject.type === 'room'}}">
+        <text class="info-label">type:</text>
+        <text class="info-value">room</text>
+      </view>
+      <view class="info-item" wx:if="{{selectedObject.type === 'connection'}}">
+        <text class="info-label">connect:</text>
+        <text class="info-value">{{selectedObject.startFloor}}building → {{selectedObject.endFloor}}building</text>
+      </view>
+      <button class="navigate-btn" bindtap="navigateToObject" wx:if="{{selectedObject.type === 'room'}}">
+        <text>Navigate here</text>
+      </button>
+    </view>
+  </view>
+  
+  <!-- Loading status -->
+  <view class="loading-overlay" wx:if="{{loading}}">
+    <view class="loading-spinner"></view>
+    <text class="loading-text">Loading 3D map...</text>
+  </view>
+</view>

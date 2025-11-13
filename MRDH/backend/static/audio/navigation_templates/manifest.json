@@ -1,0 +1,457 @@
+{
+  "language": "en",
+  "version": "2.1.0",
+  "description": "Local navigation voice templates with step counts (1-30) - Offline support",
+  "templates": {
+    "start_navigation": {
+      "filename": "start_navigation_en.wav",
+      "text": "Start navigation. Please follow the guidance.",
+      "keywords": [
+        "start",
+        "begin",
+        "navigation"
+      ],
+      "file_size": 188082
+    },
+    "turn_left": {
+      "filename": "turn_left_en.wav",
+      "text": "Turn left.",
+      "keywords": [
+        "turn left",
+        "left turn",
+        "go left"
+      ],
+      "file_size": 68366
+    },
+    "turn_right": {
+      "filename": "turn_right_en.wav",
+      "text": "Turn right.",
+      "keywords": [
+        "turn right",
+        "right turn",
+        "go right"
+      ],
+      "file_size": 67706
+    },
+    "go_straight": {
+      "filename": "go_straight_en.wav",
+      "text": "Go straight ahead.",
+      "keywords": [
+        "straight",
+        "forward",
+        "go forward",
+        "continue"
+      ],
+      "file_size": 79614
+    },
+    "go_upstairs": {
+      "filename": "go_upstairs_en.wav",
+      "text": "Go upstairs. Please hold the handrail.",
+      "keywords": [
+        "upstairs",
+        "go up",
+        "stairs up"
+      ],
+      "file_size": 174640
+    },
+    "go_downstairs": {
+      "filename": "go_downstairs_en.wav",
+      "text": "Go downstairs. Please be careful.",
+      "keywords": [
+        "downstairs",
+        "go down",
+        "stairs down"
+      ],
+      "file_size": 163174
+    },
+    "destination_reached": {
+      "filename": "destination_reached_en.wav",
+      "text": "You have reached your destination.",
+      "keywords": [
+        "destination",
+        "arrived",
+        "reached",
+        "complete"
+      ],
+      "file_size": 110256
+    },
+    "walk_forward": {
+      "filename": "walk_forward_en.wav",
+      "text": "Walk forward.",
+      "keywords": [
+        "walk forward",
+        "proceed",
+        "move forward"
+      ],
+      "file_size": 72338
+    },
+    "elevator_up": {
+      "filename": "elevator_up_en.wav",
+      "text": "Take the elevator up.",
+      "keywords": [
+        "elevator up",
+        "lift up",
+        "take elevator"
+      ],
+      "file_size": 92176
+    },
+    "elevator_down": {
+      "filename": "elevator_down_en.wav",
+      "text": "Take the elevator down.",
+      "keywords": [
+        "elevator down",
+        "lift down"
+      ],
+      "file_size": 97248
+    },
+    "continue_walking": {
+      "filename": "continue_walking_en.wav",
+      "text": "Continue walking.",
+      "keywords": [
+        "continue",
+        "keep going",
+        "proceed"
+      ],
+      "file_size": 79834
+    },
+    "slow_down": {
+      "filename": "slow_down_en.wav",
+      "text": "Slow down.",
+      "keywords": [
+        "slow",
+        "slow down",
+        "reduce speed"
+      ],
+      "file_size": 70356
+    },
+    "wait_here": {
+      "filename": "wait_here_en.wav",
+      "text": "Wait here.",
+      "keywords": [
+        "wait",
+        "stop",
+        "pause"
+      ],
+      "file_size": 62418
+    },
+    "recalculating": {
+      "filename": "recalculating_en.wav",
+      "text": "Recalculating route.",
+      "keywords": [
+        "recalculating",
+        "rerouting"
+      ],
+      "file_size": 90418
+    },
+    "guidance_unavailable": {
+      "filename": "guidance_unavailable_en.wav",
+      "text": "Navigation guidance in progress.",
+      "keywords": [
+        "unavailable",
+        "error",
+        "fallback"
+      ],
+      "file_size": 121936
+    },
+    "walk_1_steps": {
+      "filename": "walk_1_step_en.wav",
+      "text": "Walk 1 step forward",
+      "steps": 1,
+      "keywords": [
+        "walk 1 step",
+        "1 step"
+      ],
+      "file_size": 99008
+    },
+    "walk_2_steps": {
+      "filename": "walk_2_steps_en.wav",
+      "text": "Walk 2 steps forward",
+      "steps": 2,
+      "keywords": [
+        "walk 2 steps",
+        "2 steps"
+      ],
+      "file_size": 99234
+    },
+    "walk_3_steps": {
+      "filename": "walk_3_steps_en.wav",
+      "text": "Walk 3 steps forward",
+      "steps": 3,
+      "keywords": [
+        "walk 3 steps",
+        "3 steps"
+      ],
+      "file_size": 99234
+    },
+    "walk_4_steps": {
+      "filename": "walk_4_steps_en.wav",
+      "text": "Walk 4 steps forward",
+      "steps": 4,
+      "keywords": [
+        "walk 4 steps",
+        "4 steps"
+      ],
+      "file_size": 100996
+    },
+    "walk_5_steps": {
+      "filename": "walk_5_steps_en.wav",
+      "text": "Walk 5 steps forward",
+      "steps": 5,
+      "keywords": [
+        "walk 5 steps",
+        "5 steps"
+      ],
+      "file_size": 103644
+    },
+    "walk_6_steps": {
+      "filename": "walk_6_steps_en.wav",
+      "text": "Walk 6 steps forward",
+      "steps": 6,
+      "keywords": [
+        "walk 6 steps",
+        "6 steps"
+      ],
+      "file_size": 100556
+    },
+    "walk_7_steps": {
+      "filename": "walk_7_steps_en.wav",
+      "text": "Walk 7 steps forward",
+      "steps": 7,
+      "keywords": [
+        "walk 7 steps",
+        "7 steps"
+      ],
+      "file_size": 104524
+    },
+    "walk_8_steps": {
+      "filename": "walk_8_steps_en.wav",
+      "text": "Walk 8 steps forward",
+      "steps": 8,
+      "keywords": [
+        "walk 8 steps",
+        "8 steps"
+      ],
+      "file_size": 96806
+    },
+    "walk_9_steps": {
+      "filename": "walk_9_steps_en.wav",
+      "text": "Walk 9 steps forward",
+      "steps": 9,
+      "keywords": [
+        "walk 9 steps",
+        "9 steps"
+      ],
+      "file_size": 103202
+    },
+    "walk_10_steps": {
+      "filename": "walk_10_steps_en.wav",
+      "text": "Walk 10 steps forward",
+      "steps": 10,
+      "keywords": [
+        "walk 10 steps",
+        "10 steps"
+      ],
+      "file_size": 99678
+    },
+    "walk_11_steps": {
+      "filename": "walk_11_steps_en.wav",
+      "text": "Walk 11 steps forward",
+      "steps": 11,
+      "keywords": [
+        "walk 11 steps",
+        "11 steps"
+      ],
+      "file_size": 105848
+    },
+    "walk_12_steps": {
+      "filename": "walk_12_steps_en.wav",
+      "text": "Walk 12 steps forward",
+      "steps": 12,
+      "keywords": [
+        "walk 12 steps",
+        "12 steps"
+      ],
+      "file_size": 104304
+    },
+    "walk_13_steps": {
+      "filename": "walk_13_steps_en.wav",
+      "text": "Walk 13 steps forward",
+      "steps": 13,
+      "keywords": [
+        "walk 13 steps",
+        "13 steps"
+      ],
+      "file_size": 110256
+    },
+    "walk_14_steps": {
+      "filename": "walk_14_steps_en.wav",
+      "text": "Walk 14 steps forward",
+      "steps": 14,
+      "keywords": [
+        "walk 14 steps",
+        "14 steps"
+      ],
+      "file_size": 112904
+    },
+    "walk_15_steps": {
+      "filename": "walk_15_steps_en.wav",
+      "text": "Walk 15 steps forward",
+      "steps": 15,
+      "keywords": [
+        "walk 15 steps",
+        "15 steps"
+      ],
+      "file_size": 112458
+    },
+    "walk_16_steps": {
+      "filename": "walk_16_steps_en.wav",
+      "text": "Walk 16 steps forward",
+      "steps": 16,
+      "keywords": [
+        "walk 16 steps",
+        "16 steps"
+      ],
+      "file_size": 110258
+    },
+    "walk_17_steps": {
+      "filename": "walk_17_steps_en.wav",
+      "text": "Walk 17 steps forward",
+      "steps": 17,
+      "keywords": [
+        "walk 17 steps",
+        "17 steps"
+      ],
+      "file_size": 115990
+    },
+    "walk_18_steps": {
+      "filename": "walk_18_steps_en.wav",
+      "text": "Walk 18 steps forward",
+      "steps": 18,
+      "keywords": [
+        "walk 18 steps",
+        "18 steps"
+      ],
+      "file_size": 106730
+    },
+    "walk_19_steps": {
+      "filename": "walk_19_steps_en.wav",
+      "text": "Walk 19 steps forward",
+      "steps": 19,
+      "keywords": [
+        "walk 19 steps",
+        "19 steps"
+      ],
+      "file_size": 114884
+    },
+    "walk_20_steps": {
+      "filename": "walk_20_steps_en.wav",
+      "text": "Walk 20 steps forward",
+      "steps": 20,
+      "keywords": [
+        "walk 20 steps",
+        "20 steps"
+      ],
+      "file_size": 105408
+    },
+    "walk_21_steps": {
+      "filename": "walk_21_steps_en.wav",
+      "text": "Walk 21 steps forward",
+      "steps": 21,
+      "keywords": [
+        "walk 21 steps",
+        "21 steps"
+      ],
+      "file_size": 115548
+    },
+    "walk_22_steps": {
+      "filename": "walk_22_steps_en.wav",
+      "text": "Walk 22 steps forward",
+      "steps": 22,
+      "keywords": [
+        "walk 22 steps",
+        "22 steps"
+      ],
+      "file_size": 115988
+    },
+    "walk_23_steps": {
+      "filename": "walk_23_steps_en.wav",
+      "text": "Walk 23 steps forward",
+      "steps": 23,
+      "keywords": [
+        "walk 23 steps",
+        "23 steps"
+      ],
+      "file_size": 117312
+    },
+    "walk_24_steps": {
+      "filename": "walk_24_steps_en.wav",
+      "text": "Walk 24 steps forward",
+      "steps": 24,
+      "keywords": [
+        "walk 24 steps",
+        "24 steps"
+      ],
+      "file_size": 117314
+    },
+    "walk_25_steps": {
+      "filename": "walk_25_steps_en.wav",
+      "text": "Walk 25 steps forward",
+      "steps": 25,
+      "keywords": [
+        "walk 25 steps",
+        "25 steps"
+      ],
+      "file_size": 119958
+    },
+    "walk_26_steps": {
+      "filename": "walk_26_steps_en.wav",
+      "text": "Walk 26 steps forward",
+      "steps": 26,
+      "keywords": [
+        "walk 26 steps",
+        "26 steps"
+      ],
+      "file_size": 117308
+    },
+    "walk_27_steps": {
+      "filename": "walk_27_steps_en.wav",
+      "text": "Walk 27 steps forward",
+      "steps": 27,
+      "keywords": [
+        "walk 27 steps",
+        "27 steps"
+      ],
+      "file_size": 121278
+    },
+    "walk_28_steps": {
+      "filename": "walk_28_steps_en.wav",
+      "text": "Walk 28 steps forward",
+      "steps": 28,
+      "keywords": [
+        "walk 28 steps",
+        "28 steps"
+      ],
+      "file_size": 114004
+    },
+    "walk_29_steps": {
+      "filename": "walk_29_steps_en.wav",
+      "text": "Walk 29 steps forward",
+      "steps": 29,
+      "keywords": [
+        "walk 29 steps",
+        "29 steps"
+      ],
+      "file_size": 117970
+    },
+    "walk_30_steps": {
+      "filename": "walk_30_steps_en.wav",
+      "text": "Walk 30 steps forward",
+      "steps": 30,
+      "keywords": [
+        "walk 30 steps",
+        "30 steps"
+      ],
+      "file_size": 102540
+    }
+  }
+}

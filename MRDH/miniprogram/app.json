@@ -1,0 +1,49 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/map-list/map-list", 
+    "pages/navigation/navigation",
+    "pages/settings/settings"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#007bff",
+    "navigationBarTitleText": "Blind Navigation System",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f5f5f5",
+    "enablePullDownRefresh": true,
+    "onReachBottomDistance": 50
+  },
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#007bff",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "Home"
+      },
+      {
+        "pagePath": "pages/map-list/map-list", 
+        "text": "Map"
+      },
+      {
+        "pagePath": "pages/navigation/navigation",
+        "text": "Navigation"
+      },
+      {
+        "pagePath": "pages/settings/settings",
+        "text": "Settings"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "For indoor navigation services"
+    }
+  },
+  "requiredBackgroundModes": ["audio"],
+  "debug": false,
+  "sitemapLocation": "sitemap.json"
+}

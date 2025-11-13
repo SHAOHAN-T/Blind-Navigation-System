@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "Navigation System for the Blind",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "onReachBottomDistance": 50
+}

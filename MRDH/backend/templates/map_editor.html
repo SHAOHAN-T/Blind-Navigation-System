@@ -1,0 +1,915 @@
+{% extends "base.html" %}
+
+{% block title %}Map Editor - Navigation System Admin{% endblock %}
+
+{% block extra_css %}
+<style>
+.map-canvas {
+    border: 2px solid rgba(46, 139, 255, 0.2);
+    cursor: crosshair;
+    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.tool-btn {
+    margin: 4px 0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.tool-btn.active {
+    background: linear-gradient(135deg, var(--primary-color), #4AA3FF);
+    color: white;
+    box-shadow: 0 4px 12px rgba(46, 139, 255, 0.3);
+    transform: translateY(-1px);
+}
+
+.tool-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.grid-info {
+    background: linear-gradient(135deg, rgba(46, 139, 255, 0.05), rgba(54, 211, 153, 0.05));
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(46, 139, 255, 0.1);
+}
+
+.form-control, .form-select {
+    border-radius: 8px;
+    border: 1px solid #E5E7EB;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(46, 139, 255, 0.1);
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="mb-4">
+            <i class="fas fa-edit me-2"></i>
+            Map Editor
+            {% if map_data %}
+            - {{ map_data.name }}
+            {% endif %}
+        </h1>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Toolbar -->
+    <div class="col-md-3 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-tools me-2"></i>
+                    Edit Tools
+                </h5>
+            </div>
+            <div class="card-body">
+                <!-- Map Basic Information -->
+                <div class="mb-3">
+                    <label class="form-label">Map Name:</label>
+                    <input type="text" class="form-control" id="mapName" placeholder="Enter map name">
+                </div>
+                
+                <div class="row mb-3">
+                    <div class="col-6">
+                        <label class="form-label">Width:</label>
+                        <input type="number" class="form-control" id="mapWidth" value="20" min="5" max="50">
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label">Height:</label>
+                        <input type="number" class="form-control" id="mapHeight" value="15" min="5" max="50">
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary w-100 mb-3" onclick="createNewMap()">
+                    <i class="fas fa-plus me-2"></i>
+                    {% if map_data %}Recreate Map{% else %}Create/Apply Settings{% endif %}
+                </button>
+                
+                <div class="alert alert-info alert-sm">
+                    <small>
+                        <i class="fas fa-info-circle me-1"></i>
+                        Click the button above to apply changes after modifying dimensions
+                    </small>
+                </div>
+                
+                <hr>
+                
+                <!-- Drawing Tools -->
+                <h6>Drawing Tools:</h6>
+                <div class="btn-group-vertical w-100 mb-3">
+                    <button class="btn btn-outline-secondary tool-btn active" data-tool="empty" onclick="selectTool('empty')">
+                        <i class="fas fa-square me-2" style="color: #fff;"></i>
+                        Empty Space (Walkable)
+                    </button>
+                    <button class="btn btn-outline-secondary tool-btn" data-tool="obstacle" onclick="selectTool('obstacle')">
+                        <i class="fas fa-square me-2" style="color: #333;"></i>
+                        Obstacle
+                    </button>
+                    <button class="btn btn-outline-secondary tool-btn" data-tool="entrance" onclick="selectTool('entrance')">
+                        <i class="fas fa-square me-2" style="color: #28a745;"></i>
+                        Entrance
+                    </button>
+                    <button class="btn btn-outline-secondary tool-btn" data-tool="room" onclick="selectTool('room')">
+                        <i class="fas fa-square me-2" style="color: #007bff;"></i>
+                        Room
+                    </button>
+                </div>
+                
+                <hr>
+                
+                <!-- Room Management -->
+                <h6>Room Management:</h6>
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col-8">
+                            <input type="text" class="form-control form-control-sm" id="roomId" placeholder="Room ID">
+                        </div>
+                        <div class="col-4">
+                            <button class="btn btn-sm btn-success" onclick="addRoom()">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control form-control-sm mt-1" id="roomName" placeholder="Room Name">
+                </div>
+                
+                <div id="roomList" class="mb-3">
+                    <!-- Room list will be dynamically generated here -->
+                </div>
+                
+                <hr>
+                
+                <!-- Action Buttons -->
+                <div class="d-grid gap-2">
+                    <button class="btn btn-success" onclick="saveMap()">
+                        <i class="fas fa-save me-2"></i>
+                        Save Map
+                    </button>
+                    <button class="btn btn-info" onclick="validateMap()">
+                        <i class="fas fa-check me-2"></i>
+                        Validate Map
+                    </button>
+                    <button class="btn btn-warning" onclick="clearMap()">
+                        <i class="fas fa-eraser me-2"></i>
+                        Clear Map
+                    </button>
+                    {% if map_data %}
+                    <button class="btn btn-danger" onclick="deleteMap()">
+                        <i class="fas fa-trash me-2"></i>
+                        Delete Map
+                    </button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Map Canvas -->
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-map me-2"></i>
+                    Map Canvas
+                </h5>
+                <div>
+                    <button class="btn btn-sm btn-outline-primary" onclick="zoomIn()">
+                        <i class="fas fa-search-plus"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-primary" onclick="zoomOut()">
+                        <i class="fas fa-search-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="grid-info">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <strong>Size:</strong> <span id="mapSize">20 x 15</span>
+                        </div>
+                        <div class="col-md-3">
+                            <strong>Entrance:</strong> <span id="entrancePos">Not Set</span>
+                        </div>
+                        <div class="col-md-3">
+                            <strong>Room Count:</strong> <span id="roomCount">0</span>
+                        </div>
+                        <div class="col-md-3">
+                            <strong>Current Tool:</strong> <span id="currentTool">Empty Space</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="overflow: auto; max-height: 600px;">
+                    <canvas id="mapCanvas" class="map-canvas"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Room Edit Modal -->
+<div class="modal fade" id="roomModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Room</h5>
+                <button type="button" class="btn-close" onclick="closeRoomModal()"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label">Room ID:</label>
+                    <input type="text" class="form-control" id="modalRoomId">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Room Name:</label>
+                    <input type="text" class="form-control" id="modalRoomName">
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <label class="form-label">X Coordinate:</label>
+                        <input type="number" class="form-control" id="modalRoomX" readonly>
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label">Y Coordinate:</label>
+                        <input type="number" class="form-control" id="modalRoomY" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeRoomModal()">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="saveRoomEdit()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Map editor core variables
+let mapData = {
+    id: null,
+    name: '',
+    width: 20,
+    height: 15,
+    grid: [],
+    entrance: {x: 0, y: 0},
+    rooms: [],
+    is_3d: false  // 🔧 Explicitly mark as 2D map
+};
+
+let currentTool = 'empty';
+let cellSize = 20;
+let canvas, ctx;
+let currentRoomModal = null; // Save current room modal instance
+
+// Tool corresponding grid values
+const toolValues = {
+    'empty': 0,
+    'obstacle': 1,
+    'entrance': 2,
+    'room': 3
+};
+
+// Color mapping
+const cellColors = {
+    0: '#ffffff', // Empty space
+    1: '#333333', // Obstacle
+    2: '#28a745', // Entrance
+    3: '#007bff'  // Room
+};
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+    canvas = document.getElementById('mapCanvas');
+    ctx = canvas.getContext('2d');
+    
+    // If editing existing map
+    {% if map_data %}
+    mapData = {{ map_data | tojsonfilter }};
+    document.getElementById('mapName').value = mapData.name || '';
+    document.getElementById('mapWidth').value = mapData.width || 20;
+    document.getElementById('mapHeight').value = mapData.height || 15;
+    console.log('Loading existing map:', mapData);
+    {% else %}
+    console.log('Initialize new map');
+    initializeGrid();
+    {% endif %}
+    
+    setupCanvas();
+    updateMapInfo();
+    renderMap();
+    updateRoomList();
+    
+    // Listen to map name changes
+    document.getElementById('mapName').addEventListener('input', function() {
+        mapData.name = this.value.trim();
+    });
+    
+    // Listen to size changes
+    document.getElementById('mapWidth').addEventListener('change', function() {
+        if (!mapData.id) { // Only new maps are allowed to change size
+            const newWidth = parseInt(this.value);
+            if (newWidth >= 5 && newWidth <= 50 && newWidth !== mapData.width) {
+                console.log('Width will be changed to:', newWidth);
+                // Directly update the size and recreate the map
+                updateMapSize();
+            }
+        }
+    });
+    
+    document.getElementById('mapHeight').addEventListener('change', function() {
+        if (!mapData.id) { // Only new maps are allowed to change dimensions
+            const newHeight = parseInt(this.value);
+            if (newHeight >= 5 && newHeight <= 50 && newHeight !== mapData.height) {
+                console.log('The height will be changed to:', newHeight);
+                // Directly update the size and recreate the map
+                updateMapSize();
+            }
+        }
+    });
+});
+
+function initializeGrid() {
+    console.log(`Initialize the grid: ${mapData.width} x ${mapData.height}`);
+    mapData.grid = [];
+    for (let y = 0; y < mapData.height; y++) {
+        let row = [];
+        for (let x = 0; x < mapData.width; x++) {
+            row.push(0); // Default is open space
+        }
+        mapData.grid.push(row);
+    }
+    console.log('Grid initialized, rows:', mapData.grid.length, 'columns:', mapData.grid[0] ? mapData.grid[0].length : 0);
+}
+
+function setupCanvas() {
+    canvas.width = mapData.width * cellSize;
+    canvas.height = mapData.height * cellSize;
+    
+    // Add click event
+    canvas.addEventListener('click', function(e) {
+        const rect = canvas.getBoundingClientRect();
+        const x = Math.floor((e.clientX - rect.left) / cellSize);
+        const y = Math.floor((e.clientY - rect.top) / cellSize);
+        
+        if (x >= 0 && x < mapData.width && y >= 0 && y < mapData.height) {
+            handleCellClick(x, y);
+        }
+    });
+}
+
+function handleCellClick(x, y) {
+    console.log(`Clicked position: (${x}, ${y}), current tool: ${currentTool}`);
+    
+    if (currentTool === 'entrance') {
+        // Clear old entrance
+        if (mapData.entrance.x !== null && mapData.entrance.y !== null) {
+            mapData.grid[mapData.entrance.y][mapData.entrance.x] = 0;
+        }
+        // Set new entrance
+        mapData.entrance = {x: x, y: y};
+        mapData.grid[y][x] = 2;
+        console.log('Set entrance:', mapData.entrance);
+    } else if (currentTool === 'room') {
+        // Open room edit dialog
+        showRoomModal(x, y);
+        return;
+    } else {
+        // Normal tool
+        mapData.grid[y][x] = toolValues[currentTool];
+        console.log(`Set grid[${y}][${x}] = ${toolValues[currentTool]}`);
+    }
+    
+    renderMap();
+    updateMapInfo();
+}
+
+function showRoomModal(x, y) {
+    console.log('=== Start showing room modal ===');
+    console.log('Position:', x, y);
+    
+    try {
+        // First ensure no other modal is open
+        closeRoomModal();
+        
+        // Wait for a short time to ensure the previous modal is completely closed
+        setTimeout(() => {
+            try {
+                console.log('Start filling form data...');
+                
+                // Check if there is a room at this position
+                const existingRoom = mapData.rooms.find(room => room.x === x && room.y === y);
+                
+                document.getElementById('modalRoomX').value = x;
+                document.getElementById('modalRoomY').value = y;
+                
+                if (existingRoom) {
+                    document.getElementById('modalRoomId').value = existingRoom.id;
+                    document.getElementById('modalRoomName').value = existingRoom.name;
+                    console.log('Edit existing room:', existingRoom);
+                } else {
+                    document.getElementById('modalRoomId').value = '';
+                    document.getElementById('modalRoomName').value = '';
+                    console.log('Create new room');
+                }
+                
+                console.log('Form data filled, preparing to show modal...');
+                
+                // Simplified modal display method
+                const modalElement = document.getElementById('roomModal');
+                
+                // Check if Bootstrap is available
+                if (typeof bootstrap === 'undefined') {
+                    console.error('Bootstrap not loaded');
+                    alert('Bootstrap library not loaded, cannot display dialog');
+                    return;
+                }
+                
+                // Use a simpler way to show modal
+                modalElement.style.display = 'block';
+                modalElement.classList.add('show');
+                modalElement.setAttribute('aria-modal', 'true');
+                modalElement.setAttribute('role', 'dialog');
+                
+                // Add background mask
+                let backdrop = document.querySelector('.modal-backdrop');
+                if (!backdrop) {
+                    backdrop = document.createElement('div');
+                    backdrop.className = 'modal-backdrop fade show';
+                    document.body.appendChild(backdrop);
+                }
+                
+                document.body.classList.add('modal-open');
+                
+                // Focus on room ID input box
+                setTimeout(() => {
+                    document.getElementById('modalRoomId').focus();
+                }, 100);
+                
+                console.log('Room modal displayed');
+                
+            } catch (innerError) {
+                console.error('Error showing room modal:', innerError);
+                alert('Error showing room edit dialog: ' + innerError.message);
+            }
+        }, 100);
+        
+    } catch (error) {
+        console.error('Error showing room modal:', error);
+        alert('Error showing room edit dialog: ' + error.message);
+    }
+}
+
+function saveRoomEdit() {
+    console.log('Save room edit started...');
+    
+    try {
+        const x = parseInt(document.getElementById('modalRoomX').value);
+        const y = parseInt(document.getElementById('modalRoomY').value);
+        const roomId = document.getElementById('modalRoomId').value.trim();
+        const roomName = document.getElementById('modalRoomName').value.trim();
+        
+        console.log('Room information:', { x, y, roomId, roomName });
+        
+        if (!roomId || !roomName) {
+                alert('Please fill in room ID and name');
+            return;
+        }
+        
+        // Check if room ID is duplicated
+        const existingRoom = mapData.rooms.find(room => room.id === roomId && (room.x !== x || room.y !== y));
+        if (existingRoom) {
+            alert('Room ID already exists');
+            return;
+        }
+        
+        // Delete the old room at this position
+        mapData.rooms = mapData.rooms.filter(room => !(room.x === x && room.y === y));
+        
+        // Add new room
+        mapData.rooms.push({
+            id: roomId,
+            name: roomName,
+            x: x,
+            y: y
+        });
+        
+        console.log('Room added to mapData.rooms:', mapData.rooms);
+        
+        // Set grid
+        mapData.grid[y][x] = 3;
+        console.log(`Grid[${y}][${x}] set to room`);
+        
+        // Close modal - use multiple methods to ensure close
+        closeRoomModal();
+        
+        // Update display
+        renderMap();
+        updateMapInfo();
+        updateRoomList();
+        
+        console.log('Room edit saved');
+    } catch (error) {
+        console.error('Error saving room:', error);
+        alert('Error saving room: ' + error.message);
+        
+        // Even if there is an error, try to close the modal
+        closeRoomModal();
+    }
+}
+
+function closeRoomModal() {
+    console.log('=== Start closing room modal ===');
+    
+    try {
+        currentRoomModal = null;
+        
+        const modalElement = document.getElementById('roomModal');
+        if (!modalElement) {
+            console.log('Modal element not found');
+            return;
+        }
+        
+        // Directly operate DOM to close modal
+        modalElement.classList.remove('show');
+        modalElement.style.display = 'none';
+        modalElement.removeAttribute('aria-modal');
+        modalElement.removeAttribute('role');
+        
+        // Remove background mask
+        const backdrops = document.querySelectorAll('.modal-backdrop');
+        backdrops.forEach(backdrop => {
+            backdrop.remove();
+        });
+        
+        // Restore body state
+        document.body.classList.remove('modal-open');
+        document.body.style.overflow = '';
+        document.body.style.paddingRight = '';
+        
+        console.log('Room modal closed');
+        
+    } catch (error) {
+        console.error('Error closing modal:', error);
+        
+        // Force cleanup
+        try {
+            const modalElement = document.getElementById('roomModal');
+            if (modalElement) {
+                modalElement.style.display = 'none';
+                modalElement.className = 'modal fade';
+            }
+            
+            document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+            document.body.classList.remove('modal-open');
+            document.body.style.overflow = '';
+            document.body.style.paddingRight = '';
+            
+        } catch (cleanupError) {
+            console.error('Error forcing cleanup:', cleanupError);
+        }
+    }
+}
+
+function renderMap() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Draw grid
+    for (let y = 0; y < mapData.height; y++) {
+        for (let x = 0; x < mapData.width; x++) {
+            const cellValue = mapData.grid[y][x];
+            
+            // Fill color
+            ctx.fillStyle = cellColors[cellValue] || '#ffffff';
+            ctx.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
+            
+            // Draw border
+            ctx.strokeStyle = '#dddddd';
+            ctx.strokeRect(x * cellSize, y * cellSize, cellSize, cellSize);
+        }
+    }
+    
+    // Draw room label
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '10px Arial';
+    ctx.textAlign = 'center';
+    
+    mapData.rooms.forEach(room => {
+        const x = room.x * cellSize + cellSize / 2;
+        const y = room.y * cellSize + cellSize / 2;
+        ctx.fillText(room.id, x, y + 3);
+    });
+}
+
+function selectTool(tool) {
+    currentTool = tool;
+    
+    // Update button state
+    document.querySelectorAll('.tool-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    document.querySelector(`[data-tool="${tool}"]`).classList.add('active');
+    
+    // Update display
+    const toolNames = {
+        'empty': 'Empty Space',
+        'obstacle': 'Obstacle',
+        'entrance': 'Entrance',
+        'room': 'Room'
+    };
+    document.getElementById('currentTool').textContent = toolNames[tool];
+}
+
+function updateMapInfo() {
+    document.getElementById('mapSize').textContent = `${mapData.width} x ${mapData.height}`;
+    document.getElementById('entrancePos').textContent = 
+        mapData.entrance.x !== null ? `(${mapData.entrance.x}, ${mapData.entrance.y})` : 'Not Set';
+    document.getElementById('roomCount').textContent = mapData.rooms.length;
+}
+
+function updateRoomList() {
+    const roomList = document.getElementById('roomList');
+    roomList.innerHTML = '';
+    
+    mapData.rooms.forEach(room => {
+        const roomItem = document.createElement('div');
+        roomItem.className = 'alert alert-info alert-sm d-flex justify-content-between align-items-center';
+        roomItem.innerHTML = `
+            <small>
+                <strong>${room.id}</strong><br>
+                ${room.name} (${room.x}, ${room.y})
+            </small>
+            <button class="btn btn-sm btn-danger" onclick="removeRoom('${room.id}')">
+                <i class="fas fa-times"></i>
+            </button>
+        `;
+        roomList.appendChild(roomItem);
+    });
+}
+
+function removeRoom(roomId) {
+    const room = mapData.rooms.find(r => r.id === roomId);
+    if (room) {
+        mapData.grid[room.y][room.x] = 0; // Set to empty space
+        mapData.rooms = mapData.rooms.filter(r => r.id !== roomId);
+        renderMap();
+        updateMapInfo();
+        updateRoomList();
+    }
+}
+
+function createNewMap() {
+    const name = document.getElementById('mapName').value.trim();
+    const width = parseInt(document.getElementById('mapWidth').value);
+    const height = parseInt(document.getElementById('mapHeight').value);
+    
+    if (!name) {
+        alert('Please enter map name');
+        return;
+    }
+    
+    if (width < 5 || width > 50 || height < 5 || height > 50) {
+        alert('Map size must be between 5-50');
+        return;
+    }
+    
+    // Save previous map ID (if any)
+    const currentId = mapData.id;
+    
+    mapData = {
+        id: currentId, // Keep current ID, if in edit mode
+        name: name,
+        width: width,
+        height: height,
+        grid: [],
+        entrance: {x: null, y: null},
+        rooms: [],
+        is_3d: false  // 🔧 Explicitly mark as 2D map
+    };
+    
+    console.log('Create new map:', mapData);
+    console.log('Map size:', width, 'x', height);
+    
+    initializeGrid();
+    setupCanvas();
+    renderMap();
+    updateMapInfo();
+    updateRoomList();
+    
+    alert(`New map created (${width}×${height}), please draw map content and click save`);
+}
+
+function updateMapSize() {
+    // Real-time update map size (only when not saved)
+    if (mapData.id) {
+        return; // Saved maps are not allowed to change size
+    }
+    
+    const width = parseInt(document.getElementById('mapWidth').value);
+    const height = parseInt(document.getElementById('mapHeight').value);
+    
+    if (width >= 5 && width <= 50 && height >= 5 && height <= 50) {
+        mapData.width = width;
+        mapData.height = height;
+        
+        console.log('Update map size to:', width, 'x', height);
+        
+        // Reinitialize grid
+        initializeGrid();
+        setupCanvas();
+        renderMap();
+        updateMapInfo();
+        
+        // Clear rooms and entrance (because the size changed, the position may be invalid)
+        mapData.rooms = [];
+        mapData.entrance = {x: null, y: null};
+        updateRoomList();
+    }
+}
+
+function saveMap() {
+    // Ensure the map name is the latest
+    const currentName = document.getElementById('mapName').value.trim();
+    if (currentName) {
+        mapData.name = currentName;
+    }
+    
+    console.log('Prepare to save map:', mapData);
+    
+    if (!mapData.name) {
+        alert('Please set map name');
+        return;
+    }
+    
+    if (mapData.entrance.x === null || mapData.entrance.y === null) {
+        alert('Please set entrance position (select entrance tool and click on map)');
+        return;
+    }
+    
+    if (mapData.rooms.length === 0) {
+        if (!confirm('Map has no rooms, are you sure you want to save?')) {
+            return;
+        }
+    }
+    
+    // Prepare the data to send
+    const saveData = {
+        name: mapData.name,
+        width: mapData.width,
+        height: mapData.height,
+        grid: mapData.grid,
+        entrance: mapData.entrance,
+        rooms: mapData.rooms
+    };
+    
+    if (mapData.id) {
+        saveData.id = mapData.id;
+    }
+    
+    console.log('Send data:', saveData);
+    
+    const url = mapData.id ? `/api/maps/${mapData.id}` : '/api/maps';
+    const method = mapData.id ? 'PUT' : 'POST';
+    
+    // Show save progress
+    const saveBtn = document.querySelector('button[onclick="saveMap()"]');
+    const originalText = saveBtn.innerHTML;
+    saveBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Saving...';
+    saveBtn.disabled = true;
+    
+    fetch(url, {
+        method: method,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(saveData)
+    })
+    .then(response => {
+        console.log('Response status:', response.status);
+        return response.json();
+    })
+    .then(data => {
+        console.log('Response data:', data);
+        if (data.code === 200) {
+            alert('Map saved successfully!');
+            if (!mapData.id && data.data && data.data.id) {
+                mapData.id = data.data.id;
+                // Update URL
+                window.history.pushState({}, '', `/editor/${mapData.id}`);
+            }
+        } else {
+            alert(`Save failed: ${data.message || 'Unknown error'}`);
+        }
+    })
+    .catch(error => {
+        console.error('Save error:', error);
+        alert(`Save failed: ${error.message}`);
+    })
+    .finally(() => {
+        // Restore button state
+        saveBtn.innerHTML = originalText;
+        saveBtn.disabled = false;
+    });
+}
+
+function validateMap() {
+    if (!mapData.id) {
+        alert('Please save the map first');
+        return;
+    }
+    
+    fetch(`/api/maps/${mapData.id}/validate`, {
+        method: 'POST'
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.code === 200) {
+            const result = data.data;
+            let message = `Validation completed!\n\n`;
+            message += `Connectivity: ${result.valid ? '✓ Pass' : '✗ Fail'}\n`;
+            message += `Reachable rooms: ${result.reachable_rooms.length}/${result.total_rooms}\n`;
+            
+            if (result.unreachable_rooms.length > 0) {
+                message += `Unreachable rooms: ${result.unreachable_rooms.join(', ')}\n`;
+            }
+            
+            if (result.issues.length > 0) {
+                message += `\nIssues:\n${result.issues.join('\n')}`;
+            }
+            
+            alert(message);
+        } else {
+            alert(`Validation failed: ${data.message}`);
+        }
+    })
+    .catch(error => {
+        alert(`Validation failed: ${error.message}`);
+    });
+}
+
+function clearMap() {
+    if (confirm('Are you sure you want to clear the map? This action cannot be undone.')) {
+        initializeGrid();
+        mapData.entrance = {x: null, y: null};
+        mapData.rooms = [];
+        renderMap();
+        updateMapInfo();
+        updateRoomList();
+    }
+}
+
+function deleteMap() {
+    if (!mapData.id) {
+        alert('Cannot delete unsaved map');
+        return;
+    }
+    
+    if (confirm('Are you sure you want to delete this map? This action cannot be undone.')) {
+        fetch(`/api/maps/${mapData.id}`, {
+            method: 'DELETE'
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.code === 200) {
+                alert('Map deleted successfully');
+                window.location.href = '/maps';
+            } else {
+                alert(`Delete failed: ${data.message}`);
+            }
+        })
+        .catch(error => {
+            alert(`Delete failed: ${error.message}`);
+        });
+    }
+}
+
+function zoomIn() {
+    if (cellSize < 30) {
+        cellSize += 2;
+        setupCanvas();
+        renderMap();
+    }
+}
+
+function zoomOut() {
+    if (cellSize > 10) {
+        cellSize -= 2;
+        setupCanvas();
+        renderMap();
+    }
+}
+</script>
+{% endblock %}

@@ -1,0 +1,228 @@
+<!--Navigation page template-->
+<view class="container navigation-container">
+
+  <!-- Loading state -->
+  <view wx:if="{{loading}}" class="loading">
+    <view class="loading-spinner"></view>
+    <view class="loading-text">{{isNavigating ? 'Calculating optimal path...' : (loadingText || 'Loading map data...')}}</view>
+  </view>
+
+  <!-- Main content -->
+  <view wx:else class="navigation-content">
+    
+    <!-- Navigation status bar -->
+    <view wx:if="{{navigationActive}}" class="navigation-status">
+      <view class="status-info">
+        <view class="status-text">
+          {{targetRoom ? 'Going to ' + targetRoom.name : 'Navigating'}}
+        </view>
+        <view class="status-progress">
+          {{currentInstructionIndex + 1}} / {{instructions.length}}
+        </view>
+      </view>
+    </view>
+
+    <!-- Map display area -->
+    <view class="map-section {{navigationActive ? 'with-navigation' : 'without-navigation'}}">
+      <view class="map-header">
+        <view class="map-title">{{mapData.name || 'Map'}}</view>
+        <view class="map-controls">
+          <!-- Map type indicator -->
+          <view class="map-type-indicator">
+            <text class="map-type-text">{{isReal3DMap ? '3D Map (Flat View)' : '2D Map'}}</text>
+          </view>
+          <view class="zoom-info" wx:if="{{!is3DMode}}">
+            <text class="zoom-text">{{mapScaleDisplay}}%</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 🔧 2D map container wrapper -->
+      <view wx:if="{{!is3DMode}}" class="map-wrapper">
+        <!-- 2D map view -->
+        <scroll-view 
+          class="map-container" 
+          scroll-x="true" 
+          scroll-y="true"
+          enhanced="true"
+          show-scrollbar="{{true}}"
+          enable-passive="{{true}}"
+        >
+          <view 
+            class="map-grid"
+            style="grid-template-columns: repeat({{mapGridColumns || mapData.width}}, {{cellSize}}rpx); transform: scale({{mapScale}}); transform-origin: top left;"
+          >
+            <view 
+              wx:for="{{mapGrid}}" 
+              wx:key="index"
+              class="map-cell {{item.class}}"
+              style="width: {{cellSize}}rpx; height: {{cellSize}}rpx; {{item.style || ''}}"
+              data-x="{{item.x}}"
+              data-y="{{item.y}}"
+            >
+              <view wx:if="{{item.label}}" class="cell-label">{{item.label}}</view>
+            </view>
+          </view>
+        </scroll-view>
+        
+        <!-- 🔧 2D map zoom controls - moved to outer layer, not affected by scaling -->
+        <view class="map-zoom-controls">
+          <button class="zoom-btn" bindtap="zoomIn">+</button>
+          <text class="zoom-display">{{mapScaleDisplay}}%</text>
+          <button class="zoom-btn" bindtap="zoomOut">-</button>
+        </view>
+      </view>
+
+      <!-- 🏗️ 3D map flat display (similar to 2D but supports floor switching) -->
+      <view wx:if="{{is3DMode && isReal3DMap}}" class="map-wrapper">
+        <!-- Floor information and controls -->
+        <view class="floor-header">
+          <view class="floor-info">
+            <text class="floor-title">{{mapData.name || '3D Map'}}</text>
+            <text class="current-floor">Current Floor: Floor {{currentFloor}}</text>
+          </view>
+          
+          <!-- Floor switching buttons -->
+          <view class="floor-controls">
+            <button 
+              class="floor-btn {{currentFloor == 1 ? 'active' : ''}}" 
+              bindtap="onFloorChange" 
+              data-floor="1"
+            >
+              Floor 1
+            </button>
+            <button 
+              class="floor-btn {{currentFloor == 2 ? 'active' : ''}}" 
+              bindtap="onFloorChange" 
+              data-floor="2"
+            >
+              Floor 2
+            </button>
+          </view>
+        </view>
+
+        <!-- 3D map grid (flat display, similar to 2D) -->
+        <scroll-view 
+          class="map-container" 
+          scroll-x="true" 
+          scroll-y="true"
+          enhanced="true"
+          show-scrollbar="{{true}}"
+          enable-passive="{{true}}"
+          scroll-with-animation="{{true}}"
+          enable-back-to-top="{{false}}"
+          bounces="{{false}}"
+          scroll-anchoring="{{true}}"
+        >
+          <view 
+            class="map-grid map-3d-flat"
+            style="grid-template-columns: repeat({{mapGridColumns || mapData.width}}, {{cellSize}}rpx); transform: scale({{mapScale}}); transform-origin: top left;"
+          >
+            <view 
+              wx:for="{{mapGrid}}" 
+              wx:key="index"
+              class="map-cell {{item.class}}"
+              data-x="{{item.x}}"
+              data-y="{{item.y}}"
+              data-type="{{item.type}}"
+              bindtap="onCellTap"
+            >
+              <text class="cell-label" wx:if="{{item.label}}">{{item.label}}</text>
+            </view>
+          </view>
+        </scroll-view>
+
+        <!-- Zoom controls (consistent with 2D map) -->
+        <view class="zoom-controls">
+          <button class="zoom-btn" bindtap="zoomIn">+</button>
+          <text class="zoom-text">{{mapScaleDisplay}}%</text>
+          <button class="zoom-btn" bindtap="zoomOut">-</button>
+        </view>
+      </view>
+      
+      <!-- 2D map prompt in 3D mode -->
+      <view 
+        wx:if="{{is3DMode && !isReal3DMap}}"
+        class="map-3d-placeholder"
+      >
+        <view class="placeholder-content">
+          <view class="placeholder-icon">🏢</view>
+          <view class="placeholder-title">Current is 2D Map</view>
+          <view class="placeholder-subtitle">Cannot display 3D effects</view>
+          <view class="placeholder-hint">Please create 3D map in backend management system</view>
+          <button class="placeholder-btn" bindtap="switch2DMode">Switch to 2D Mode</button>
+        </view>
+      </view>
+    </view>
+
+
+    <!-- Room list -->
+    <view wx:if="{{!navigationActive && allRooms.length > 0}}" class="rooms-section">
+      <view class="section-title">Select Destination</view>
+      <scroll-view class="rooms-list" scroll-x="true" show-scrollbar="{{false}}">
+        <view 
+          wx:for="{{allRooms}}" 
+          wx:key="id"
+          class="room-card {{targetRoom && targetRoom.id === item.id ? 'selected' : ''}}"
+          data-room-id="{{item.id}}"
+          data-room-name="{{item.name}}"
+          data-room-floor="{{item.floor}}"
+          bindtap="onRoomTap"
+        >
+          <view class="room-card-title">{{item.name}}</view>
+          <view class="room-card-floor" wx:if="{{isReal3DMap && item.floorName}}">{{item.floorName}}</view>
+          <view class="room-card-id">{{item.id}}</view>
+        </view>
+      </scroll-view>
+    </view>
+
+    <!-- Navigation instructions -->
+    <view wx:if="{{navigationActive}}" class="instructions-section">
+      <view class="instructions-header">
+        <view class="section-info">
+          <view class="section-title">Navigation Instructions</view>
+          <view class="progress-indicator">
+            <view class="progress-circle">
+              <view class="progress-number">{{currentInstructionIndex + 1}}</view>
+            </view>
+            <view class="progress-total">/ {{instructions.length}}</view>
+          </view>
+        </view>
+        <view class="instruction-nav">
+          <button 
+            class="nav-btn {{currentInstructionIndex === 0 ? 'disabled' : ''}}" 
+            bindtap="onPrevInstruction"
+          >
+            <text class="nav-text">Previous</text>
+          </button>
+          <button 
+            class="nav-btn {{currentInstructionIndex === instructions.length - 1 ? 'disabled' : ''}}" 
+            bindtap="onNextInstruction"
+          >
+            <text class="nav-text">Next</text>
+          </button>
+        </view>
+      </view>
+
+      <view class="current-instruction">
+        <view class="instruction-text">
+          {{instructions[currentInstructionIndex] || 'No instructions'}}
+        </view>
+        <!-- 🔍 Debug information display -->
+        <view class="instruction-debug" wx:if="{{false}}">
+          <text>Debug: Total instructions {{instructions.length}}, Current index {{currentInstructionIndex}}</text>
+          <text>Current instruction length: {{instructions[currentInstructionIndex] ? instructions[currentInstructionIndex].length : 0}}</text>
+        </view>
+        <button class="replay-btn" bindtap="onReplayInstruction">
+          Replay
+        </button>
+      </view>
+
+      <!-- Instruction list removed to avoid being covered by bottom buttons -->
+    </view>
+
+
+  </view>
+
+
+</view>

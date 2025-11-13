@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Navigation System Admin{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2E8BFF;
+            --success-color: #36D399;
+            --warning-color: #FF9F43;
+            --danger-color: #EF4444;
+            --dark-color: #1F2937;
+            --light-bg: #F8FAFC;
+            --sidebar-bg: #1E293B;
+            --sidebar-hover: #334155;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            min-height: 100vh;
+            background: linear-gradient(180deg, var(--sidebar-bg) 0%, #0f172a 100%);
+            box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar .nav-link {
+            color: #CBD5E1;
+            padding: 12px 20px;
+            margin: 4px 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .sidebar .nav-link:hover {
+            color: #ffffff;
+            background: var(--sidebar-hover);
+            transform: translateX(4px);
+        }
+
+        .sidebar .nav-link.active {
+            color: #ffffff;
+            background: linear-gradient(135deg, var(--primary-color), #4AA3FF);
+            box-shadow: 0 4px 12px rgba(46, 139, 255, 0.3);
+        }
+
+        .sidebar .nav-link i {
+            width: 20px;
+            text-align: center;
+            margin-right: 10px;
+        }
+
+        .main-content {
+            margin-left: 0;
+            min-height: 100vh;
+        }
+
+        @media (min-width: 768px) {
+            .main-content {
+                margin-left: 250px;
+            }
+        }
+
+        .card {
+            border: none;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-header {
+            background: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 16px 16px 0 0 !important;
+            padding: 20px 24px;
+        }
+
+        .card-stat {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-left: 4px solid var(--primary-color);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-stat::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--primary-color), #4AA3FF);
+            opacity: 0.1;
+            border-radius: 50%;
+            transform: translate(30px, -30px);
+        }
+
+        .btn {
+            border-radius: 10px;
+            font-weight: 500;
+            padding: 12px 24px;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), #4AA3FF);
+            box-shadow: 0 4px 12px rgba(46, 139, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(46, 139, 255, 0.4);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, var(--success-color), #2ABF88);
+            box-shadow: 0 4px 12px rgba(54, 211, 153, 0.3);
+        }
+
+        .btn-warning {
+            background: linear-gradient(135deg, var(--warning-color), #FF8C42);
+            box-shadow: 0 4px 12px rgba(255, 159, 67, 0.3);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, var(--danger-color), #DC2626);
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+        }
+
+        .alert {
+            border: none;
+            border-radius: 12px;
+            padding: 16px 20px;
+        }
+
+        .grid-cell {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #ddd;
+            display: inline-block;
+            border-radius: 2px;
+        }
+
+        .cell-empty { background-color: #fff; }
+        .cell-obstacle { background-color: #374151; }
+        .cell-entrance { background-color: var(--success-color); }
+        .cell-room { background-color: var(--primary-color); }
+
+        .navbar-brand {
+            font-weight: 600;
+            font-size: 1.25rem;
+        }
+
+        .table {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-control {
+            border-radius: 8px;
+            border: 1px solid #E5E7EB;
+            padding: 12px 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(46, 139, 255, 0.1);
+        }
+
+        .badge {
+            border-radius: 6px;
+            font-weight: 500;
+            padding: 6px 12px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+
+        .text-muted {
+            color: #6B7280 !important;
+        }
+
+        /* Scrollbar style */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Loading animation */
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive optimization */
+        @media (max-width: 768px) {
+            .card {
+                margin-bottom: 16px;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Sidebar -->
+    <nav class="sidebar position-fixed top-0 start-0 h-100 d-none d-md-block" style="width: 250px;">
+        <div class="p-3">
+            <h4 class="text-white mb-4">
+                <i class="fas fa-route me-2"></i>
+                Navigation Admin
+            </h4>
+            <ul class="nav flex-column">
+                <li class="nav-item mb-2">
+                    <a class="nav-link {% if request.endpoint == 'main.index' %}active{% endif %}" href="{{ url_for('main.index') }}">
+                        <i class="fas fa-tachometer-alt me-2"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link {% if 'map' in request.endpoint %}active{% endif %}" href="{{ url_for('main.map_list') }}">
+                        <i class="fas fa-map me-2"></i>
+                        Map Management
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link {% if request.endpoint == 'main.map_editor' %}active{% endif %}" href="{{ url_for('main.map_editor') }}">
+                        <i class="fas fa-edit me-2"></i>
+                        2D Map Editor
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link {% if request.endpoint == 'main.map_editor_3d' %}active{% endif %}" href="{{ url_for('main.map_editor_3d') }}">
+                        <i class="fas fa-cube me-2"></i>
+                        3D Map Editor
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link {% if request.endpoint == 'main.voice_management' %}active{% endif %}" href="{{ url_for('main.voice_management') }}">
+                        <i class="fas fa-volume-up me-2"></i>
+                        Voice Management
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link {% if request.endpoint == 'main.system_status' %}active{% endif %}" href="{{ url_for('main.system_status') }}">
+                        <i class="fas fa-server me-2"></i>
+                        System Status
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- Mobile Navigation -->
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark d-md-none">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{{ url_for('main.index') }}">
+                    <i class="fas fa-route me-2"></i>
+                    Navigation Admin
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mobileNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('main.index') }}">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('main.map_list') }}">Map Management</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('main.map_editor') }}">2D Map Editor</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('main.map_editor_3d') }}">3D Map Editor</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('main.voice_management') }}">Voice Management</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('main.system_status') }}">System Status</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Page Content -->
+        <div class="container-fluid p-4">
+            {% if error %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                {{ error }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            {% endif %}
+
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

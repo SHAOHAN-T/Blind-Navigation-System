@@ -1,0 +1,688 @@
+{% extends "base.html" %}
+
+{% block title %}Map Details - {{ map_data.name }} - Navigation System Admin{% endblock %}
+
+{% block extra_css %}
+<style>
+.map-visualization {
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+    border: 2px solid rgba(46, 139, 255, 0.1);
+}
+
+.map-grid-container {
+    display: inline-block;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.map-row {
+    display: flex;
+    line-height: 0;
+}
+
+.map-cell {
+    width: 25px;
+    height: 25px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.map-cell.entrance {
+    background: linear-gradient(135deg, var(--success-color), #2ABF88);
+}
+
+.map-cell.room {
+    background: linear-gradient(135deg, var(--primary-color), #4AA3FF);
+}
+
+.map-cell.obstacle {
+    background: linear-gradient(135deg, #374151, #1F2937);
+}
+
+.map-cell.empty {
+    background: #ffffff;
+    border-color: #e5e7eb;
+}
+
+.map-legend {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.info-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.room-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.room-item {
+    display: flex;
+    justify-content: between;
+    align-items: center;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    background: rgba(46, 139, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(46, 139, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.room-item:hover {
+    background: rgba(46, 139, 255, 0.1);
+    transform: translateX(4px);
+}
+
+.validation-result {
+    margin: 20px 0;
+}
+
+.validation-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.validation-item.success {
+    background: rgba(54, 211, 153, 0.1);
+    color: var(--success-color);
+}
+
+.validation-item.error {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--danger-color);
+}
+
+.validation-item.warning {
+    background: rgba(255, 159, 67, 0.1);
+    color: var(--warning-color);
+}
+
+.zoom-controls {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 5px;
+}
+
+.zoom-btn {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #374151;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.zoom-btn:hover {
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="{{ url_for('main.map_list') }}">Map Management</a>
+                        </li>
+                        <li class="breadcrumb-item active">{{ map_data.name }}</li>
+                    </ol>
+                </nav>
+                <h1>
+                    <i class="fas fa-map me-2"></i>
+                    {{ map_data.name }}
+                    <span class="badge bg-primary ms-2">ID: {{ map_data.id }}</span>
+                </h1>
+            </div>
+            <div>
+                <a href="{{ url_for('main.edit_map', map_id=map_data.id) }}" class="btn btn-primary">
+                    <i class="fas fa-edit me-2"></i>
+                    Edit Map
+                </a>
+                <button class="btn btn-success" onclick="validateMap()">
+                    <i class="fas fa-check me-2"></i>
+                    Validate Map
+                </button>
+                <button class="btn btn-info" onclick="testNavigation()">
+                    <i class="fas fa-route me-2"></i>
+                    Test Navigation
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Map Basic Information -->
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card card-stat h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-expand-arrows-alt fa-2x text-primary mb-3"></i>
+                <div class="stat-number">{{ map_data.width }} × {{ map_data.height }}</div>
+                <h6 class="text-muted">Map Size</h6>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="card card-stat h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-door-open fa-2x text-success mb-3"></i>
+                <div class="stat-number">{{ map_data.rooms|length if map_data.rooms else 0 }}</div>
+                <h6 class="text-muted">Room Count</h6>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="card card-stat h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-sign-in-alt fa-2x text-info mb-3"></i>
+                <div class="stat-number">
+                    {% if map_data.entrance %}
+                    ({{ map_data.entrance.x }}, {{ map_data.entrance.y }})
+                    {% else %}
+                    Not Set
+                    {% endif %}
+                </div>
+                <h6 class="text-muted">Entrance Location</h6>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="card card-stat h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-calendar-alt fa-2x text-warning mb-3"></i>
+                <div class="stat-number">
+                    {{ map_data.created_at if map_data.created_at else 'Unknown' }}
+                </div>
+                <h6 class="text-muted">Created Time</h6>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Map Visualization -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-eye me-2"></i>
+                    Map Visualization
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="map-visualization position-relative">
+                    <div class="zoom-controls">
+                        <button class="zoom-btn" onclick="zoomIn()" title="Zoom In">
+                            <i class="fas fa-search-plus"></i>
+                        </button>
+                        <button class="zoom-btn" onclick="zoomOut()" title="Zoom Out">
+                            <i class="fas fa-search-minus"></i>
+                        </button>
+                        <button class="zoom-btn" onclick="resetZoom()" title="Reset">
+                            <i class="fas fa-home"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="map-grid-container" id="mapDisplay" style="transform-origin: center; transition: transform 0.3s ease;">
+                            {% for y in range(map_data.height) %}
+                            <div class="map-row">
+                                {% for x in range(map_data.width) %}
+                                {% set cell_value = map_data.grid[y][x] if map_data.grid and map_data.grid[y] else 0 %}
+                                {% set is_entrance = map_data.entrance and map_data.entrance.x == x and map_data.entrance.y == y %}
+                                {% set room = map_data.rooms|selectattr('x', 'equalto', x)|selectattr('y', 'equalto', y)|first if map_data.rooms else None %}
+                                
+                                <div class="map-cell {% if is_entrance %}entrance{% elif room %}room{% elif cell_value == 1 %}obstacle{% else %}empty{% endif %}"
+                                     title="Location: ({{ x }}, {{ y }}){% if is_entrance %} - Entrance{% elif room %} - Room: {{ room.name }}{% elif cell_value == 1 %} - Obstacle{% else %} - Empty{% endif %}">
+                                    {% if is_entrance %}
+                                        E
+                                    {% elif room %}
+                                        {{ room.id }}
+                                    {% elif cell_value == 1 %}
+                                        ■
+                                    {% endif %}
+                                </div>
+                                {% endfor %}
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                    <!-- Legend -->
+                    <div class="map-legend">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: linear-gradient(135deg, var(--success-color), #2ABF88);"></div>
+                            <span>Entrance (E)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: linear-gradient(135deg, var(--primary-color), #4AA3FF);"></div>
+                            <span>Room (ID)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: linear-gradient(135deg, #374151, #1F2937);"></div>
+                            <span>Obstacle (■)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #ffffff; border-color: #6B7280;"></div>
+                            <span>Empty</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Detailed information and room list -->
+<div class="row mb-4">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-list me-2"></i>
+                    Room List
+                </h5>
+            </div>
+            <div class="card-body">
+                {% if map_data.rooms %}
+                <div class="room-list">
+                    {% for room in map_data.rooms %}
+                    <div class="room-item">
+                        <div>
+                            <h6 class="mb-1">{{ room.name }}</h6>
+                            <small class="text-muted">ID: {{ room.id }} | Position: ({{ room.x }}, {{ room.y }})</small>
+                        </div>
+                        <button class="btn btn-sm btn-outline-primary" onclick="highlightRoom({{ room.x }}, {{ room.y }})">
+                            <i class="fas fa-crosshairs"></i>
+                        </button>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="text-center py-4">
+                    <i class="fas fa-door-open fa-2x text-muted mb-3"></i>
+                    <p class="text-muted">This map has not added any rooms</p>
+                    <a href="{{ url_for('main.edit_map', map_id=map_data.id) }}" class="btn btn-primary">
+                        <i class="fas fa-plus me-2"></i>
+                        Add Room
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-chart-bar me-2"></i>
+                    Map Statistics
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="info-grid">
+                    <div class="info-card text-center">
+                        <i class="fas fa-square fa-2x text-muted mb-2"></i>
+                        <h6>Total Cells</h6>
+                        <div class="fw-bold">{{ map_data.width * map_data.height }}</div>
+                    </div>
+                    
+                    <div class="info-card text-center">
+                        <i class="fas fa-route fa-2x text-success mb-2"></i>
+                        <h6>Walkable Area</h6>
+                        <div class="fw-bold" id="walkableCount">--</div>
+                    </div>
+                    
+                    <div class="info-card text-center">
+                        <i class="fas fa-ban fa-2x text-danger mb-2"></i>
+                        <h6>Obstacle Count</h6>
+                        <div class="fw-bold" id="obstacleCount">--</div>
+                    </div>
+                    
+                    <div class="info-card text-center">
+                        <i class="fas fa-percentage fa-2x text-info mb-2"></i>
+                        <h6>Usability</h6>
+                        <div class="fw-bold" id="usabilityRate">--</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-tools me-2"></i>
+                    Quick Actions
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary" onclick="editMap()">
+                        <i class="fas fa-edit me-2"></i>
+                        Edit Map
+                    </button>
+                    <button class="btn btn-success" onclick="duplicateMap()">
+                        <i class="fas fa-copy me-2"></i>
+                        Duplicate Map
+                    </button>
+                    <button class="btn btn-info" onclick="exportMap()">
+                        <i class="fas fa-download me-2"></i>
+                        Export Map
+                    </button>
+                    <button class="btn btn-warning" onclick="shareMap()">
+                        <i class="fas fa-share me-2"></i>
+                        Share Map
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Validation Results -->
+<div class="row" id="validationResults" style="display: none;">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-check-circle me-2"></i>
+                    Validation Results
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="validation-result" id="validationContent">
+                    <!-- Validation results will be filled through JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+let currentZoom = 1;
+
+// Calculate map statistics
+document.addEventListener('DOMContentLoaded', function() {
+    calculateMapStats();
+});
+
+function calculateMapStats() {
+    const mapData = {{ map_data|tojsonfilter }};
+    const totalCells = mapData.width * mapData.height;
+    let obstacleCount = 0;
+    let walkableCount = 0;
+
+    if (mapData.grid) {
+        for (let y = 0; y < mapData.height; y++) {
+            for (let x = 0; x < mapData.width; x++) {
+                const cellValue = mapData.grid[y] ? mapData.grid[y][x] : 0;
+                if (cellValue === 1) {
+                    obstacleCount++;
+                } else {
+                    walkableCount++;
+                }
+            }
+        }
+    } else {
+        walkableCount = totalCells;
+    }
+
+    document.getElementById('walkableCount').textContent = walkableCount;
+    document.getElementById('obstacleCount').textContent = obstacleCount;
+    
+    const usabilityRate = walkableCount > 0 ? Math.round((walkableCount / totalCells) * 100) : 0;
+    document.getElementById('usabilityRate').textContent = usabilityRate + '%';
+}
+
+function zoomIn() {
+    if (currentZoom < 2) {
+        currentZoom += 0.2;
+        updateZoom();
+    }
+}
+
+function zoomOut() {
+    if (currentZoom > 0.5) {
+        currentZoom -= 0.2;
+        updateZoom();
+    }
+}
+
+function resetZoom() {
+    currentZoom = 1;
+    updateZoom();
+}
+
+function updateZoom() {
+    const mapDisplay = document.getElementById('mapDisplay');
+    mapDisplay.style.transform = `scale(${currentZoom})`;
+}
+
+function highlightRoom(x, y) {
+    // Remove previous highlight
+    document.querySelectorAll('.map-cell.highlighted').forEach(cell => {
+        cell.classList.remove('highlighted');
+    });
+    
+    // Add highlight style
+    const cells = document.querySelectorAll('.map-cell');
+    const targetCell = cells[y * {{ map_data.width }} + x];
+    if (targetCell) {
+        targetCell.classList.add('highlighted');
+        targetCell.style.animation = 'pulse 2s ease-in-out 3';
+        
+        setTimeout(() => {
+            targetCell.classList.remove('highlighted');
+            targetCell.style.animation = '';
+        }, 6000);
+    }
+}
+
+function validateMap() {
+    const mapId = {{ map_data.id }};
+    
+    fetch(`/api/maps/${mapId}/validate`, {
+        method: 'POST'
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.code === 200) {
+            displayValidationResults(data.data);
+        } else {
+            alert(`Validation failed: ${data.message}`);
+        }
+    })
+    .catch(error => {
+        alert(`Validation failed: ${error.message}`);
+    });
+}
+
+function displayValidationResults(results) {
+    const container = document.getElementById('validationContent');
+    const resultsDiv = document.getElementById('validationResults');
+    
+    let html = '';
+    
+    if (results.valid) {
+        html += `
+            <div class="validation-item success">
+                <i class="fas fa-check-circle me-2"></i>
+                Map validation passed, all rooms can be reached from the entrance
+            </div>
+        `;
+    } else {
+        html += `
+            <div class="validation-item error">
+                <i class="fas fa-times-circle me-2"></i>
+                Map validation failed, there are rooms that cannot be reached
+            </div>
+        `;
+    }
+    
+    html += `
+        <div class="validation-item">
+            <i class="fas fa-info-circle me-2"></i>
+            Reachable Rooms: ${results.reachable_rooms.length}/${results.total_rooms}
+        </div>
+    `;
+    
+    if (results.unreachable_rooms.length > 0) {
+        html += `
+            <div class="validation-item warning">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                Unreachable Rooms: ${results.unreachable_rooms.join(', ')}
+            </div>
+        `;
+    }
+    
+    if (results.issues.length > 0) {
+        results.issues.forEach(issue => {
+            html += `
+                <div class="validation-item error">
+                    <i class="fas fa-exclamation-circle me-2"></i>
+                    ${issue}
+                </div>
+            `;
+        });
+    }
+    
+    container.innerHTML = html;
+    resultsDiv.style.display = 'block';
+    
+    // Scroll to validation results
+    resultsDiv.scrollIntoView({ behavior: 'smooth' });
+}
+
+function testNavigation() {
+    alert('Navigation test functionality is under development...');
+}
+
+function editMap() {
+    window.location.href = `/editor/{{ map_data.id }}`;
+}
+
+function duplicateMap() {
+    if (confirm('Are you sure you want to duplicate this map?')) {
+        alert('Map duplication functionality is under development...');
+    }
+}
+
+function exportMap() {
+    const mapData = {{ map_data|tojsonfilter }};
+    const dataStr = JSON.stringify(mapData, null, 2);
+    const dataBlob = new Blob([dataStr], {type: 'application/json'});
+    
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(dataBlob);
+    link.download = `map_${mapData.id}_${mapData.name}.json`;
+    link.click();
+}
+
+function shareMap() {
+    const shareUrl = window.location.href;
+    
+    if (navigator.share) {
+        navigator.share({
+            title: '{{ map_data.name }} - Map Details',
+            url: shareUrl
+        });
+    } else {
+        // Copy to clipboard
+        navigator.clipboard.writeText(shareUrl).then(() => {
+            alert('Map link has been copied to clipboard');
+        });
+    }
+}
+
+// Add highlight animation style
+const style = document.createElement('style');
+style.textContent = `
+    .map-cell.highlighted {
+        box-shadow: 0 0 0 3px rgba(46, 139, 255, 0.5) !important;
+        z-index: 10;
+        position: relative;
+    }
+    
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+`;
+document.head.appendChild(style);
+</script>
+{% endblock %}

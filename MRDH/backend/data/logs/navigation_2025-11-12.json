@@ -1,0 +1,724 @@
+{
+  "date": "2025-11-12",
+  "logs": [
+    {
+      "id": "0faa9a52-c127-4ea9-9205-7a484a14ecf0",
+      "timestamp": "2025-11-12T06:31:38.850700",
+      "map_id": 20,
+      "start": {
+        "x": 10,
+        "y": 40,
+        "floor": 1
+      },
+      "end": {
+        "x": 8,
+        "y": 17,
+        "floor": 1
+      },
+      "path_data": [
+        {
+          "x": 10,
+          "y": 40,
+          "floor": 1,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 10,
+          "y": 39,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 10,
+          "y": 38,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 10,
+          "y": 37,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 10,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 12,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 13,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 14,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 15,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 16,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 17,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 18,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 19,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 20,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 21,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 21,
+          "y": 35,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 21,
+          "y": 34,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 21,
+          "y": 33,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 21,
+          "y": 32,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 21,
+          "y": 31,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 21,
+          "y": 30,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 21,
+          "y": 29,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 21,
+          "y": 28,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 21,
+          "y": 27,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 21,
+          "y": 26,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 21,
+          "y": 25,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 20,
+          "y": 25,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 19,
+          "y": 25,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 18,
+          "y": 25,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 18,
+          "y": 24,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 17,
+          "y": 24,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 16,
+          "y": 24,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 15,
+          "y": 24,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 14,
+          "y": 24,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 14,
+          "y": 23,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 14,
+          "y": 22,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 13,
+          "y": 22,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 12,
+          "y": 22,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 12,
+          "y": 21,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 12,
+          "y": 20,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 20,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 19,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 10,
+          "y": 19,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 9,
+          "y": 19,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 9,
+          "y": 18,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 9,
+          "y": 17,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 8,
+          "y": 17,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        }
+      ],
+      "instructions": [
+        "Start navigation. Please follow the guidance",
+        "Walk 4 steps forward",
+        "Turn right",
+        "Walk 11 steps forward",
+        "Turn left",
+        "Walk 11 steps forward",
+        "Turn left",
+        "Walk 3 steps forward",
+        "Turn right",
+        "Walk 1 step forward",
+        "Turn left",
+        "Walk 4 steps forward",
+        "Turn right",
+        "Walk 2 steps forward",
+        "Turn left",
+        "Walk 2 steps forward",
+        "Turn right",
+        "Walk 2 steps forward",
+        "Turn left",
+        "Walk 1 step forward",
+        "Turn right",
+        "Walk 1 step forward",
+        "Turn left",
+        "Walk 2 steps forward",
+        "Turn right",
+        "Walk 2 steps forward",
+        "Turn left",
+        "Walk 1 step forward",
+        "You have reached your destination"
+      ],
+      "total_steps": 48,
+      "total_cost": 1128.0,
+      "estimated_time": 141,
+      "algorithm": "3d_astar",
+      "is_3d": true
+    },
+    {
+      "id": "eec0ccad-bbd1-4266-bdb3-a0c7120b9508",
+      "timestamp": "2025-11-12T06:31:53.520392",
+      "map_id": 20,
+      "start": {
+        "x": 10,
+        "y": 40,
+        "floor": 1
+      },
+      "end": {
+        "x": 12,
+        "y": 28,
+        "floor": 1
+      },
+      "target_room": "372",
+      "path_data": [
+        {
+          "x": 10,
+          "y": 40,
+          "floor": 1,
+          "action": "move",
+          "connection_info": null
+        },
+        {
+          "x": 10,
+          "y": 39,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 10,
+          "y": 38,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 10,
+          "y": 37,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 10,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 11,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 12,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 13,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 14,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 15,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 16,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 17,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 18,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 19,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 20,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 21,
+          "y": 36,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 21,
+          "y": 35,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 21,
+          "y": 34,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 21,
+          "y": 33,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 21,
+          "y": 32,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 21,
+          "y": 31,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 21,
+          "y": 30,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 21,
+          "y": 29,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 21,
+          "y": 28,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 21,
+          "y": 27,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 21,
+          "y": 26,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 21,
+          "y": 25,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 20,
+          "y": 25,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 19,
+          "y": 25,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 18,
+          "y": 25,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 18,
+          "y": 24,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 17,
+          "y": 24,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 16,
+          "y": 24,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 15,
+          "y": 24,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 14,
+          "y": 24,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 13,
+          "y": 24,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 13,
+          "y": 25,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 13,
+          "y": 26,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 13,
+          "y": 27,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 12,
+          "y": 27,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        },
+        {
+          "x": 12,
+          "y": 28,
+          "floor": 1,
+          "action": "move",
+          "connection_info": {}
+        }
+      ],
+      "instructions": [
+        "Start navigation. Please follow the guidance",
+        "Walk 4 steps forward",
+        "Turn right",
+        "Walk 11 steps forward",
+        "Turn left",
+        "Walk 11 steps forward",
+        "Turn left",
+        "Walk 3 steps forward",
+        "Turn right",
+        "Walk 1 step forward",
+        "Turn left",
+        "Walk 5 steps forward",
+        "Turn left",
+        "Walk 3 steps forward",
+        "Turn right",
+        "Walk 1 step forward",
+        "Turn left",
+        "Walk 1 step forward",
+        "You have reached your destination"
+      ],
+      "total_steps": 41,
+      "total_cost": 820.0,
+      "estimated_time": 120,
+      "is_3d": true
+    }
+  ]
+}

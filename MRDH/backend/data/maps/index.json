@@ -1,0 +1,23 @@
+{
+  "maps": [
+    {
+      "id": 18,
+      "name": "Teaching Building",
+      "width": 50,
+      "height": 50,
+      "file_path": "maps/map_18.json",
+      "created_at": "2025-09-19T11:56:50.002040",
+      "updated_at": "2025-09-19T11:56:50.002040"
+    },
+    {
+      "id": 20,
+      "name": "Teaching Building 3D",
+      "width": 50,
+      "height": 50,
+      "file_path": "maps/map_20.json",
+      "created_at": "2025-09-22T17:53:02.326411",
+      "updated_at": "2025-09-22T17:53:02.326411"
+    }
+  ],
+  "next_id": 27
+}

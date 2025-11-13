@@ -1,0 +1,340 @@
+<!--Settings Page Template-->
+<view class="container">
+
+    <!-- Voice Settings -->
+  <view class="settings-section">
+          <view class="section-title">Voice Settings</view>
+    
+    <view class="settings-group">
+      <!-- Voice Switch -->
+      <view class="setting-item">
+        <view class="setting-label">
+          <view class="label-content">
+            <view class="label-title">Voice Announcement</view>
+            <view class="label-subtitle">Enable voice navigation playback</view>
+          </view>
+        </view>
+        <switch 
+          class="setting-switch" 
+          checked="{{voiceSettings.enabled}}"
+          bindchange="onVoiceEnabledChange"
+        />
+      </view>
+
+      <!-- Auto Play -->
+      <view class="setting-item">
+        <view class="setting-label">
+          <view class="label-content">
+            <view class="label-title">Auto Play</view>
+            <view class="label-subtitle">Auto play instructions when navigation starts</view>
+          </view>
+        </view>
+        <switch 
+          class="setting-switch" 
+          checked="{{voiceSettings.autoPlay}}"
+          bindchange="onAutoPlayChange"
+          disabled="{{!voiceSettings.enabled}}"
+        />
+      </view>
+
+      <!-- Voice Speed -->
+      <view class="setting-item">
+        <view class="setting-label">
+          <view class="label-content">
+            <view class="label-title">Voice Speed</view>
+            <view class="label-subtitle">{{voiceSettings.speed}}x</view>
+          </view>
+        </view>
+        <slider 
+          class="setting-slider"
+          min="0.5"
+          max="2.0"
+          step="0.1"
+          value="{{voiceSettings.speed}}"
+          show-value="false"
+          bindchange="onSpeedChange"
+          disabled="{{!voiceSettings.enabled}}"
+        />
+      </view>
+
+      <!-- Volume -->
+      <view class="setting-item">
+        <view class="setting-label">
+          <view class="label-content">
+            <view class="label-title">Volume</view>
+            <view class="label-subtitle">{{volumeDisplay}}%</view>
+          </view>
+        </view>
+        <slider 
+          class="setting-slider"
+          min="0.1"
+          max="1.0"
+          step="0.1"
+          value="{{voiceSettings.volume}}"
+          show-value="false"
+          bindchange="onVolumeChange"
+          disabled="{{!voiceSettings.enabled}}"
+        />
+      </view>
+
+      <!-- Voice Test -->
+      <view class="setting-item">
+        <view class="setting-label">
+          <view class="label-content">
+            <view class="label-title">Voice Test</view>
+            <view class="label-subtitle">Test current voice settings</view>
+          </view>
+        </view>
+        <button 
+          class="btn btn-small {{voiceSettings.enabled && !testing ? 'btn-outline-primary' : 'btn-disabled'}}"
+          bindtap="onVoiceTest"
+          disabled="{{!voiceSettings.enabled || testing}}"
+          aria-label="{{testing ? 'Voice test in progress' : 'Start voice test'}}"
+        >
+          {{testing ? 'Testing...' : 'Start Test'}}
+        </button>
+      </view>
+    </view>
+  </view>
+
+  <!-- System Settings -->
+  <view class="settings-section">
+    <view class="section-title">System Settings</view>
+    
+    <view class="settings-group">
+      <!-- Debug Mode -->
+      <view class="setting-item">
+        <view class="setting-label">
+          <view class="label-content">
+            <view class="label-title">Debug Mode</view>
+            <view class="label-subtitle">Show detailed debug information</view>
+          </view>
+        </view>
+        <switch 
+          class="setting-switch" 
+          checked="{{systemSettings.debugMode}}"
+          bindchange="onDebugModeChange"
+        />
+      </view>
+
+      <!-- Auto Connect -->
+      <view class="setting-item">
+        <view class="setting-label">
+          <view class="label-content">
+            <view class="label-title">Auto Connect</view>
+            <view class="label-subtitle">Auto connect to server on startup</view>
+          </view>
+        </view>
+        <switch 
+          class="setting-switch" 
+          checked="{{systemSettings.autoConnect}}"
+          bindchange="onAutoConnectChange"
+        />
+      </view>
+
+      <!-- Data Cache -->
+      <view class="setting-item">
+        <view class="setting-label">
+          <view class="label-content">
+            <view class="label-title">Data Cache</view>
+            <view class="label-subtitle">Cache map and voice data</view>
+          </view>
+        </view>
+        <switch 
+          class="setting-switch" 
+          checked="{{systemSettings.dataCache}}"
+          bindchange="onDataCacheChange"
+        />
+      </view>
+    </view>
+  </view>
+
+  <!-- Server Settings -->
+  <view class="settings-section">
+    <view class="section-title">Server Settings</view>
+    
+    <view class="settings-group">
+      <!-- Current Server -->
+      <view class="setting-item">
+        <view class="setting-label">
+          <view class="label-content">
+            <view class="label-title">Current Server</view>
+            <view class="label-subtitle">{{serverSettings.useCustomUrl ? serverSettings.customUrl : serverSettings.apiBaseUrl}}</view>
+          </view>
+        </view>
+        <button 
+          class="btn btn-small btn-outline-primary"
+          bindtap="onShowServerConfig"
+        >
+          Configure
+        </button>
+      </view>
+
+      <!-- Connection Test -->
+      <view class="setting-item">
+        <view class="setting-label">
+          <view class="label-content">
+            <view class="label-title">Connection Test</view>
+            <view class="label-subtitle">Test server connection status</view>
+          </view>
+        </view>
+        <button 
+          class="btn btn-small {{!testing ? 'btn-outline-primary' : 'btn-disabled'}}"
+          bindtap="onTestConnection"
+          disabled="{{testing}}"
+          aria-label="{{testing ? 'Connection test in progress' : 'Start connection test'}}"
+        >
+          {{testing ? 'Testing...' : 'Start Test'}}
+        </button>
+      </view>
+
+      <!-- Real Device Debug Help -->
+      <view class="setting-item">
+        <view class="setting-label">
+          <view class="label-content">
+            <view class="label-title">Real Device Debug</view>
+            <view class="label-subtitle">View real device debug configuration help</view>
+          </view>
+        </view>
+        <button 
+          class="btn btn-small btn-warning"
+          bindtap="onGetLocalIP"
+          aria-label="View real device debug help information"
+        >
+          View Help
+        </button>
+      </view>
+    </view>
+  </view>
+
+  <!-- Data Management -->
+  <view class="settings-section">
+    <view class="section-title">Data Management</view>
+    
+    <view class="settings-group">
+      <!-- Clear Cache -->
+      <view class="setting-item">
+        <view class="setting-label">
+          <view class="label-content">
+            <view class="label-title">Clear Cache</view>
+            <view class="label-subtitle">Clear local cache data</view>
+          </view>
+        </view>
+        <button 
+          class="btn btn-small btn-warning"
+          bindtap="onClearCache"
+        >
+          Clear
+        </button>
+      </view>
+
+      <!-- Reset Default -->
+      <view class="setting-item">
+        <view class="setting-label">
+          <view class="label-content">
+            <view class="label-title">Reset Default Settings</view>
+            <view class="label-subtitle">Reset all settings to default values</view>
+          </view>
+        </view>
+        <button 
+          class="btn btn-small btn-danger"
+          bindtap="onResetSettings"
+        >
+          Reset
+        </button>
+      </view>
+    </view>
+  </view>
+
+  <!-- About -->
+  <view class="settings-section">
+    <view class="section-title">About</view>
+    
+    <view class="settings-group">
+      <!-- Application Info -->
+      <view class="setting-item" bindtap="onAbout">
+        <view class="setting-label">
+          <view class="label-content">
+            <view class="label-title">Application Info</view>
+            <view class="label-subtitle">Version {{appInfo.version}}</view>
+          </view>
+        </view>
+        <view class="setting-arrow">
+          <text class="arrow-text">View</text>
+        </view>
+      </view>
+
+      <!-- System Info -->
+      <view wx:if="{{systemInfo}}" class="info-card">
+        <view class="info-title">Device Information</view>
+        <view class="info-content">
+          <view class="info-item">
+            <text class="info-label">Device Model:</text>
+            <text class="info-value">{{systemInfo.model}}</text>
+          </view>
+          <view class="info-item">
+            <text class="info-label">System Version:</text>
+            <text class="info-value">{{systemInfo.system}}</text>
+          </view>
+          <view class="info-item">
+            <text class="info-label">WeChat Version:</text>
+            <text class="info-value">{{systemInfo.version}}</text>
+          </view>
+          <view class="info-item">
+            <text class="info-label">SDK Version:</text>
+            <text class="info-value">{{systemInfo.SDKVersion}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- Server Configuration Modal -->
+  <view wx:if="{{showServerConfig}}" class="server-config-modal">
+    <view class="modal-overlay" bindtap="onHideServerConfig"></view>
+    <view class="modal-content">
+      <view class="modal-header">
+        <view class="modal-title">Server Configuration</view>
+        <view class="modal-close" bindtap="onHideServerConfig">×</view>
+      </view>
+      <view class="modal-body">
+        <view class="config-group">
+          <view class="config-label">Default Server Address:</view>
+          <view class="config-value">{{serverSettings.apiBaseUrl}}</view>
+        </view>
+        
+        <view class="config-group">
+          <view class="config-switch">
+            <text class="switch-label">Use Custom Address</text>
+            <switch 
+              checked="{{serverSettings.useCustomUrl}}"
+              bindchange="onUseCustomUrlChange"
+            />
+          </view>
+        </view>
+        
+        <view wx:if="{{serverSettings.useCustomUrl}}" class="config-group">
+          <view class="config-label">Custom Server Address:</view>
+          <input 
+            class="config-input"
+            placeholder="http://192.168.1.100:5000/api"
+            value="{{serverSettings.customUrl}}"
+            bindinput="onCustomUrlInput"
+          />
+          <view class="config-hint">
+            Please enter your computer's IP address for real device debugging
+          </view>
+        </view>
+      </view>
+      <view class="modal-footer">
+        <button class="btn btn-outline-primary" bindtap="onHideServerConfig">
+          Cancel
+        </button>
+        <button class="btn btn-primary" bindtap="onSaveServerSettings">
+          Save
+        </button>
+      </view>
+    </view>
+  </view>
+
+</view>

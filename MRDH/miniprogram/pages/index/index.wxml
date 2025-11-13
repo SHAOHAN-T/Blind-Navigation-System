@@ -1,0 +1,171 @@
+<!--Home Template-->
+<view class="container">
+
+  <!-- Loading State -->
+  <view wx:if="{{loading}}" class="loading">
+    <view class="loading-spinner"></view>
+    <view class="loading-text">Loading map data...</view>
+  </view>
+
+  <!-- Main Content -->
+  <view wx:else>
+    
+    <!-- Welcome Section -->
+    <view class="welcome-section">
+      <view class="welcome-card card">
+        <view class="card-body text-center">
+          <text class="welcome-icon" aria-label="Navigation Icon">🧭</text>
+          <view class="welcome-title">Navigation System</view>
+          <view class="welcome-subtitle">Precise Indoor Navigation · Voice Guidance</view>
+          
+          <!-- Main Action Buttons -->
+          <view class="main-actions">
+            <button class="btn btn-primary btn-extra-large" bindtap="onVoiceTest">
+              <text class="icon icon-large">🔊</text>
+              <view class="btn-content">
+                <view class="btn-title">Voice Test</view>
+                <view class="btn-subtitle">Test voice playback function</view>
+              </view>
+            </button>
+            <button class="btn btn-success btn-extra-large" bindtap="onViewAllMaps">
+              <text class="icon icon-large">🗺️</text>
+              <view class="btn-content">
+                <view class="btn-title">Start Navigation</view>
+                <view class="btn-subtitle">Select map for navigation</view>
+              </view>
+            </button>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- Recently Used Maps -->
+    <view wx:if="{{recentMaps.length > 0}}" class="section">
+      <view class="section-header">
+        <view class="section-title">Recently Used</view>
+      </view>
+      
+      <view class="recent-maps">
+        <view 
+          wx:for="{{recentMaps}}" 
+          wx:key="id"
+          class="map-item card" 
+          data-map-id="{{item.id}}"
+          data-map-name="{{item.name}}"
+          bindtap="onMapTap"
+        >
+          <view class="card-body">
+            <view class="map-item-header">
+              <text class="map-icon">🗺️</text>
+              <view class="map-info">
+                <view class="map-name">{{item.name}}</view>
+                <view class="map-last-used">Last used: {{item.lastUsed}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- Available Maps -->
+    <view class="section">
+      <view class="section-header">
+        <view class="section-title">Available Maps</view>
+        <view class="section-action" bindtap="onViewAllMaps">
+          View All >
+        </view>
+      </view>
+
+      <view wx:if="{{maps.length > 0}}" class="maps-grid">
+        <view 
+          wx:for="{{maps}}" 
+          wx:key="id"
+          class="map-card card"
+          data-map-id="{{item.id}}"
+          data-map-name="{{item.name}}"
+          bindtap="onMapTap"
+        >
+          <view class="card-body">
+            <view class="map-card-header">
+              <text class="map-card-icon">🏢</text>
+            </view>
+            <view class="map-card-content">
+              <view class="map-card-title">{{item.name}}</view>
+              <view class="map-card-info">
+                <view class="map-size">{{item.width}}x{{item.height}}</view>
+                <view class="room-count">{{item.room_count || 0}} rooms</view>
+              </view>
+            </view>
+            <view class="map-card-actions">
+              <button 
+                class="btn btn-small btn-primary"
+                bindtap="onViewAllMaps"
+              >
+                View Maps
+              </button>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- No Maps State -->
+      <view wx:else class="empty-state">
+        <text class="empty-state-icon">📋</text>
+        <view class="empty-state-title">No maps available</view>
+        <view class="empty-state-subtitle">Please contact administrator to add map data</view>
+      </view>
+    </view>
+
+    <!-- System Status -->
+    <view wx:if="{{systemStatus}}" class="section">
+      <view class="status-card card">
+        <view class="card-header">
+          <view class="card-title">System Status</view>
+        </view>
+        <view class="card-body">
+          <view class="status-grid">
+            <view class="status-item">
+              <view class="status-value">{{systemStatus.maps_count || 0}}</view>
+              <view class="status-label">Map Count</view>
+            </view>
+            <view class="status-item">
+              <view class="status-value">{{systemStatus.navigation_requests_today || 0}}</view>
+              <view class="status-label">Today's Navigation</view>
+            </view>
+            <view class="status-item">
+              <view class="status-value">{{systemStatus.voice_files_cached || 0}}</view>
+              <view class="status-label">Voice Cache</view>
+            </view>
+          </view>
+          <view class="status-footer" bindtap="onShowSystemInfo">
+            <view class="system-version">System Version: {{systemStatus.version || 'v1.0.0'}}</view>
+            <view class="view-detail">View Details ></view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- Quick Functions -->
+    <view class="section">
+      <view class="shortcuts-card card">
+        <view class="card-header">
+          <view class="card-title">Quick Functions</view>
+        </view>
+        <view class="card-body">
+          <view class="shortcuts-grid">
+            <view class="shortcut-item" bindtap="onGoToSettings" aria-label="System Settings">
+              <text class="shortcut-icon">⚙️</text>
+              <view class="shortcut-label">System Settings</view>
+            </view>
+            <view class="shortcut-item" bindtap="onShowHelp" aria-label="Help">
+              <text class="shortcut-icon">❓</text>
+              <view class="shortcut-label">Help</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+</view>
